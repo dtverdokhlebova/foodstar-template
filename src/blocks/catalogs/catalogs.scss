@@ -1,0 +1,49 @@
+.catalogs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  @include media-laptop {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 20px;
+  }
+  @include media-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
+    @include media-laptop {
+      padding: 10px;
+    }
+  }
+  &__icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    @include media-laptop {
+      margin-bottom: 10px;
+    }
+  }
+  &__name {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    @include media-laptop {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    @include media-tablet {
+      margin-bottom: 10px;
+    }
+  }
+  &__ui-button {
+    margin-top: auto;
+  }
+}

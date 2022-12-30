@@ -1,0 +1,28 @@
+mixin achievements(mods)
+  -
+    const baseName = 'achievements'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const achievementsList =[
+      '<b>ООО «ПИВСТАР»</b> – победитель «Золотого клуба дистрибьюторов» АО «САН ИнБев» 2012, 2015 , 2016, 2017, 2019, 2021 годов.',
+      'Сервис, предоставляемый компанией <b>ООО «ПИВСТАР»</b>, признан лучшим в России в эти годы.',
+      '<b>ООО «ПИВСТАР»</b> по результатам Грейдинга «Нестле Россия», занял 5 место в России в 2012 г., 6-е в 2013 г., 7-е место в 2014 г., 5-е место в 2015 г. и 1-е место в 2020/2021 годах',
+      '<b>ООО «ПИВСТАР»</b> по результатам рейтинга OOO «ПепсиКо Холдингс» среди дистрибьюторов , занял 3 место в России в 2013, 2014 и 2015 гг., 1 место по итогам 2021 года ',
+    ]
+
+  .achievements(class=allMods)&attributes(attributes)
+    .achievements__img
+      img(src='img/achievements_img.png', alt='')
+    .achievements__title Наши достижения
+    ol.achievements__ol
+      each item in achievementsList
+        li !{item}
+    block

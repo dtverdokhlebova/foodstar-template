@@ -1,0 +1,28 @@
+-
+  let headerMenu =[
+    {
+      name: 'Кейсы',
+      link: '#',
+    },
+    {
+      name: 'Услуги',
+      link: '#',
+    },
+    {
+      name: 'Контакты',
+      link: '#',
+    },
+  ]
+
+header.header
+  //- .inner
+    a.header__logo(href='/')
+      img(src='img/logo.svg' alt='')
+    .header__content
+      ul.header__menu
+        each item in headerMenu
+          li.header__item
+            a.header__link(href=item.link) !{item.name}
+      +ui-button('Заказать звонок', '--empty, header')(href='javascript:void(0)' onclick='window.getPopup("#contact-us-form")')
+    button.header__burger-btn
+  .header__shadow

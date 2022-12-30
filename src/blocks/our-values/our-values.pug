@@ -1,0 +1,42 @@
+mixin our-values(mods)
+  -
+    const baseName = 'our-values'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const ourValuesData =[
+      { title: 'Индивидуальный подход',
+        descr: 'Основываясь на принципах максимального удовлетворения потребностей наших партнеров',
+      },
+      { title: 'Честность и прозрачность',
+        descr: 'Мы знаем наших партнеров, они знают нас',
+      },
+      { title: 'Новые идеи',
+        descr: 'Открытость к новому –  залог успеха и нашего будущего',
+      },
+      { title: 'Гибкость',
+        descr: 'Мы всегда найдем компромиссное решение, учитывающее наши интересы и&nbsp;интересы партнеров',
+      },
+      { title: 'Забота о персонале',
+        descr: 'Наши сотрудники – наша ответственность!',
+      },
+      { title: 'Надежность и профессионализм',
+        descr: 'Большой опыт и&nbsp;квалифицированная команда позволяет всегда достигать отличных результатов',
+      },
+    ]
+
+  .our-values(class=allMods)&attributes(attributes)
+    each item, index in ourValuesData
+      .our-values__item
+        .our-values__icon
+          img(src=`img/our_values_${index}.svg`, alt='')
+        .our-values__title !{item.title}
+        .our-values__descr !{item.descr}
+    block

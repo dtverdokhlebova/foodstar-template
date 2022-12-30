@@ -1,0 +1,15 @@
+.partners {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px 20px;
+  @include media-laptop {
+    gap: 8px 20px;
+  }
+  @include media-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 15px;
+  }
+  &__item {
+    max-height: 150px;
+  }
+}

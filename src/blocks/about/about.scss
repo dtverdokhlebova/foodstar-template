@@ -1,0 +1,134 @@
+.about {
+  position: relative;
+  min-height: 925px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 60px;
+  @include media-laptop {
+    min-height: unset;
+    padding-top: 0;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @include media-laptop {
+      position: static;
+      height: 335px;
+    }
+    @include media-tablet {
+      height: 208px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 856px;
+    padding: 60px;
+    background: $grey;
+    border-radius: 20px 20px 0 0;
+    @include media-laptop {
+      max-width: unset;
+      margin: 0 calc(var(--inner-pd) * -1);
+      padding: 25px var(--inner-pd) 35px;
+      border-radius: 0;
+    }
+    @include media-tablet {
+      padding: 20px var(--inner-pd) 50px;
+    }
+  }
+  &__text {
+    margin-bottom: 60px;
+    @include media-laptop {
+      margin-bottom: 20px;
+    }
+    @include media-tablet {
+      margin-bottom: 25px;
+    }
+  }
+  &__title {
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 137%;
+    @include media-laptop {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    @include media-tablet {
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+  }
+  &__descr {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    @include media-laptop {
+      font-size: 14px;
+    }
+    p {
+      margin: 0 0 20px;
+      @include media-laptop {
+        margin-bottom: 10px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__features {
+    display: flex;
+    @include media-laptop {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    @include media-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px 15px;
+    }
+    &-item {
+      max-width: 205px;
+      min-width: 135px;
+      @include media-laptop {
+        max-width: unset;
+        min-width: unset;
+      }
+      &:not(:last-child) {
+        margin-right: 30px;
+        @include media-laptop {
+          margin-right: 0;
+        }
+      }
+    }
+    &-icon {
+      width: 95px;
+      height: 95px;
+      margin: 0 auto 10px;
+      @include media-laptop {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 8px;
+      }
+    }
+    &-title {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.2;
+      text-align: center;
+      @include media-laptop {
+        font-size: 13px;
+      }
+    }
+  }
+}

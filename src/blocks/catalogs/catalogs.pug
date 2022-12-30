@@ -1,0 +1,24 @@
+mixin catalogs(mods)
+  -
+    const baseName = 'catalogs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .catalogs(class=allMods)&attributes(attributes)
+    -for(item = 0; item < 6; item++)
+      .catalogs__item
+        .catalogs__icon
+          img(src='img/icon_pdf.svg', alt='')
+        .catalogs__name
+          if item === 2
+            | Обновленный каталог компании Nestle. Текст для заполнения
+          else
+            | Обновленный каталог
+        +ui-button('Скачать', 'catalogs')(href='#')
+    block

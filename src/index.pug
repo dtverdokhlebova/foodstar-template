@@ -1,0 +1,38 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Index'
+
+block content
+  main.main
+    +section('--bg')
+      .inner
+        +our-values
+    +section
+      .inner
+        +achievements
+    +section
+      .inner
+        +partners
+    .section
+      +about
+    +section
+      .inner
+        +news-current
+    +section
+      .inner
+        +news-list
+    +section
+      .inner
+        +catalogs
+    +section
+      .inner
+        +cooperation
+    br
+    br
+    br
+    br
+    br
+    //- +popup-wrapper('contact-us-thank', '--size-l')
+      +contact-us-thank

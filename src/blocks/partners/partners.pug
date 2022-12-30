@@ -1,0 +1,33 @@
+mixin partners(mods)
+  -
+    const baseName = 'partners'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    partnersItems =[
+      'nestle',
+      'detmir',
+      'uniconf',
+      'borjomi',
+      'krasnoeibeloe',
+      'abinbev',
+      'lenta',
+      'lipetskpivo',
+      'pepsico',
+      'europa',
+      'x5',
+      'grinn_corp'
+    ]
+
+  .partners(class=allMods)&attributes(attributes)
+    each item in partnersItems
+      .partners__item
+        img(src=`img/partners_img_${item}.png`, alt='')
+    block

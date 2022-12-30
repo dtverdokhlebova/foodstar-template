@@ -1,0 +1,20 @@
+mixin news-list(mods)
+  -
+    const baseName = 'news-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .news-list(class=allMods)&attributes(attributes)
+    -for(items = 0; items < 5; items++)
+      a.news-list__item(href='#')
+        .news-list__img
+          img(src='img/news_img.webp', alt='')
+        .news-list__date 14.10.2022
+        .news-list__text К 2030 году PepsiСo откажется от первичного пластика  в упаковке чипсов и сухариков в Европе
+    block

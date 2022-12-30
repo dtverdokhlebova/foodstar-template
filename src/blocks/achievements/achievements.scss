@@ -1,0 +1,89 @@
+.achievements {
+  position: relative;
+  padding: 30px 35px 45px 345px;
+  color: #fff;
+  background: $blue;
+  border-radius: 30px;
+  overflow: hidden;
+  @include media-laptop {
+    padding: 40px 50px;
+    border-radius: 25px;
+  }
+  @include media-tablet {
+    margin: 0 calc(var(--inner-pd) * -1);
+    padding: 50px var(--inner-pd);
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 310px;
+    height: 100%;
+    @include media-laptop {
+      left: -85px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @include media-tablet {
+      display: none;
+    }
+    img {
+      @include media-laptop {
+        max-width: 300px;
+        max-height: 325px;
+      }
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 137%;
+    @include media-laptop {
+      margin-bottom: 25px;
+      font-size: 22px;
+      text-align: center;
+    }
+    @include media-tablet {
+      font-size: 18px;
+      text-align: left;
+    }
+  }
+  &__ol {
+    display: grid;
+    grid-template-columns: 1fr 52%;
+    gap: 15px 20px;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    list-style-type: none;
+    counter-reset: item;
+    @include media-laptop {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding-left: 155px;
+      font-size: 14px;
+    }
+    @include media-tablet {
+      gap: 15px;
+      padding: 0;
+    }
+    li {
+      &::before {
+        display: block;
+        content: counter(item);
+        counter-increment: item;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 140%;
+        color: #f9d166;
+        @include media-laptop {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

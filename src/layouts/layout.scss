@@ -1,0 +1,73 @@
+:root {
+  --inner-pd: 10px;
+  @include media-tablet {
+    --inner-pd: 15px;
+  }
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+*:focus {
+  outline: none;
+}
+.swiper {
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+html {
+  box-sizing: border-box;
+  line-height: 1;
+  // &.ov-hidden {
+  //   overflow: hidden;
+  //   body {
+  //     overflow: hidden;
+  //   }
+  // }
+}
+body {
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: ease 0.3s;
+}
+
+// defaults
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+  // padding-top: var(--header-height, 145px);
+  font-family: $font;
+  color: $black;
+  // .text-blue {
+  //   color: $blue;
+  // }
+}
+.main {
+  flex: 1 0;
+}
+.inner {
+  width: 100%;
+  max-width: 1240px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 10px;
+  padding: 0 var(--inner-pd);
+}

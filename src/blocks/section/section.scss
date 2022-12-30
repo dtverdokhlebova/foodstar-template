@@ -1,0 +1,15 @@
+.section {
+  &:not(:first-child) {
+    margin-top: 60px;
+    @include media-laptop {
+      margin-top: 50px;
+    }
+  }
+  &--bg {
+    padding: 60px 0;
+    background: $grey;
+    @include media-laptop {
+      padding: 50px 0;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+mixin cooperation(mods)
+  -
+    const baseName = 'cooperation'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const cooperationItems =[
+      { title: 'Услуги',
+        descr: 'Оказание комплекса услуг по дистрибуции, продвижению, логистике и импорту-экспорту продуктов питания ведущих мировых и российских производителей.'
+      },
+      { title: 'Сервис',
+        descr: 'Обращаясь к нам, партнер может быть уверен в высоком уровне сервиса и конкурентной цене услуг.'
+      },
+    ]
+
+  .cooperation(class=allMods)&attributes(attributes)
+    .cooperation__img
+      img(src='img/cooperation_img.webp', alt='')
+    .cooperation__content
+      each item in cooperationItems
+        .cooperation__item
+          .cooperation__title !{item.title}
+          .cooperation__descr !{item.descr}
+    block
