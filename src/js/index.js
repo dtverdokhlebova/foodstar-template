@@ -1,7 +1,51 @@
 document.addEventListener('DOMContentLoaded', function () {
   // header()
   // tabs()
+  bannersList()
+  brands()
+  product()
 })
+
+function bannersList() {
+  const bannersListSlider = new Swiper(document.querySelector('.banners-list .swiper'), {
+    spaceBetween: 20,
+    slidesPerView: 1,
+    breakpoints: {
+      767: {
+        slidesPerView: 2,
+      }
+    }
+  })
+}
+
+function brands() {
+  const brandsSlider = new Swiper(document.querySelector('.brands .swiper'), {
+    spaceBetween: 10,
+    slidesPerView: 2,
+    watchSlidesProgress: true,
+    breakpoints: {
+      767: {
+        slidesPerView: 4,
+        spaceBetween: 20
+      }
+    }
+  })
+}
+
+function product() {
+  const productSlider = new Swiper(document.querySelector('.product-grid--4slider .swiper'), {
+    spaceBetween: 15,
+    slidesPerView: 'auto',
+    breakpoints: {
+      767: {
+        spaceBetween: 10
+      },
+      1260: {
+        spaceBetween: 20
+      }
+    }
+  })
+}
 
 // function header() {
 //   const headerElement = document.querySelector('.header')

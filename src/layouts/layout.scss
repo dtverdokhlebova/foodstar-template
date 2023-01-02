@@ -56,9 +56,6 @@ a {
   // padding-top: var(--header-height, 145px);
   font-family: $font;
   color: $black;
-  // .text-blue {
-  //   color: $blue;
-  // }
 }
 .main {
   flex: 1 0;
@@ -70,4 +67,7 @@ a {
   margin: 0 auto;
   padding: 0 10px;
   padding: 0 var(--inner-pd);
+}
+.ui-center {
+  text-align: center;
 }

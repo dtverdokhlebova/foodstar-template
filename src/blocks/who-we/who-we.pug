@@ -1,0 +1,36 @@
+mixin who-we(mods)
+  -
+    const baseName = 'who-we'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const whoWeFeaturesItems =[
+      { value: '12', descr: 'Филиалы <br>в&nbsp;12&nbsp;городах' },
+      { value: '10 500', descr: 'Общее количество <br>активных клиентов' },
+      { value: '1 400', descr: 'Общая численость <br>сотрудников' },
+    ]
+
+  .who-we(class=allMods)&attributes(attributes)
+    .who-we__title Кто мы?
+    .who-we__text
+      p <b>ООО «Foof star» сегодня</b> – одна из&nbsp;крупнейших компаний на&nbsp;рынке услуг доставки товаров и&nbsp;оптовых продаж на&nbsp;территории Российской Федерации
+      p Компания представлена в&nbsp;г.&nbsp;Старый Оскол с филиалами в&nbsp;городах: Курск, Белгород, Орел, Воронеж, Липецк, Тамбов, Брянск, Владимир и&nbsp;Тула.
+        <br>
+        | Общая численность сотрудников около 1400 человек.
+        <br>
+        | Общее количество активных клиентов – более 10&nbsp;500.
+    .who-we__features
+      each item in whoWeFeaturesItems
+        .who-we__features-item
+          .who-we__features-value=item.value
+          .who-we__features-descr !{item.descr}
+    .who-we__img
+      img(src='img/who_we_img.webp', alt='')
+    block

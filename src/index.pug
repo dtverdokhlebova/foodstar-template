@@ -6,29 +6,88 @@ block variables
 
 block content
   main.main
+    +section('--ov')
+      .inner
+        +banners-list
+
+    +section('--ov')
+      .inner
+        +section-head
+          +ui-h2('Продукция', '--bold')
+        +product-grid('--4slider')
+          .swiper
+            .swiper-wrapper
+              -for(item1 = 0; item1 < 2; item1++)
+                +product-item('--column').swiper-slide
+
+    +section
+      .inner
+        +section-head
+          +ui-h2('О компании', '--bold')
+        +who-we
     +section('--bg')
       .inner
+        +section-head.ui-center
+          +ui-h2('Наши ценности')
         +our-values
     +section
       .inner
         +achievements
     +section
       .inner
+        +section-head.ui-center
+          +ui-h2('Наши партнеры')
         +partners
-    .section
+    +section('--mt-l')
       +about
-    +section
+    +section('--mt-l')
       .inner
+        +section-head
+          +ui-h2('Категории товаров', '--bold')
+        +categories
+    +section('--mt-l, --ov')
+      .inner
+        +section-head
+          +ui-h2('Бренды-партнеры', '--bold')
+        +brands
+    +section('--mt-xl')
+      .inner
+        +section-head
+          +ui-h2('Новости организации', '--bold')
         +news-current
     +section
       .inner
+        +section-head
+          +ui-h2('Новости', '--bold')
         +news-list
     +section
       .inner
+        +section-head
+          +ui-h2('Скачать каталог', '--bold')
         +catalogs
     +section
       .inner
+        +section-head
+          +ui-h2('Сотрудничество', '--bold')
         +cooperation
+
+    +section
+      .inner
+        +product-grid('--3items')
+          -for(item1 = 0; item1 < 3; item1++)
+            +product-item('--column')
+
+    +section
+      .inner
+        +product-grid('--1items')
+          -for(item1 = 0; item1 < 3; item1++)
+            +product-item('--list')
+
+    +section
+      .inner
+        +product-grid()
+          -for(item = 0; item < 3; item++)
+            +product-item('--table')
     br
     br
     br

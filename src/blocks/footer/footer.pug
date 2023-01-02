@@ -1,0 +1,53 @@
+-
+  const footerContacts =[
+    { icon: 'icon_location', text: 'г. Старый Оскол' },
+    { icon: 'icon_phone', text: '<a href="tel:88001234567">8 800 123-45-67</a>' },
+    { icon: 'icon_mail', text: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>' },
+    { icon: 'icon_time', text: '09:00 — 21:00' },
+  ]
+
+-
+  const footerPages =[
+    { text: 'Главная' },
+    { text: 'О компании' },
+    { text: 'Сотрудничество' },
+    { text: 'Новости' },
+    { text: 'Контакты' },
+  ]
+
+footer.footer
+  .inner
+    .footer__head
+      a.footer__logo(href='/')
+        img(src='img/icon_logo.png', alt='')
+    .footer__main
+      .footer__column
+        .footer__title Контакты:
+        .footer__box
+          .footer__contacts
+            each item in footerContacts
+              .footer__contacts-item
+                .footer__contacts-icon
+                  img(src=`img/${item.icon}.svg`, alt='')
+                .footer__contacts-link !{item.text}
+
+      .footer__column
+        .footer__title Страницы:
+        .footer__box
+          ul.footer__list
+            each item in footerPages
+              .footer__item
+                a(href='#')=item.text
+
+      .footer__column
+        .footer__title Популярные бренды
+        //- .footer__box
+          ul.footer__list
+            each item in footerPages
+              .footer__item
+                a(href='#')=item.text
+
+    .footer__foot
+      .footer__copyright © 2022. «Food star»
+      .footer__policy
+        a(href='#') Политика конфиденциальности

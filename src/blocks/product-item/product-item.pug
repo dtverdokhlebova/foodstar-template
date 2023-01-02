@@ -1,0 +1,34 @@
+mixin product-item(mods)
+  -
+    const baseName = 'product-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -for(item = 0; item < 2; item++)
+    .product-item(class=allMods)&attributes(attributes)
+      if item === 1
+        a.product-item__fav(href='#')
+        .product-item__label
+          img(src='img/label_hit.svg', alt='')
+      else
+        a.product-item__fav.active(href='#')
+      .product-item__img
+        if item === 1
+          img(src='img/product_img.png', alt='')
+        else
+          img(src='img/product_plug.svg', alt='')
+      .product-item__content
+        .product-item__text
+          .product-item__name NESCAFÉ GOLD
+          .product-item__descr 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр
+        .product-item__foot
+          .product-item__price 320 ₽/шт
+          +ui-button('В корзину', 'product-item')(href='#')
+
+    block

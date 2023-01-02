@@ -11,6 +11,11 @@
   }
   &__item {
     display: block;
+    &:hover {
+      .news-current__title {
+        color: $blue;
+      }
+    }
     &:nth-child(3) {
       @include media-laptop {
         display: none;
@@ -32,6 +37,7 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 1.22;
+    transition: 0.3s;
     @include media-laptop {
       margin-bottom: 12px;
       font-size: 14px;

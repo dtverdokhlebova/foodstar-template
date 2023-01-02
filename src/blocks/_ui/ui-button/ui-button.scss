@@ -1,79 +1,47 @@
-// .ui-button {
-//   display: inline-block;
-//   padding: 30px 80px;
-//   text-align: center;
-//   font: 30px/1 $font;
-//   color: #fff;
-//   background: $blue;
-//   border: 0;
-//   border-radius: 43px;
-//   transition: 0.3s ease;
-//   cursor: pointer;
-//   white-space: nowrap;
-//   @include media-laptop {
-//     padding: 18px 50px;
-//     font-size: 20px;
-//   }
-//   @include media-tablet {
-//     padding: 12px 38px;
-//     font-size: 16px;
-//   }
-//   @include media-hover {
-//     color: $blue;
-//     background: #fff;
-//     box-shadow: 8px 7px 21px rgb(0 0 0 / 0.12);
-//   }
-//   &:active {
-//     color: $blue;
-//     background: #fff;
-//     box-shadow: 8px 7px 21px rgb(0 0 0 / 0.12);
-//   }
-//   &--empty {
-//     color: $black;
-//     background: transparent;
-//     border: 1px solid $black;
-//     @include media-hover {
-//       color: $blue;
-//       border-color: $blue;
-//       box-shadow: 4px 0 10px rgb(0 0 0 / 0.15);
-//     }
-//     &:active {
-//       color: $blue;
-//       border-color: $blue;
-//       box-shadow: 4px 0 10px rgb(0 0 0 / 0.15);
-//     }
-//   }
-//   &--outline-white {
-//     padding: 25px 72px;
-//     color: #fff;
-//     background: transparent;
-//     border: 1px solid #fff;
-//     font-size: 25px;
-//     @include media-laptop {
-//       padding: 18px 40px;
-//       font-size: 20px;
-//     }
-//     @include media-tablet {
-//       padding: 12px 30px;
-//       font-size: 16px;
-//     }
-//     @include media-hover {
-//       color: #fff;
-//       border-color: $blue;
-//       background: $blue;
-//       box-shadow: none;
-//     }
-//     &:active {
-//       color: #fff;
-//       border-color: $blue;
-//       background: $blue;
-//       box-shadow: none;
-//     }
-//   }
-//   &--pd-s {
-//     padding: 22px 60px;
-//     @include media-tablet {
-//       padding: 15px 30px;
-//     }
-//   }
-// }
+.ui-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  padding: 10px 35px;
+  font: 600 16px/1.25 $font;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  background: $blue;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  cursor: pointer;
+  @include media-laptop {
+    padding: 9px 27px;
+    font-size: 14px;
+  }
+  span {
+    position: relative;
+    z-index: 1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #cbedff;
+    box-shadow: -7px -7px 20px 0 #fff9, -4px -4px 5px 0 #fff9, 7px 7px 20px 0 #0002, 4px 4px 5px 0 #0001;
+    transition: all 0.3s ease;
+  }
+  @include media-hover {
+    color: $blue;
+    background: #cbedff;
+    &::after {
+      top: 0;
+      height: 100%;
+    }
+  }
+  &:active {
+    color: $blue;
+    background: #cbedff;
+  }
+}

@@ -1,0 +1,90 @@
+.who-we {
+  display: grid;
+  grid-template-columns: 150px 1fr 215px;
+  grid-template-areas: 'title text img' 'title features img';
+  column-gap: 60px;
+  @include media-laptop {
+    grid-template-columns: 125px 1fr 108px;
+    column-gap: 20px;
+  }
+  @include media-tablet {
+    grid-template-areas: 'title title' 'text text' 'features img';
+    grid-template-columns: 1fr 156px;
+    column-gap: 15px;
+  }
+  &__title {
+    grid-area: title;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 137%;
+    @include media-laptop {
+      font-size: 22px;
+    }
+    @include media-tablet {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  }
+  &__text {
+    grid-area: text;
+    margin-bottom: 30px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 140%;
+    @include media-laptop {
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+    p {
+      margin: 0 0 25px;
+      @include media-laptop {
+        margin-bottom: 15px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__features {
+    grid-area: features;
+    display: flex;
+    gap: 40px;
+    color: $blue;
+    @include media-laptop {
+      gap: 15px;
+    }
+    @include media-tablet {
+      display: block;
+    }
+    &-item {
+      &:not(:last-child) {
+        @include media-tablet {
+          margin-bottom: 15px;
+        }
+      }
+    }
+    &-value {
+      margin-bottom: 10px;
+      font-weight: 900;
+      font-size: 54px;
+      line-height: 140%;
+      @include media-laptop {
+        margin-bottom: 5px;
+        font-size: 44px;
+      }
+    }
+    &-descr {
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 140%;
+      @include media-laptop {
+        font-size: 16px;
+      }
+    }
+  }
+  &__img {
+    grid-area: img;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}

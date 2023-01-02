@@ -1,0 +1,28 @@
+mixin brands(mods)
+  -
+    const baseName = 'brands'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const brandsItems =[
+      'nescafe',
+      'komilfo',
+      'bonpari',
+      'ruchoco',
+      'ruchoco',
+    ]
+
+  .brands(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        each item in brandsItems
+          .brands__item.swiper-slide
+            img(src=`img/brands_${item}.png`, alt='')
+    block

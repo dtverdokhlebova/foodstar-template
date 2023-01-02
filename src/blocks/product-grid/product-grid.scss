@@ -1,0 +1,27 @@
+.product-grid {
+  &--3items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    @include media-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 15px;
+    }
+  }
+  &--1items {
+    display: grid;
+    gap: 20px;
+  }
+  &--4slider {
+    padding: 22px 0;
+    .swiper {
+      overflow: visible;
+      &-slide {
+        width: 290px;
+        @include media-laptop {
+          width: 236px;
+        }
+      }
+    }
+  }
+}
