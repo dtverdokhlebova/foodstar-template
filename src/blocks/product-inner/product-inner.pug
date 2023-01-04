@@ -1,0 +1,17 @@
+mixin product-inner(mods)
+  -
+    const baseName = 'product-inner'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .product-inner(class=allMods)&attributes(attributes)
+    +product-slider('product-inner')
+    +product-info('product-inner')
+    +ui-button('Все характеристики', 'product-inner')
+    block

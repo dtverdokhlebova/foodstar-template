@@ -1,0 +1,29 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle = 'Контактная информация'
+
+  -
+    const contactsInner =[
+      { title: 'Телефон:',
+        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
+      },
+      { title: 'Почта:',
+        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
+      },
+      { title: 'Режим работы:',
+        descr: 'С 9:00 до 21:00'
+      },
+      { title: 'Адрес:',
+        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
+      },
+    ]
+
+block content
+  main.main
+    +section
+      .inner
+        +section-head
+          +ui-h2('Контактная информация', '--bold')
+        +contacts(contactsInner, 'inner')

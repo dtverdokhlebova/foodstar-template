@@ -1,0 +1,27 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Каталог товаров'
+
+block content
+  main.main
+    +section
+      .inner
+        +product-grid('--3items')
+          -for(item1 = 0; item1 < 3; item1++)
+            +product-item('--column')
+
+    +section
+      .inner
+        +product-grid('--1items')
+          -for(item1 = 0; item1 < 3; item1++)
+            +product-item('--list')
+
+    +section
+      .inner
+        +product-grid()
+          -for(item = 0; item < 3; item++)
+            +product-item('--table')
+
+        +pagination

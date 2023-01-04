@@ -1,0 +1,25 @@
+mixin product-prices(mods)
+  -
+    const baseName = 'product-prices'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const productPricesItems =[
+      { name: 'крупный опт', value: '1500 ₽' },
+      { name: 'мелкий опт', value: '1720 ₽' },
+      { name: 'розница', value: '1950 ₽' },
+    ]
+
+  .product-prices(class=allMods)&attributes(attributes)
+    each item in productPricesItems
+      .product-prices__item
+        .product-prices__name=item.name
+        .product-prices__value=item.value
+    block

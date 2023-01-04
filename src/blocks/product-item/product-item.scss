@@ -53,6 +53,7 @@
     background: #fff;
     box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
     border-radius: 10px;
+    transition: 0.3s;
     @include media-laptop {
       padding: 10px;
     }
@@ -118,6 +119,9 @@
         margin-top: auto;
       }
     }
+    &:hover {
+      box-shadow: none;
+    }
   }
   &--list {
     display: grid;
@@ -127,6 +131,7 @@
     background: #fff;
     box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
     border-radius: 10px;
+    transition: 0.3s;
     @include media-laptop {
       padding: 15px;
       gap: 15px;
@@ -204,6 +209,9 @@
           justify-content: space-between;
         }
       }
+    }
+    &:hover {
+      box-shadow: none;
     }
   }
   &--table {

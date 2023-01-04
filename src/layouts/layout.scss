@@ -40,10 +40,19 @@ svg {
   max-height: 100%;
   image-rendering: -webkit-optimize-contrast;
 }
+p {
+  margin: 0;
+  &:not(:last-child) {
+    margin-bottom: 0.5em;
+  }
+}
 a {
   text-decoration: none;
   color: inherit;
   transition: ease 0.3s;
+  &:hover {
+    color: $blue;
+  }
 }
 
 // defaults

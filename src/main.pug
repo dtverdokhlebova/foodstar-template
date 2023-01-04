@@ -1,0 +1,65 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Index'
+
+  -
+    const contactsBlock =[
+      { title: 'Адрес:',
+        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
+      },
+      { title: 'Телефон:',
+        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
+      },
+      { title: 'Режим работы:',
+        descr: 'С 9:00 до 21:00'
+      },
+      { title: 'Почта:',
+        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
+      },
+    ]
+
+block content
+  main.main
+
+    +section('--ov')
+      .inner
+        +banners-list
+
+    +section('--ov')
+      .inner
+        +section-head
+          +ui-h2('Продукция', '--bold')
+        +product-grid('--4slider')
+          .swiper
+            .swiper-wrapper
+              -for(item1 = 0; item1 < 2; item1++)
+                +product-item('--column').swiper-slide
+
+    +section('--mt-l')
+      .inner
+        +section-head
+          +ui-h2('Категории товаров', '--bold')
+        +categories
+
+    +section('--mt-l')
+      +about
+
+    +section('--mt-xl')
+      .inner
+        +section-head
+          +ui-h2('Новости организации', '--bold')
+        +news-current
+
+    +section('--mt-l, --ov')
+      .inner
+        +section-head
+          +ui-h2('Бренды-партнеры', '--bold')
+        +brands
+
+    +section('--mt-l, --bg')
+      .inner
+        +section-head
+          +ui-h2('Контакты', '--bold')
+        +contacts(contactsBlock)

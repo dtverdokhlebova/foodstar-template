@@ -1,0 +1,14 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Скачать Каталог'
+
+block content
+  main.main
+    +section
+      .inner
+        +section-head
+          +ui-h2('Скачать каталог', '--bold')
+        +catalogs
+        +pagination

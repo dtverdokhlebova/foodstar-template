@@ -1,0 +1,18 @@
+mixin pagination(mods)
+  -
+    const baseName = 'pagination'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .pagination(class=allMods)&attributes(attributes)
+    +ui-button('Показать еще', 'pagination')(href='#')
+    ul.pagination__list
+      each item, index in [1, 2, 3, 4, 5]
+        li.pagination__item(class=(index === 0 ? 'pagination__item--active' : ''))
+          a.pagination__link(href='#')=item

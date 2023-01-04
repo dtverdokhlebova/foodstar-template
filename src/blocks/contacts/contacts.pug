@@ -1,0 +1,37 @@
+mixin contacts(contactsItems, type, mods)
+  -
+    const baseName = 'contacts'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  if type === 'inner'
+    .contacts.contacts--inner(class=allMods)&attributes(attributes)
+      .contacts__content
+        each item in contactsItems
+          .contacts__item
+            .contacts__title=item.title
+            .contacts__descr !{item.descr}
+        .contacts__item
+          .contacts__line
+            span.contacts__title.contacts__title--inline ИНН:
+            span.contacts__descr  3128054735
+          .contacts__line
+            span.contacts__title.contacts__title--inline КПП:
+            span.contacts__descr  312501001
+      #contactsMap.contacts__map
+
+  else
+    .contacts.contacts--block(class=allMods)&attributes(attributes)
+      .contacts__content
+        each item in contactsItems
+          .contacts__item
+            .contacts__title=item.title
+            .contacts__descr !{item.descr}
+      #contactsMap.contacts__map
+

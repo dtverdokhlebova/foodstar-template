@@ -4,7 +4,43 @@ document.addEventListener('DOMContentLoaded', function () {
   bannersList()
   brands()
   product()
+  toTop()
 })
+
+window.addEventListener('load', function () {
+  map()
+})
+
+function map() {
+  if (document.querySelector('#contactsMap')) {
+    ymaps.ready(mapInit)
+  }
+}
+
+function mapInit() {
+  const mapIconImageSize = window.innerWidth > 767 ? [74, 85] : [53, 62]
+  const mapIconImageOffset = window.innerWidth > 767 ? [-38, -42] : [-26, -30]
+
+  const myMap = new ymaps.Map('contactsMap', {
+    center: [51.34314, 37.851592],
+    zoom: 13,
+    controls: []
+  }, {
+    suppressMapOpenBlock: true
+  })
+  const placemark = new ymaps.Placemark([51.34314, 37.851592], {}, {
+    iconLayout: 'default#image',
+    iconImageHref: 'img/map_logo.svg',
+    iconImageSize: mapIconImageSize,
+    iconImageOffset: mapIconImageOffset
+  })
+
+  myMap.geoObjects.add(placemark)
+  if (window.innerWidth < 1025) {
+    myMap.behaviors.disable('drag')
+    // myMap.behaviors.disable('scrollZoom')
+  }
+}
 
 function bannersList() {
   const bannersListSlider = new Swiper(document.querySelector('.banners-list .swiper'), {
@@ -12,7 +48,7 @@ function bannersList() {
     slidesPerView: 1,
     breakpoints: {
       767: {
-        slidesPerView: 2,
+        slidesPerView: 2
       }
     }
   })
@@ -44,6 +80,13 @@ function product() {
         spaceBetween: 20
       }
     }
+  })
+}
+
+function toTop() {
+  $('.footer__to-top').on('click', function () {
+    $('html, body').animate({ scrollTop: 0 }, 600)
+    return false
   })
 }
 

@@ -4,94 +4,69 @@ block variables
   -
     const pageTitle ='Index'
 
+  //- -
+    const contactsInner =[
+      { title: 'Телефон:',
+        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
+      },
+      { title: 'Почта:',
+        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
+      },
+      { title: 'Режим работы:',
+        descr: 'С 9:00 до 21:00'
+      },
+      { title: 'Адрес:',
+        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
+      },
+    ]
+
+  //- -
+    const contactsBlock =[
+      { title: 'Адрес:',
+        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
+      },
+      { title: 'Телефон:',
+        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
+      },
+      { title: 'Режим работы:',
+        descr: 'С 9:00 до 21:00'
+      },
+      { title: 'Почта:',
+        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
+      },
+    ]
+
 block content
   main.main
-    +section('--ov')
-      .inner
-        +banners-list
-
-    +section('--ov')
-      .inner
-        +section-head
-          +ui-h2('Продукция', '--bold')
-        +product-grid('--4slider')
-          .swiper
-            .swiper-wrapper
-              -for(item1 = 0; item1 < 2; item1++)
-                +product-item('--column').swiper-slide
-
-    +section
-      .inner
-        +section-head
-          +ui-h2('О компании', '--bold')
-        +who-we
-    +section('--bg')
-      .inner
-        +section-head.ui-center
-          +ui-h2('Наши ценности')
-        +our-values
-    +section
-      .inner
-        +achievements
-    +section
-      .inner
-        +section-head.ui-center
-          +ui-h2('Наши партнеры')
-        +partners
-    +section('--mt-l')
-      +about
-    +section('--mt-l')
-      .inner
-        +section-head
-          +ui-h2('Категории товаров', '--bold')
-        +categories
-    +section('--mt-l, --ov')
-      .inner
-        +section-head
-          +ui-h2('Бренды-партнеры', '--bold')
-        +brands
-    +section('--mt-xl')
-      .inner
-        +section-head
-          +ui-h2('Новости организации', '--bold')
-        +news-current
-    +section
-      .inner
-        +section-head
-          +ui-h2('Новости', '--bold')
-        +news-list
-    +section
-      .inner
-        +section-head
-          +ui-h2('Скачать каталог', '--bold')
-        +catalogs
-    +section
-      .inner
-        +section-head
-          +ui-h2('Сотрудничество', '--bold')
-        +cooperation
-
-    +section
-      .inner
-        +product-grid('--3items')
-          -for(item1 = 0; item1 < 3; item1++)
-            +product-item('--column')
-
-    +section
-      .inner
-        +product-grid('--1items')
-          -for(item1 = 0; item1 < 3; item1++)
-            +product-item('--list')
-
-    +section
-      .inner
-        +product-grid()
-          -for(item = 0; item < 3; item++)
-            +product-item('--table')
     br
     br
-    br
-    br
-    br
+    +section
+      .inner
+        a(href='main.html') Главная
+        br
+        br
+        a(href='products-catalog.html') Каталог товаров
+        br
+        br
+        a(href='product-inner.html') Карточка товара
+        br
+        br
+        a(href='news.html') Новости
+        br
+        br
+        a(href='news-inner.html') Новости детальная
+        br
+        br
+        a(href='contacts.html') Контактная информация
+        br
+        br
+        a(href='about.html') О компании
+        br
+        br
+        a(href='cooperation.html') Сотрудничество
+        br
+        br
+        a(href='catalog.html') Каталог
+
     //- +popup-wrapper('contact-us-thank', '--size-l')
       +contact-us-thank

@@ -21,31 +21,32 @@ footer.footer
       a.footer__logo(href='/')
         img(src='img/icon_logo.png', alt='')
     .footer__main
-      .footer__column
+      .footer__column.footer__column--contacts
         .footer__title Контакты:
-        .footer__box
-          .footer__contacts
-            each item in footerContacts
-              .footer__contacts-item
-                .footer__contacts-icon
-                  img(src=`img/${item.icon}.svg`, alt='')
-                .footer__contacts-link !{item.text}
+        .footer__contacts
+          each item in footerContacts
+            .footer__contacts-item
+              .footer__contacts-icon
+                img(src=`img/${item.icon}.svg`, alt='')
+              .footer__contacts-link !{item.text}
 
       .footer__column
         .footer__title Страницы:
-        .footer__box
-          ul.footer__list
-            each item in footerPages
-              .footer__item
-                a(href='#')=item.text
+        ul.footer__pages
+          each item in footerPages
+            .footer__pages-item
+              a(href='#')=item.text
 
       .footer__column
         .footer__title Популярные бренды
-        //- .footer__box
-          ul.footer__list
-            each item in footerPages
-              .footer__item
-                a(href='#')=item.text
+        .footer__brands
+          -for(menuColumn = 0; menuColumn < 3; menuColumn++)
+            .footer__brands-column
+              -for(menuItem = 0; menuItem < 5; menuItem++)
+                .footer__brands-item
+                  a(href='#') Название бренда
+
+      .footer__to-top
 
     .footer__foot
       .footer__copyright © 2022. «Food star»
