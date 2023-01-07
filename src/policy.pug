@@ -1,0 +1,13 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Политика конфиденциальности'
+
+block content
+  main.main
+    +section
+      .inner
+        +section-head
+          +ui-h2('Политика конфиденциальности')
+        +policy

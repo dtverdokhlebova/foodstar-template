@@ -25,4 +25,5 @@ mixin brands(mods)
         each item in brandsItems
           .brands__item.swiper-slide
             img(src=`img/brands_${item}.png`, alt='')
+      +ui-swiper-buttons('brands')
     block

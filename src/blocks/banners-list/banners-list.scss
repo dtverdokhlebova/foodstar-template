@@ -1,8 +1,48 @@
 .banners-list {
+  position: relative;
+  @include media-laptop {
+    padding: 0 65px;
+  }
+  @include media-tablet {
+    padding: 0;
+  }
   .swiper {
     overflow: visible;
     @include media-tablet {
       overflow: hidden;
+    }
+    // &-slide {
+    //   @include media-laptop {
+    //     opacity: 0;
+    //     transition: opacity 0.3s;
+    //   }
+    //   &.swiper-slide-visible {
+    //     @include media-laptop {
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
+    // &-slide-visible ~ .swiper-slide {
+    //   @include media-laptop {
+    //     opacity: 1;
+    //   }
+    // }
+  }
+  &__ui-swiper-buttons {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    width: 96%;
+    max-width: 1820px;
+    @include media-laptop {
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% - 20px);
+    }
+    @include media-tablet {
+      width: calc(100% - 10px);
     }
   }
   &__item {

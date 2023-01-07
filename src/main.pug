@@ -20,22 +20,43 @@ block variables
       },
     ]
 
+  -
+    const tabProduct =[
+      { text: 'Хит продаж' },
+      { text: 'Новинка' },
+      { text: 'Акции' },
+    ]
+
 block content
   main.main
 
     +section('--ov')
-      .inner
-        +banners-list
+      +banners-list
 
     +section('--ov')
       .inner
         +section-head
           +ui-h2('Продукция', '--bold')
-        +product-grid('--4slider')
-          .swiper
-            .swiper-wrapper
-              -for(item1 = 0; item1 < 2; item1++)
-                +product-item('--column').swiper-slide
+        +tabs-head(tabProduct)(data-group=`tabs-products`)
+        +tabs-body(data-group='tabs-products')
+          +tabs-item.active
+            +product-grid('--4slider')
+              .swiper
+                .swiper-wrapper
+                  -for(item = 0; item < 4; item++)
+                    +product-item('hit, favActive', '--column').swiper-slide
+          +tabs-item
+            +product-grid('--4slider')
+              .swiper
+                .swiper-wrapper
+                  -for(item = 0; item < 4; item++)
+                    +product-item('noImg', '--column').swiper-slide
+          +tabs-item
+            +product-grid('--4slider')
+              .swiper
+                .swiper-wrapper
+                  -for(item = 0; item < 4; item++)
+                    +product-item('', '--column').swiper-slide
 
     +section('--mt-l')
       .inner

@@ -10,6 +10,22 @@
       }
     }
   }
+  &__ui-swiper-buttons {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    left: -20px;
+    transform: translateY(-50%);
+    z-index: 2;
+    @include media-laptop {
+      right: 0;
+      left: 0;
+    }
+    @include media-tablet {
+      right: -10px;
+      left: -10px;
+    }
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -21,6 +37,9 @@
     @include media-laptop {
       padding: 20px 30px;
       border-radius: 8px;
+    }
+    @include media-tablet {
+      width: 164px;
     }
   }
 }

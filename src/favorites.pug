@@ -1,0 +1,15 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Новости'
+
+block content
+  main.main
+    +section
+      .inner
+        +section-head
+          +ui-h2('Избранные товары', '--bold')
+        +product-grid('--4items')
+          -for(item = 0; item < 6; item++)
+            +product-item('favActive', '--column')

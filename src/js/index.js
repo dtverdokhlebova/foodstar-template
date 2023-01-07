@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   bannersList()
   brands()
   product()
+  tabs()
   toTop()
 })
 
@@ -46,10 +47,21 @@ function bannersList() {
   const bannersListSlider = new Swiper(document.querySelector('.banners-list .swiper'), {
     spaceBetween: 20,
     slidesPerView: 1,
+    loop: true,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.banners-list .swiper-button-next',
+      prevEl: '.banners-list .swiper-button-prev'
+    },
     breakpoints: {
       767: {
-        slidesPerView: 2
-      }
+        slidesPerView: 2,
+        loop: false
+      },
+      // 1360: {
+      //   slidesPerView: 2,
+      //   loop: false
+      // }
     }
   })
 }
@@ -57,8 +69,12 @@ function bannersList() {
 function brands() {
   const brandsSlider = new Swiper(document.querySelector('.brands .swiper'), {
     spaceBetween: 10,
-    slidesPerView: 2,
+    slidesPerView: 'auto',
     watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
     breakpoints: {
       767: {
         slidesPerView: 4,
@@ -69,18 +85,67 @@ function brands() {
 }
 
 function product() {
-  const productSlider = new Swiper(document.querySelector('.product-grid--4slider .swiper'), {
-    spaceBetween: 15,
-    slidesPerView: 'auto',
-    breakpoints: {
-      767: {
-        spaceBetween: 10
-      },
-      1260: {
-        spaceBetween: 20
+  const productSliders = document.querySelectorAll('.product-grid--4slider .swiper')
+  for (const item of productSliders) {
+    const productSlider = new Swiper(item, {
+      spaceBetween: 15,
+      slidesPerView: 'auto',
+      breakpoints: {
+        767: {
+          spaceBetween: 10
+        },
+        1360: {
+          spaceBetween: 20
+        }
       }
+    })
+  }
+}
+
+function tabs() {
+  const tabHeadBlocks = document.querySelectorAll('.tabs-head')
+  for (const item of tabHeadBlocks) {
+    const itemGroup = item.dataset.group
+    const headItems = item.querySelectorAll('.tabs-head__item')
+    const bodyData = document.querySelectorAll(`.tabs-body[data-group='${itemGroup}']`)
+    for (const [index, button] of headItems.entries()) {
+      button.addEventListener('click', (event) => {
+        for (const head of headItems) {
+          head.classList.remove('active')
+        }
+        event.currentTarget.classList.add('active')
+        if (bodyData.length > 0) {
+          for (const body of bodyData) {
+            const bodyItems = body.children
+            for (const item of bodyItems) {
+              item.classList.remove('active')
+            }
+            bodyItems[index].classList.add('active')
+          }
+        }
+      })
     }
-  })
+  }
+
+  const tabHeadAsideBlocks = document.querySelectorAll('.tabs-head--aside')
+  for (const item of tabHeadAsideBlocks) {
+    const selectButton = item.querySelector('.tabs-head__select')
+    const tabsItems = item.querySelectorAll('.tabs-head__item')
+
+    selectButton.addEventListener('click', () => item.classList.toggle('open'))
+
+    for (const tab of tabsItems) {
+      tab.addEventListener('click', function () {
+        selectButton.children[0].innerHTML = this.children[0].innerHTML
+        item.classList.remove('open')
+      })
+    }
+
+    document.addEventListener('click', (event) => {
+      const withinBoundaries = event.composedPath().includes(item)
+      if (!withinBoundaries) item.classList.remove('open')
+    })
+  }
 }
 
 function toTop() {

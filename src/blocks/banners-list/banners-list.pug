@@ -11,9 +11,11 @@ mixin banners-list(mods)
     }
 
   .banners-list(class=allMods)&attributes(attributes)
-    .swiper
-      .swiper-wrapper
-        -for(item = 0; item < 3; item++)
-          .banners-list__item.swiper-slide
-            img(src=`img/banners_list_${item}.webp`, alt='')
+    .inner
+      .swiper
+        .swiper-wrapper
+          -for(item = 0; item < 3; item++)
+            .banners-list__item.swiper-slide
+              img(src=`img/banners_list_${item}.webp`, alt='')
+    +ui-swiper-buttons('banners-list, --size-l')
     block

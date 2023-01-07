@@ -1,0 +1,47 @@
+mixin tabs-head(tabsHeadingItems, mods)
+  -
+    const baseName = 'tabs-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-head(class=allMods)&attributes(attributes)
+    .tabs-head__wrapper
+      each item, index in tabsHeadingItems
+        .tabs-head__item(class=(index === 0 ? 'active' : ''))=item.text
+    block
+
+mixin tabs-body(mods)
+  -
+    const baseName = 'tabs-body'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-body(class=allMods)&attributes(attributes)
+    block
+
+mixin tabs-item(mods)
+  -
+    const baseName = 'tabs-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .tabs-item(class=allMods)&attributes(attributes)
+    block

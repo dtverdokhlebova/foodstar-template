@@ -9,19 +9,19 @@ block content
     +section
       .inner
         +product-grid('--3items')
-          -for(item1 = 0; item1 < 3; item1++)
-            +product-item('--column')
+          -for(item = 0; item < 6; item++)
+            +product-item('', '--column')
 
     +section
       .inner
         +product-grid('--1items')
-          -for(item1 = 0; item1 < 3; item1++)
-            +product-item('--list')
+          -for(item = 0; item < 6; item++)
+            +product-item('', '--list')
 
     +section
       .inner
         +product-grid()
-          -for(item = 0; item < 3; item++)
-            +product-item('--table')
+          -for(item = 0; item < 6; item++)
+            +product-item('', '--table')
 
         +pagination

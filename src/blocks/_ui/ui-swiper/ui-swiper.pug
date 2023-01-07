@@ -1,0 +1,16 @@
+mixin ui-swiper-buttons(mods)
+  -
+    const baseName = 'ui-swiper-buttons'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .ui-swiper-buttons(class=allMods)&attributes(attributes)
+    .swiper-button-prev
+    .swiper-button-next
+    block

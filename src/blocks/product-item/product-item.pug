@@ -1,4 +1,4 @@
-mixin product-item(mods)
+mixin product-item(type, mods)
   -
     const baseName = 'product-item'
     let allMods = ''
@@ -10,27 +10,30 @@ mixin product-item(mods)
       allMods = allMods.trim()
     }
 
-  -for(item = 0; item < 2; item++)
-    .product-item(class=allMods)&attributes(attributes)
-      if item === 1
-        a.product-item__fav(href='#')
-        .product-item__label
-          img(src='img/label_hit.svg', alt='')
+  .product-item(class=allMods)&attributes(attributes)
+    if type.includes('favActive')
+      a.product-item__fav.active(href='#')
+    else
+      a.product-item__fav(href='#')
+
+    if type.includes('hit')
+      .product-item__label
+        img(src='img/label_hit.svg', alt='')
+
+    a.product-item__img(href='#')
+      if type.includes('noImg')
+        img(src='img/product_plug.svg', alt='')
       else
-        a.product-item__fav.active(href='#')
-      a.product-item__img(href='#')
-        if item === 1
-          img(src='img/product_img.png', alt='')
-        else
-          img(src='img/product_plug.svg', alt='')
-      .product-item__content
-        .product-item__text
-          .product-item__name
-            a(href='#')  NESCAFÉ GOLD
-          .product-item__descr
-            a(href='#')  100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр
-        .product-item__foot
-          .product-item__price 320 ₽/шт
-          +ui-button('В корзину', 'product-item')(href='#')
+        img(src='img/product_img.png', alt='')
+
+    .product-item__content
+      .product-item__text
+        .product-item__name
+          a(href='#')  NESCAFÉ GOLD
+        .product-item__descr
+          a(href='#')  100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр
+      .product-item__foot
+        .product-item__price 320 ₽/шт
+        +ui-button('В корзину', 'product-item')(href='#')
 
     block
