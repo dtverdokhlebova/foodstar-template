@@ -1,0 +1,90 @@
+.form-cooperation {
+  position: relative;
+  &__title {
+    margin-bottom: 35px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 137%;
+    @include media-laptop {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+  }
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 705px 1fr;
+    gap: 20px;
+    @include media-laptop {
+      grid-template-columns: 492px 1fr;
+    }
+    @include media-tablet {
+      display: block;
+    }
+  }
+  &__img {
+    max-width: 497px;
+    margin: 25px auto 0;
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &__agree {
+    max-width: 300px;
+    font-size: 14px;
+    line-height: 130%;
+    color: #383838;
+    @include media-laptop {
+      max-width: 280px;
+      font-size: 13px;
+    }
+    @include media-tablet {
+      max-width: unset;
+    }
+  }
+  &__ui-button {
+    width: 100%;
+    max-width: 200px;
+    @include media-tablet {
+      max-width: unset;
+    }
+  }
+  &__line {
+    &:not(:first-child) {
+      margin-top: 30px;
+      @include media-laptop {
+        margin-top: 20px;
+      }
+      @include media-tablet {
+        margin-top: 15px;
+      }
+    }
+    &--grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: 1fr 280px;
+      @include media-laptop {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      @include media-tablet {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+    &--submit {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      @include media-tablet {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      &:not(:first-child) {
+        @include media-tablet {
+          margin-top: 22px;
+        }
+      }
+    }
+  }
+}

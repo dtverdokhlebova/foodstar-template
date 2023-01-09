@@ -1,0 +1,56 @@
+.ui-range {
+  &__body {
+    padding: 8px 0;
+  }
+  &__wrap {
+    display: flex;
+    gap: 6px;
+    margin-top: 15px;
+    @include media-laptop {
+      gap: 15px;
+    }
+  }
+  &__val {
+    flex: 1;
+    input {
+      width: 100%;
+      padding: 9px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #8a8a8a;
+      border: 1px solid #8a8a8a;
+      border-radius: 10px;
+      @include media-laptop {
+        font-size: 13px;
+      }
+    }
+  }
+  .noUi {
+    &-target {
+      height: 4px;
+      background: #cbedff;
+      border: 0;
+      border-radius: 2px;
+      box-shadow: none;
+    }
+    &-connect {
+      background: $blue;
+    }
+    &-handle {
+      top: -8px;
+      right: -8px;
+      width: 20px;
+      height: 20px;
+      background: $blue;
+      border: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: none;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+}

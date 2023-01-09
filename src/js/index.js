@@ -1,16 +1,74 @@
 document.addEventListener('DOMContentLoaded', function () {
   // header()
   // tabs()
+  uiRange()
+  uiSelects()
   bannersList()
   brands()
   product()
   tabs()
   toTop()
+  validation()
 })
 
 window.addEventListener('load', function () {
   map()
 })
+
+function uiRange() {
+  const ranges = document.querySelectorAll('.ui-range')
+
+  for (const range of ranges) {
+    const itemRange = range.querySelector('.ui-range__native')
+    const minInp = Number.parseInt(range.dataset.min, 10)
+    const maxInp = Number.parseInt(range.dataset.max, 10)
+    const startTopInp = Number.parseInt(range.dataset.startTop, 10)
+    const startBotInp = Number.parseInt(range.dataset.startBot, 10)
+
+    noUiSlider.create(itemRange, {
+      start: [startTopInp, startBotInp],
+      connect: true,
+      range: {
+        min: minInp,
+        max: maxInp
+      }
+    })
+
+    const topValue = range.querySelector('.ui-range__lower')
+    const botValue = range.querySelector('.ui-range__upper')
+
+    itemRange.noUiSlider.on('update', function () {
+      const [top, bot] = itemRange.noUiSlider.get()
+      topValue.value = toString(top)
+      botValue.value = toString(bot)
+    })
+
+    // topValue.addEventListener('change', function () {
+    //   itemRange.noUiSlider.set(+(this.value).replace(/\s/g, ''))
+    // })
+    // botValue.addEventListener('change', function () {
+    //   itemRange.noUiSlider.range.max(+(this.value).replace(/\s/g, ''))
+    // })
+  }
+}
+
+function toString(line) {
+  return Number.parseInt(line, 10).toString().replace(/(\d{1,3}(?=(?:\d{3})+(?!\d)))/g, '$1 ')
+}
+
+function uiSelects() {
+  const selects = document.querySelectorAll('.ui-select select')
+  for (const select of selects) {
+    const selectParent = select.parentElement
+    $(select).select2({
+      minimumResultsForSearch: Number.POSITIVE_INFINITY,
+      width: 'auto',
+      dropdownAutoWidth: true,
+      dropdownParent: selectParent,
+      placeholder: select.dataset.placeholder === undefined ? '' : select.dataset.placeholder
+    })
+  }
+}
 
 function map() {
   if (document.querySelector('#contactsMap')) {
@@ -152,6 +210,30 @@ function toTop() {
   $('.footer__to-top').on('click', function () {
     $('html, body').animate({ scrollTop: 0 }, 600)
     return false
+  })
+}
+
+function validation() {
+  $('form').parsley({
+    // errorClass: 'mmmmmmmparsley-error',
+    // classHandler: function (field) {
+    //   // $('#eeeel')
+    //   field.$element.closest('.ui-input')
+    //   // $(field).parents('.ui-input')
+    //   // console.log($(field).parents('.ui-input'))
+    //   // console.log($(field).parents('.ui-input'))
+    //   // console.log(field.closest('.ui-input'))
+    //   // closest
+    //   // Field.parents('ui-input')
+    //   // $(Field).parents('.ui-input')
+    // }
+  })
+  window.Parsley.addValidator('phone', {
+    validateString: function (value) {
+      return (
+        /^\+\d{11}(\d{1,2})?$/.test(value)
+      )
+    }
   })
 }
 

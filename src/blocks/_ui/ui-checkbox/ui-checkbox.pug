@@ -1,6 +1,6 @@
-mixin ui-input(id, text, mods, type)
+mixin ui-checkbox(id, text, mods)
   -
-    const baseName = 'ui-input'
+    const baseName = 'ui-checkbox'
     let allMods = ''
     if (typeof mods !== 'undefined' && mods) {
       const modsList = mods.split(',')
@@ -10,8 +10,7 @@ mixin ui-input(id, text, mods, type)
       allMods = allMods.trim()
     }
 
-  .ui-input(class=allMods)
-    .ui-input__head
-      span.ui-input__label=text
-      span.ui-input__error Заполните эту форму
-    input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)
+  .ui-checkbox(class=allMods)&attributes(attributes)
+    input(id=id name=id type='checkbox')
+    label(for=id)!=text
+      block

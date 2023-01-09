@@ -1,0 +1,105 @@
+.ui-select {
+  width: 100%;
+  .select2-container {
+    display: block;
+    .select2 {
+      &-selection {
+        height: auto;
+        padding: 14px 50px 14px 14px;
+        background: #fff;
+        border: 1px solid #8a8a8a;
+        border-radius: 10px;
+        @include media-laptop {
+          padding: 8px 50px 8px 8px;
+        }
+        @include media-tablet {
+          padding: 9px 35px 9px 10px;
+        }
+        &__placeholder {
+          color: #8a8a8a;
+        }
+        &__rendered {
+          padding: 0;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 1.2;
+          color: $blue;
+          @include media-tablet {
+            font-size: 12px;
+          }
+        }
+        &__arrow {
+          top: 50%;
+          right: 14px;
+          transform: translateY(-50%) scaleY(0.9);
+          width: 24px;
+          height: 24px;
+          transition: 0.3s;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 9px;
+            height: 9px;
+            margin: -2px 0 0;
+            border: 2px solid #8a8a8a;
+            border-top-width: 0;
+            border-right-width: 0;
+          }
+          b {
+            display: none;
+          }
+        }
+      }
+      &-dropdown {
+        border: none;
+        box-shadow: none;
+      }
+      &-results {
+        &__options {
+          max-height: 300px;
+          padding: 12px 15px;
+          background: #f7fafb;
+          border-radius: 10px;
+          @include media-laptop {
+            padding: 8px;
+          }
+          @include media-tablet {
+            padding: 10px;
+          }
+        }
+        &__option {
+          padding: 8px 0;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 1.2;
+          @include media-tablet {
+            padding: 4px 0;
+            font-size: 12px;
+          }
+          &--highlighted,
+          &--selected {
+            background-color: transparent;
+            color: $blue;
+          }
+        }
+      }
+    }
+    &.select2-container--open {
+      .select2 {
+        &-selection {
+          border-color: $blue;
+          border-radius: 10px;
+          &__arrow {
+            transform: translateY(-50%) scaleY(0.9) rotate(180deg);
+            &::before {
+              border-color: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
