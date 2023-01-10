@@ -17,5 +17,11 @@ mixin product-info(mods)
       .product-info__article Артикул: 12451506
       .product-info__stock Остаток на складе: 150 шт
     +product-prices('product-info')
+    .product-info__actions
+      +counter('--size-l')
+      +ui-button('В корзину', 'product-info, --size-m')
+    .product-info__license У вас нет лицензии на продажу алкогольной продукции. Вы можете загрузить ее в
+      =' '
+      a.ui-underline(href='#') своем профиле.
     .product-info__descr Мы тщательно отбираем кофейные зёрна и обжариваем их до темно-коричневого цвета, чтобы раскрыть всю глубину вкуса и&nbsp;аромата в каждой чашке кофе NESCAFÉ® Gold Aroma Intenso. Насладитесь интенсивным вкусом и ярким ароматом этого 100% натурального сублимированного кофе, с добавлением молотой Арабики.
     block

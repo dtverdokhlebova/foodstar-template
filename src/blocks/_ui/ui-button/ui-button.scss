@@ -44,4 +44,16 @@
       height: 100%;
     }
   }
+  &--size-m {
+    min-width: 212px;
+    padding: 14px 42px;
+    font-size: 18px;
+    @include media-laptop {
+      padding: 12px 42px;
+      font-size: 16px;
+    }
+    @include media-tablet {
+      min-width: unset;
+    }
+  }
 }

@@ -11,4 +11,22 @@ mixin product-slider(mods)
     }
 
   .product-slider(class=allMods)&attributes(attributes)
+    .product-slider__main
+      .swiper
+        .swiper-wrapper
+          -for(item = 0; item < 6; item++)
+            .swiper-slide
+              .product-slider__label
+                img(src='img/label_hit.svg', alt='')
+              .product-slider__img
+                img(src='img/product_img.png', alt='')
+    .product-slider__thumbs
+      .swiper
+        .swiper-wrapper
+          -for(item = 0; item < 6; item++)
+            .swiper-slide
+              .product-slider__img
+                img(src='img/product_img.png', alt='')
+      .swiper-button-prev
+      .swiper-button-next
     block

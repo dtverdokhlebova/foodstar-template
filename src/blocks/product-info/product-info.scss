@@ -65,13 +65,42 @@
       margin-bottom: 10px;
     }
   }
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    @include media-laptop {
+      gap: 20px;
+    }
+    @include media-tablet {
+      gap: 15px;
+    }
+  }
+  &__license {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 1.2;
+    color: $blue;
+    @include media-laptop {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    @include media-tablet {
+      margin-top: 15px;
+    }
+  }
   &__descr {
+    margin-top: 40px;
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
     color: #606060;
     @include media-laptop {
+      margin-top: 25px;
       font-size: 13px;
+    }
+    @include media-tablet {
+      margin-top: 20px;
     }
   }
 }

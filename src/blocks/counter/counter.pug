@@ -1,0 +1,17 @@
+mixin counter(mods)
+  -
+    const baseName = 'counter'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .counter(class=allMods)&attributes(attributes)
+    .counter__btn.counter__btn--minus
+    input.counter__input(type='number' min='1' value='1')
+    .counter__btn.counter__btn--plus
+    block

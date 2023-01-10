@@ -34,6 +34,9 @@ mixin product-item(type, mods)
           a(href='#')  100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр
       .product-item__foot
         .product-item__price 320 ₽/шт
-        +ui-button('В корзину', 'product-item')(href='#')
+        .product-item__actions
+          +ui-button('В корзину', 'product-item')
+          .product-item__form
+            +counter
 
     block

@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
   uiSelects()
   bannersList()
   brands()
-  product()
+  counter()
+  productItem()
+  productGridSlider()
+  productSlider()
   tabs()
   toTop()
   validation()
@@ -142,10 +145,24 @@ function brands() {
   })
 }
 
-function product() {
-  const productSliders = document.querySelectorAll('.product-grid--4slider .swiper')
-  for (const item of productSliders) {
-    const productSlider = new Swiper(item, {
+function counter() {
+  $('.counter__btn').on('click', function () {
+    const isNegative = $(this).hasClass('counter__btn--minus')
+    const input = $(this).siblings('.counter__input')
+    input[0][isNegative ? 'stepDown' : 'stepUp']()
+  })
+}
+
+function productItem() {
+  $('.product-item__ui-button').on('click', function () {
+    $(this).parents('.product-item__actions').addClass('product-item__actions--in-basket')
+  })
+}
+
+function productGridSlider() {
+  const items = document.querySelectorAll('.product-grid--4slider .swiper')
+  for (const item of items) {
+    const slider = new Swiper(item, {
       spaceBetween: 15,
       slidesPerView: 'auto',
       breakpoints: {
@@ -158,6 +175,25 @@ function product() {
       }
     })
   }
+}
+
+function productSlider() {
+  const sliderThumbs = new Swiper('.product-slider__thumbs .swiper', {
+    spaceBetween: 8,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.product-slider__thumbs .swiper-button-next',
+      prevEl: '.product-slider__thumbs .swiper-button-prev'
+    }
+  })
+  const sliderMain = new Swiper('.product-slider__main .swiper', {
+    spaceBetween: 10,
+    thumbs: {
+      swiper: sliderThumbs
+    }
+  })
 }
 
 function tabs() {

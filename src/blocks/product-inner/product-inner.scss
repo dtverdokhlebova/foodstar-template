@@ -7,24 +7,27 @@
     gap: 25px 30px;
   }
   @include media-tablet {
-    grid-template-columns: 1fr;
+    display: block;
   }
   &__product-slider {
     width: 520px;
-    height: 100px;
     grid-row: span 2;
-    background: #000;
     @include media-laptop {
       width: 320px;
       grid-row: span 1;
     }
     @include media-tablet {
       width: 100%;
+      max-width: 460px;
+      margin: 0 auto 25px;
     }
   }
   &__ui-button {
     @include media-laptop {
       grid-column: 1/-1;
+    }
+    @include media-tablet {
+      margin-top: 20px;
     }
   }
 }
