@@ -280,12 +280,13 @@
       }
       &__content {
         display: grid;
-        grid-template-columns: 1fr auto;
+        grid-template-columns: 1fr 300px;
         gap: 40px;
         @include media-laptop {
           gap: 20px;
         }
         @include media-tablet {
+          grid-template-columns: 1fr 150px;
           gap: 12px;
         }
       }
@@ -297,13 +298,17 @@
         }
       }
       &__descr {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include media-laptop {
+          -webkit-line-clamp: 4;
+        }
         @include media-tablet {
-          display: -webkit-box;
           -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
           font-size: 10px;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
       }
       &__foot {
@@ -312,15 +317,55 @@
         gap: 40px;
         @include media-tablet {
           grid-template-columns: 85px auto;
-          gap: 10px;
+          gap: 5px;
         }
       }
       &__price {
         align-self: center;
         font-size: 12px;
       }
+      &__counter {
+        margin-left: auto;
+        @include media-tablet {
+          width: 60px;
+          height: 30px;
+          padding: 0 5px;
+        }
+        .counter {
+          &__input {
+            @include media-tablet {
+              font-size: 10px;
+            }
+          }
+          &__btn {
+            @include media-tablet {
+              width: 12px;
+            }
+          }
+        }
+      }
+      &__ui-button {
+        @include media-tablet {
+          width: 25px;
+          height: 25px;
+          padding: 0;
+          background-image: url("data:image/svg+xml,%3Csvg width='13' height='14' viewBox='0 0 13 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.01058 12.1906C5.47203 12.1906 5.83766 11.8053 5.83766 11.3406C5.83766 10.8759 5.47203 10.4906 5.01058 10.4906C4.54913 10.4906 4.1835 10.8759 4.1835 11.3406C4.1835 11.8053 4.54913 12.1906 5.01058 12.1906Z' fill='white' stroke='white' stroke-width='0.3'/%3E%3Cpath d='M9.74984 12.1906C10.2113 12.1906 10.5769 11.8053 10.5769 11.3406C10.5769 10.8759 10.2113 10.4906 9.74984 10.4906C9.28838 10.4906 8.92275 10.8759 8.92275 11.3406C8.92275 11.8053 9.28838 12.1906 9.74984 12.1906Z' fill='white' stroke='white' stroke-width='0.3'/%3E%3Cpath d='M10.4271 9.0903H4.73411L4.516 7.99031H10.4254C10.539 7.99268 10.6493 7.9545 10.7377 7.88315C10.8266 7.81146 10.8879 7.71092 10.9122 7.59923L10.9123 7.59883L11.5892 4.44932C11.5893 4.4492 11.5893 4.44909 11.5893 4.44897C11.6053 4.37557 11.6049 4.29942 11.5882 4.22619C11.5714 4.15284 11.5386 4.08404 11.4918 4.02513C11.4451 3.96621 11.3857 3.91866 11.3178 3.88648L11.2535 4.02203L11.3178 3.88648C11.2505 3.85459 11.1769 3.83874 11.1024 3.84031H3.71964L3.4651 2.49247L3.46511 2.49247L3.46487 2.49128C3.44249 2.3778 3.38213 2.275 3.29308 2.20134C3.20434 2.12795 3.09284 2.08832 2.97775 2.09031H1.625H1.475V2.24031V2.94031V3.09031H1.625H2.57768L3.84749 9.68865L3.84763 9.68933C3.87001 9.80281 3.93036 9.90561 4.01942 9.97927C4.10815 10.0527 4.21965 10.0923 4.33473 10.0903H10.4271H10.5771V9.94031V9.2403V9.0903H10.4271ZM10.4955 4.84031L10.035 6.9903H4.32845L3.91253 4.84031H10.4955Z' fill='white' stroke='white' stroke-width='0.3'/%3E%3C/svg%3E%0A");
+          background-repeat: no-repeat;
+          background-position: center;
+          border-radius: 50%;
+        }
+        span {
+          @include media-tablet {
+            display: none;
+          }
+        }
+      }
       &__actions {
-        align-self: end;
+        margin-top: 50px;
+        text-align: right;
+        @include media-tablet {
+          margin-top: 35px;
+        }
       }
     }
   }

@@ -8,11 +8,11 @@
 
 -
   const footerPages =[
-    { text: 'Главная' },
-    { text: 'О компании' },
-    { text: 'Сотрудничество' },
-    { text: 'Новости' },
-    { text: 'Контакты' },
+    { text: 'Главная', link: 'main.html'},
+    { text: 'О компании', link: 'about.html' },
+    { text: 'Сотрудничество', link: 'cooperation.html' },
+    { text: 'Новости', link: 'news.html' },
+    { text: 'Контакты', link: 'contacts.html' },
   ]
 
 footer.footer
@@ -35,14 +35,16 @@ footer.footer
         ul.footer__pages
           each item in footerPages
             .footer__pages-item
-              a(href='#')=item.text
+              a(href=item.link)=item.text
 
       .footer__column
         .footer__title Популярные бренды
         .footer__brands
           -for(menuColumn = 0; menuColumn < 3; menuColumn++)
             .footer__brands-column
-              -for(menuItem = 0; menuItem < 5; menuItem++)
+              .footer__brands-item
+                  a(href='#') Название брендабренда бренда
+              -for(menuItem = 0; menuItem < 4; menuItem++)
                 .footer__brands-item
                   a(href='#') Название бренда
 

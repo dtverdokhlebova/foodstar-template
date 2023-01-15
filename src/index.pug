@@ -4,75 +4,46 @@ block variables
   -
     const pageTitle ='Index'
 
-  //- -
-    const contactsInner =[
-      { title: 'Телефон:',
-        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
-      },
-      { title: 'Почта:',
-        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
-      },
-      { title: 'Режим работы:',
-        descr: 'С 9:00 до 21:00'
-      },
-      { title: 'Адрес:',
-        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
-      },
-    ]
-
-  //- -
-    const contactsBlock =[
-      { title: 'Адрес:',
-        descr: 'Белгородская обл., г.&nbsp;Старый Оскол, ул.&nbsp;Первой Конной Армии, д. 67, ПОМЕЩ. 20'
-      },
-      { title: 'Телефон:',
-        descr: '<a href="tel:88001234567">8 800 123-45-67</a>'
-      },
-      { title: 'Режим работы:',
-        descr: 'С 9:00 до 21:00'
-      },
-      { title: 'Почта:',
-        descr: '<a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a>'
-      },
-    ]
-
 block content
-  main.main
-    br
-    br
-    +section
-      .inner
-        a(href='main.html') Главная
-        br
-        br
-        a(href='products-catalog.html') Каталог товаров
-        br
-        br
-        a(href='product-inner.html') Карточка товара
-        br
-        br
-        a(href='news.html') Новости
-        br
-        br
-        a(href='news-inner.html') Новости детальная
-        br
-        br
-        a(href='contacts.html') Контактная информация
-        br
-        br
-        a(href='about.html') О компании
-        br
-        br
-        a(href='cooperation.html') Сотрудничество
-        br
-        br
-        a(href='policy.html') Политика конфиденциальности
-        br
-        br
-        a(href='catalog.html') Каталог
-        br
-        br
-        a(href='featured-products.html') Избранные товары
+  main.main.main-pt-l
+    .page-content
+      +section
+        .inner
+          a(href='index2.html') header - в корзине есть товары, страница с избранным товаром, пользователь авторизован
+          br
+          br
+          br
+          a(href='main.html') Главная
+          br
+          br
+          a(href='products-catalog.html') Каталог товаров
+          br
+          br
+          a(href='product-inner.html') Карточка товара
+          br
+          br
+          a(href='news.html') Новости
+          br
+          br
+          a(href='news-inner.html') Новости детальная
+          br
+          br
+          a(href='contacts.html') Контактная информация
+          br
+          br
+          a(href='about.html') О компании
+          br
+          br
+          a(href='cooperation.html') Сотрудничество
+          br
+          br
+          a(href='policy.html') Политика конфиденциальности
+          br
+          br
+          a(href='catalog.html') Скачать каталог
+          br
+          br
+          a(href='featured-products.html') Избранные товары
 
     //- +popup-wrapper('contact-us-thank', '--size-l')
       +contact-us-thank

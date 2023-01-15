@@ -4,44 +4,108 @@ block variables
   -
     const pageTitle ='Каталог товаров'
 
+  -
+    const productFilterUl =[
+      { text: 'Кондитерские изделия' },
+      { text: 'Кулинария' },
+      { text: 'Какао-напитки' },
+      { text: 'Готовые завтраки и&nbsp;злаковые ботончики' },
+      { text: 'Каши' },
+      { text: 'Детское питание' },
+      { text: 'Лечебное и лечебно-профилактическое питание' },
+      { text: 'Минеральная вода' },
+      { text: 'Корма для животных' },
+      { text: 'Молочная продукция' },
+      { text: 'Соки' },
+      { text: 'Алкогольная продукция' },
+    ]
+
 block content
   main.main
-    +section
-      .inner
-        br
-        br
-        br
-        br
-        +ui-select('order-form', 'Цена по возрастанию', 'Цена по убыванию', 'По умолчанию')(data-placeholder='Тип сортировки')
-        br
-        br
-        br
-        br
-        +ui-checkbox('checkboxId', 'NESCAFE GOLD')
-        br
-        br
-        br
-        br
-        +ui-range('main-choice')#rent(data-min='10' data-max='1000000' data-start-top='20' data-start-bot='850000')
-        br
-        br
-        br
-        br
-        br
-        +product-grid('--3items')
-          -for(item = 0; item < 6; item++)
-            +product-item('', '--column')
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item('Каталог', '#')
+      +breadcrumbs-item('NESCAFE')
+    .page-content
+      +section
+        .inner
+          .product-catalog
+            .product-filter
+              .product-filter__head
+                .product-filter__btn
+                  .product-filter__btn-tablet Закрыть
+                  .product-filter__btn-mobile Назад
+              .product-filter__main
+                .product-filter__section
+                  .product-filter__title Категории
+                  ul.product-filter__ul
+                    li.product-filter__li.active
+                      a(href='#') Кофе
+                    each item in productFilterUl
+                      li.product-filter__li
+                        a(href='#') !{item.text}
+                .product-filter__section
+                  .product-filter__title Сегмент
+                  +ui-select('--size-s', 'Весь сегмент', 'сегмент 1', 'сегмент 2')(data-placeholder='Сегмент')
+                .product-filter__section
+                  .product-filter__title Бренд
+                  .product-filter__checks
+                    +ui-checkbox('filterCheckbox1', 'NESCAFE GOLD', 'product-filter')
+                    +ui-checkbox('filterCheckbox1', 'NESCAFE GOLD', 'product-filter')
+                .product-filter__section
+                  .product-filter__title Цена
+                  +ui-range('main-choice')#filterRange(data-min='10' data-max='1000000' data-start-top='20' data-start-bot='850000')
+              .product-catalog__foot
+                .product-catalog__close
+                  +ui-button('Закрыть')
+                .product-catalog__submit
+                  +ui-button('Применить')
 
-    +section
-      .inner
-        +product-grid('--1items')
-          -for(item = 0; item < 6; item++)
-            +product-item('', '--list')
+            .product-catalog__main
+              .product-catalog__actions
+                .product-open-filter
+                  button.product-open-filter__button Фильтр
+                +ui-select('product-catalog', 'Цена по возрастанию', 'Цена по убыванию', 'По умолчанию')(data-placeholder='Тип сортировки')
 
-    +section
-      .inner
-        +product-grid()
-          -for(item = 0; item < 6; item++)
-            +product-item('', '--table')
+                .product-view-nav
+                  button.product-view-nav__item.active(data-type='column')
+                    svg(width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg')
+                      g(clip-path='url(#clip0_112_4417)')
+                        path(d='M0 1C0 0.447715 0.447715 0 1 0H12.5C13.0523 0 13.5 0.447715 13.5 1V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1C0.447715 13.5 0 13.0523 0 12.5V1ZM4 3C3.44772 3 3 3.44772 3 4V9.5C3 10.0523 3.44772 10.5 4 10.5H9.5C10.0523 10.5 10.5 10.0523 10.5 9.5V4C10.5 3.44772 10.0523 3 9.5 3H4ZM0 17.5C0 16.9477 0.447715 16.5 1 16.5H12.5C13.0523 16.5 13.5 16.9477 13.5 17.5V29C13.5 29.5523 13.0523 30 12.5 30H1C0.447715 30 0 29.5523 0 29V17.5ZM4 19.5C3.44772 19.5 3 19.9477 3 20.5V26C3 26.5523 3.44772 27 4 27H9.5C10.0523 27 10.5 26.5523 10.5 26V20.5C10.5 19.9477 10.0523 19.5 9.5 19.5H4ZM16.5 1C16.5 0.447715 16.9477 0 17.5 0H29C29.5523 0 30 0.447715 30 1V12.5C30 13.0523 29.5523 13.5 29 13.5H17.5C16.9477 13.5 16.5 13.0523 16.5 12.5V1ZM20.5 3C19.9477 3 19.5 3.44772 19.5 4V9.5C19.5 10.0523 19.9477 10.5 20.5 10.5H26C26.5523 10.5 27 10.0523 27 9.5V4C27 3.44772 26.5523 3 26 3H20.5ZM16.5 17.5C16.5 16.9477 16.9477 16.5 17.5 16.5H29C29.5523 16.5 30 16.9477 30 17.5V29C30 29.5523 29.5523 30 29 30H17.5C16.9477 30 16.5 29.5523 16.5 29V17.5ZM20.5 19.5C19.9477 19.5 19.5 19.9477 19.5 20.5V26C19.5 26.5523 19.9477 27 20.5 27H26C26.5523 27 27 26.5523 27 26V20.5C27 19.9477 26.5523 19.5 26 19.5H20.5Z' fill='currentColor')
+                      defs
+                        clippath#clip0_112_4417
+                          rect(width='30' height='30' fill='white')
+                  button.product-view-nav__item(data-type='list')
+                    svg(width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg')
+                      path(d='M2 4H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M2 15H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M2 26H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                  button.product-view-nav__item(data-type='table')
+                    svg(width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg')
+                      path(d='M10 4H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M10 15H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M10 26H27' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M2 4H4' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M2 15H4' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M2 26H4' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
 
-        +pagination
+              .product-view-main
+                +product-grid('--3items')
+                  -for(item = 0; item < 6; item++)
+                    +product-item('', '--column')
+
+          +pagination
+
+      //- +section
+        .inner
+          //- +product-grid('--3items')
+            -for(item = 0; item < 6; item++)
+              +product-item('', '--column')
+
+          //- +product-grid('--1items')
+            -for(item = 0; item < 6; item++)
+              +product-item('', '--list')
+
+          +product-grid()
+            -for(item = 0; item < 6; item++)
+              +product-item('', '--table')

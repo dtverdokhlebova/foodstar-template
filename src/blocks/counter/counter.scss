@@ -19,6 +19,7 @@
     box-shadow: none;
     appearance: none;
     outline: none;
+    -moz-appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {
       display: none;

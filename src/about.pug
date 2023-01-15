@@ -6,24 +6,28 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +section-head
-          +ui-h2('О компании', '--bold')
-        +who-we
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item(pageTitle)
+    .page-content
+      +section
+        .inner
+          +section-head
+            +ui-h2('О компании', '--bold')
+          +who-we
 
-    +section('--bg')
-      .inner
-        +section-head.ui-center
-          +ui-h2('Наши ценности')
-        +our-values
+      +section('--bg')
+        .inner
+          +section-head.ui-center
+            +ui-h2('Наши ценности')
+          +our-values
 
-    +section
-      .inner
-        +achievements
+      +section
+        .inner
+          +achievements
 
-    +section
-      .inner
-        +section-head.ui-center
-          +ui-h2('Наши партнеры')
-        +partners
+      +section
+        .inner
+          +section-head.ui-center
+            +ui-h2('Наши партнеры')
+          +partners

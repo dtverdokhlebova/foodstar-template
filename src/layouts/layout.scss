@@ -22,12 +22,12 @@
 html {
   box-sizing: border-box;
   line-height: 1;
-  // &.ov-hidden {
-  //   overflow: hidden;
-  //   body {
-  //     overflow: hidden;
-  //   }
-  // }
+  &.ov-hidden {
+    overflow: hidden;
+    body {
+      overflow: hidden;
+    }
+  }
 }
 body {
   -webkit-tap-highlight-color: transparent;
@@ -62,12 +62,25 @@ a {
   flex-direction: column;
   min-height: 100vh;
   margin: 0 auto;
-  // padding-top: var(--header-height, 145px);
+  padding-top: var(--header-height, 210px);
   font-family: $font;
   color: $black;
 }
 .main {
   flex: 1 0;
+  padding-top: 30px;
+  @include media-laptop {
+    padding-top: 20px;
+  }
+  @include media-tablet {
+    padding-top: 15px;
+  }
+  &--pt-l {
+    padding-top: 65px;
+    @include media-laptop {
+      padding-top: 25px;
+    }
+  }
 }
 .inner {
   width: 100%;

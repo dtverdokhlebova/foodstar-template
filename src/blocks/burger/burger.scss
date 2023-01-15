@@ -1,0 +1,40 @@
+.burger {
+  position: relative;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  background: rgb(196, 67, 201);
+  span {
+    position: absolute;
+    top: 16px;
+    left: 4px;
+    width: 26px;
+    height: 3px;
+    background: $blue;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: -7px;
+      width: 26px;
+      height: 3px;
+      background: inherit;
+      transition: 0.3s;
+    }
+    &::after {
+      top: 7px;
+    }
+  }
+  &.active {
+    span {
+      background: transparent;
+      &::before {
+        transform: rotate(-45deg) translate(-4px, 4px);
+      }
+      &::after {
+        transform: rotate(45deg) translate(-6px, -6px);
+      }
+    }
+  }
+}

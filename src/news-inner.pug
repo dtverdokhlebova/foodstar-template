@@ -6,6 +6,11 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +news-inner
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item('Новости',  'news.html')
+      +breadcrumbs-item('Статья')
+    .page-content
+      +section
+        .inner
+          +news-inner

@@ -1,0 +1,98 @@
+.search {
+  position: relative;
+  &__form {
+    position: relative;
+  }
+  &__input {
+    width: 100%;
+    padding: 14px 40px 14px 15px;
+    font-size: 14px;
+    line-height: 1.1;
+    color: $blue;
+    border: 1px solid #c6c6c6;
+    border-radius: 60px;
+    transition: 0.3s;
+    @include media-laptop {
+      padding: 11px 35px 11px 15px;
+      font-size: 12px;
+    }
+    &:focus {
+      border-color: $blue;
+    }
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &::placeholder {
+      color: #cbd5d7;
+    }
+  }
+  &__submit {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    background: transparent;
+    background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 16L12.4584 12.4521L16 16ZM14.4211 7.71053C14.4211 9.49027 13.7141 11.1971 12.4556 12.4556C11.1971 13.7141 9.49027 14.4211 7.71053 14.4211C5.93078 14.4211 4.22394 13.7141 2.96547 12.4556C1.707 11.1971 1 9.49027 1 7.71053C1 5.93078 1.707 4.22394 2.96547 2.96547C4.22394 1.707 5.93078 1 7.71053 1C9.49027 1 11.1971 1.707 12.4556 2.96547C13.7141 4.22394 14.4211 5.93078 14.4211 7.71053V7.71053Z' stroke='%231D57A5' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 0;
+    cursor: pointer;
+    @include media-laptop {
+      right: 12px;
+    }
+  }
+  &__result {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: #f0f0f0;
+    box-shadow: 0 4px 35px rgb(0 0 0 / 0.07);
+    border-radius: 10px;
+    animation: fade-in 0.3s ease;
+    @include media-tablet {
+      padding: 5px;
+    }
+  }
+  &__list {
+    max-height: 340px;
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.2;
+    color: #3d3d3d;
+    list-style: none;
+    overflow-y: auto;
+    @include media-laptop {
+      font-size: 14px;
+    }
+    &::-webkit-scrollbar {
+      width: 3px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #c6c6c6;
+      border-radius: 3px;
+    }
+    &-link {
+      display: block;
+      padding: 10px;
+      border-radius: 10px;
+      transition: 0.3s;
+      &:hover {
+        background: #bce8ff;
+      }
+    }
+  }
+  &--input {
+    .search__result {
+      display: block;
+    }
+  }
+}

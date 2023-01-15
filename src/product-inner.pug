@@ -6,6 +6,12 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +product-inner
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item('Каталог', '#')
+      +breadcrumbs-item('NESCAFE', '#')
+      +breadcrumbs-item('NESCAFÉ GOLD Aroma Intenso')
+    .page-content
+      +section
+        .inner
+          +product-inner

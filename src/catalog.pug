@@ -6,9 +6,13 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +section-head
-          +ui-h2('Скачать каталог', '--bold')
-        +catalogs
-        +pagination
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item('Каталог')
+    .page-content
+      +section
+        .inner
+          +section-head
+            +ui-h2('Скачать каталог', '--bold')
+          +catalogs
+          +pagination

@@ -28,58 +28,58 @@ block variables
     ]
 
 block content
-  main.main
+  main.main.main-pt-l
+    .page-content
+      +section('--ov')
+        +banners-list
 
-    +section('--ov')
-      +banners-list
+      +section('--ov')
+        .inner
+          +section-head
+            +ui-h2('Продукция', '--bold')
+          +tabs-head(tabProduct)(data-group=`tabs-products`)
+          +tabs-body(data-group='tabs-products')
+            +tabs-item.active
+              +product-grid('--4slider')
+                .swiper
+                  .swiper-wrapper
+                    -for(item = 0; item < 4; item++)
+                      +product-item('hit, favActive', '--column').swiper-slide
+            +tabs-item
+              +product-grid('--4slider')
+                .swiper
+                  .swiper-wrapper
+                    -for(item = 0; item < 4; item++)
+                      +product-item('noImg', '--column').swiper-slide
+            +tabs-item
+              +product-grid('--4slider')
+                .swiper
+                  .swiper-wrapper
+                    -for(item = 0; item < 4; item++)
+                      +product-item('', '--column').swiper-slide
 
-    +section('--ov')
-      .inner
-        +section-head
-          +ui-h2('Продукция', '--bold')
-        +tabs-head(tabProduct)(data-group=`tabs-products`)
-        +tabs-body(data-group='tabs-products')
-          +tabs-item.active
-            +product-grid('--4slider')
-              .swiper
-                .swiper-wrapper
-                  -for(item = 0; item < 4; item++)
-                    +product-item('hit, favActive', '--column').swiper-slide
-          +tabs-item
-            +product-grid('--4slider')
-              .swiper
-                .swiper-wrapper
-                  -for(item = 0; item < 4; item++)
-                    +product-item('noImg', '--column').swiper-slide
-          +tabs-item
-            +product-grid('--4slider')
-              .swiper
-                .swiper-wrapper
-                  -for(item = 0; item < 4; item++)
-                    +product-item('', '--column').swiper-slide
+      +section('--mt-l')
+        .inner
+          +section-head
+            +ui-h2('Категории товаров', '--bold')
+          +categories
 
-    +section('--mt-l')
-      .inner
-        +section-head
-          +ui-h2('Категории товаров', '--bold')
-        +categories
+      +section('--mt-l')
+        +about
 
-    +section('--mt-l')
-      +about
+      +section('--mt-xl')
+        .inner
+          +section-head
+            +ui-h2('Новости организации', '--bold')
+          +news-current
 
-    +section('--mt-xl')
-      .inner
-        +section-head
-          +ui-h2('Новости организации', '--bold')
-        +news-current
+      +section('--mt-l, --ov')
+        .inner
+          +section-head
+            +ui-h2('Бренды-партнеры', '--bold')
+          +brands
 
-    +section('--mt-l, --ov')
-      .inner
-        +section-head
-          +ui-h2('Бренды-партнеры', '--bold')
-        +brands
-
-    +section('--mt-l, --bg')
+      +section('--mt-l, --bg')
       .inner
         +section-head
           +ui-h2('Контакты', '--bold')

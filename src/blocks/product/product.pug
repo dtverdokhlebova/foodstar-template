@@ -1,6 +1,6 @@
-mixin ui-button(text, mods, isSubmit)
+mixin product(mods)
   -
-    const baseName = 'ui-button'
+    const baseName = 'product'
     let allMods = ''
     if (typeof mods !== 'undefined' && mods) {
       const modsList = mods.split(',')
@@ -10,14 +10,5 @@ mixin ui-button(text, mods, isSubmit)
       allMods = allMods.trim()
     }
 
-  if (attributes.href)
-    a.ui-button(class=allMods)&attributes(attributes)
-      if text
-        span!=text
-      block
-
-  else
-    button.ui-button(class=allMods)&attributes(attributes)
-      if text
-        span!=text
-      block
+  .product(class=allMods)&attributes(attributes)
+    block

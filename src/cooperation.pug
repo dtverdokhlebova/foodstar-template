@@ -6,11 +6,15 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +section-head
-          +ui-h2('Сотрудничество', '--bold')
-        +cooperation
-    +section('--bg')
-      .inner
-        +form-cooperation
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item(pageTitle)
+    .page-content
+      +section
+        .inner
+          +section-head
+            +ui-h2('Сотрудничество', '--bold')
+          +cooperation
+      +section('--bg')
+        .inner
+          +form-cooperation

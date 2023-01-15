@@ -1,0 +1,30 @@
+.breadcrumbs {
+  margin-bottom: 30px;
+  @include media-laptop {
+    margin-bottom: 20px;
+  }
+  @include media-tablet {
+    margin-bottom: 15px;
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #979797;
+    list-style: none;
+    @include media-laptop {
+      font-size: 12px;
+    }
+  }
+  &__item {
+    display: inline;
+  }
+  &__link {
+    &::after {
+      content: ' / ';
+      color: #979797;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+mixin search(mods)
+  -
+    const baseName = 'search'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .search(class=allMods)&attributes(attributes)
+    form.search__form(action='#')
+      input.search__input(type='text' placeholder='Поиск')
+      button.search__submit
+    .search__result
+      ul.search__list
+        -for(searchList = 0; searchList < 10; searchList++)
+          li.search__list-li
+            a.search__list-link(href='#') Читос со вкусом сыра
+    block

@@ -22,8 +22,12 @@ block variables
 
 block content
   main.main
-    +section
-      .inner
-        +section-head
-          +ui-h2('Контактная информация', '--bold')
-        +contacts(contactsInner, 'inner')
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item('Контакты')
+    .page-content
+      +section
+        .inner
+          +section-head
+            +ui-h2('Контактная информация', '--bold')
+          +contacts(contactsInner, 'inner')

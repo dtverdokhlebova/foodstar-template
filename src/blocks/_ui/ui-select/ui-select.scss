@@ -102,4 +102,13 @@
       }
     }
   }
+  &--size-s {
+    .select2-container {
+      .select2 {
+        &-selection {
+          padding: 10px 50px 10px 10px;
+        }
+      }
+    }
+  }
 }
