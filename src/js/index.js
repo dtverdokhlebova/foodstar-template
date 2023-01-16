@@ -25,7 +25,7 @@ function toString(line) {
 }
 
 function isOverflown(element) {
-  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth
 }
 
 function uiRange() {
@@ -167,6 +167,11 @@ function productGridSlider() {
     const slider = new Swiper(item, {
       spaceBetween: 15,
       slidesPerView: 'auto',
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
       breakpoints: {
         767: {
           spaceBetween: 10
@@ -180,29 +185,25 @@ function productGridSlider() {
 }
 
 function productView() {
-  const navItems = document.querySelectorAll('.product-view-nav__item')
-  const navMain = document.querySelector('.product-view-main')
-  const productItems = navMain.querySelectorAll('.product-item')
-  const productGrid = navMain.querySelector('.product-grid')
+  if (document.querySelectorAll('.product-view-nav__item').length > 0) {
+    const navItems = document.querySelectorAll('.product-view-nav__item')
+    const navMain = document.querySelector('.product-view-main')
+    const productItems = navMain.querySelectorAll('.product-item')
+    const productGrid = navMain.querySelector('.product-grid')
 
-  for (const item of navItems) {
-    item.addEventListener('click', function () {
-      const viewType = this.dataset.type
-      for (const itemNav of navItems) {
-        itemNav.classList.remove('active')
-      }
-      for (const itemProduct of productItems) {
-        itemProduct.className = `product-item product-item--${viewType}`
-      }
-      if (viewType === 'column') {
-        productGrid.className = 'product-grid product-grid--3items'
-      } else if (viewType === 'list') {
-        productGrid.className = 'product-grid product-grid--1items'
-      } else {
-        productGrid.className = 'product-grid'
-      }
-      this.classList.add('active')
-    })
+    for (const item of navItems) {
+      item.addEventListener('click', function () {
+        const viewType = this.dataset.type
+        for (const itemNav of navItems) {
+          itemNav.classList.remove('active')
+        }
+        for (const itemProduct of productItems) {
+          itemProduct.className = `product-item product-item--${viewType}`
+        }
+        this.classList.add('active')
+        productGrid.className = `product-grid product-grid--${viewType}`
+      })
+    }
   }
 }
 
@@ -226,16 +227,17 @@ function productSlider() {
 }
 
 function productCatalog() {
-  const openButton = document.querySelector('.product-open-filter__button')
-  const filter = document.querySelector('.product-filter')
-  const closeButton = filter.querySelector('.product-filter__btn')
-
-  openButton.addEventListener('click', function () {
-    filter.classList.add('active')
-  })
-  closeButton.addEventListener('click', function () {
-    filter.classList.remove('active')
-  })
+  if (document.querySelectorAll('.product-filter').length > 0) {
+    const openButton = document.querySelector('.product-open-filter__button')
+    const filter = document.querySelector('.product-filter')
+    const closeButton = filter.querySelector('.product-filter__btn')
+    openButton.addEventListener('click', function () {
+      filter.classList.add('active')
+    })
+    closeButton.addEventListener('click', function () {
+      filter.classList.remove('active')
+    })
+  }
 }
 
 function tabs() {
@@ -253,8 +255,8 @@ function tabs() {
         if (bodyData.length > 0) {
           for (const body of bodyData) {
             const bodyItems = body.children
-            for (const item of bodyItems) {
-              item.classList.remove('active')
+            for (const itemBody of bodyItems) {
+              itemBody.classList.remove('active')
             }
             bodyItems[index].classList.add('active')
           }
@@ -291,7 +293,6 @@ function headerScripts() {
   const headerSearch = document.querySelector('.header__search')
   const headerSearchInput = headerSearch.querySelector('.search__input')
   const headerShadow = document.querySelector('.header__shadow')
-  // const headerHeight = header.offsetHeight
   const isNotMobile = !window.matchMedia('(max-width: 767px)').matches
 
   if (isNotMobile) {
@@ -322,6 +323,45 @@ function headerScripts() {
 
   window.addEventListener('resize', function () {
     headerHeightCalc()
+  })
+
+  const catalogOpenButton = document.querySelector('.header__ui-button')
+  const catalogNavButtons = document.querySelectorAll('.header-catalog__button')
+  const catalogMainItems = document.querySelectorAll('.header-catalog__item')
+  catalogOpenButton.addEventListener('click', function () {
+    const headerHeight = header.offsetHeight
+    const headerCatalog = document.querySelector('.header-catalog')
+
+    this.classList.toggle('ui-button--burger-active')
+    headerCatalog.classList.toggle('active')
+    document.documentElement.classList.toggle('ov-hidden')
+    if (this.classList.contains('ui-button--burger-active')) {
+      document.documentElement.style.setProperty('--header-height-for-catalog', `${headerHeight}px`)
+    }
+  })
+  for (const [index, item] of catalogNavButtons.entries()) {
+    item.addEventListener('click', function () {
+      for (const itemButton of catalogNavButtons) {
+        itemButton.classList.remove('active')
+      }
+      for (const itemMain of catalogMainItems) {
+        itemMain.classList.remove('active')
+      }
+      this.classList.add('active')
+      catalogMainItems[index].classList.add('active')
+    })
+  }
+
+  const burgerButton = document.querySelector('.header__burger-btn')
+  const burgerBlock = document.querySelector('.header-burger')
+  const burgerClose = document.querySelector('.header-burger__close')
+  burgerButton.addEventListener('click', function () {
+    burgerBlock.classList.add('active')
+    document.documentElement.classList.add('ov-hidden')
+  })
+  burgerClose.addEventListener('click', function () {
+    burgerBlock.classList.remove('active')
+    document.documentElement.classList.remove('ov-hidden')
   })
 }
 

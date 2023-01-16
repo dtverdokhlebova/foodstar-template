@@ -314,7 +314,7 @@
       &__foot {
         display: grid;
         grid-template-columns: 120px auto;
-        gap: 40px;
+        gap: 20px;
         @include media-tablet {
           grid-template-columns: 85px auto;
           gap: 5px;

@@ -45,18 +45,21 @@ block content
                   .swiper-wrapper
                     -for(item = 0; item < 4; item++)
                       +product-item('hit, favActive', '--column').swiper-slide
+                  +ui-swiper-buttons('product-grid')
             +tabs-item
               +product-grid('--4slider')
                 .swiper
                   .swiper-wrapper
                     -for(item = 0; item < 4; item++)
                       +product-item('noImg', '--column').swiper-slide
+                  +ui-swiper-buttons('product-grid')
             +tabs-item
               +product-grid('--4slider')
                 .swiper
                   .swiper-wrapper
                     -for(item = 0; item < 4; item++)
                       +product-item('', '--column').swiper-slide
+                  +ui-swiper-buttons('product-grid')
 
       +section('--mt-l')
         .inner
@@ -80,7 +83,7 @@ block content
           +brands
 
       +section('--mt-l, --bg')
-      .inner
-        +section-head
-          +ui-h2('Контакты', '--bold')
-        +contacts(contactsBlock)
+        .inner
+          +section-head
+            +ui-h2('Контакты', '--bold')
+          +contacts(contactsBlock)

@@ -90,22 +90,13 @@ block content
                       path(d='M2 26H4' stroke='currentColor' stroke-width='4' stroke-linecap='round' stroke-linejoin='round')
 
               .product-view-main
-                +product-grid('--3items')
+                .product-head
+                  .product-head__item Фото
+                  .product-head__item Наименование
+                  .product-head__item стоимость
+                  .product-head__item купить
+                //- +product-grid('--column')
+                +product-grid('--table')
                   -for(item = 0; item < 6; item++)
-                    +product-item('', '--column')
-
-          +pagination
-
-      //- +section
-        .inner
-          //- +product-grid('--3items')
-            -for(item = 0; item < 6; item++)
-              +product-item('', '--column')
-
-          //- +product-grid('--1items')
-            -for(item = 0; item < 6; item++)
-              +product-item('', '--list')
-
-          +product-grid()
-            -for(item = 0; item < 6; item++)
-              +product-item('', '--table')
+                    +product-item('', '--table')
+                +pagination

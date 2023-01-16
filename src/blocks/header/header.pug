@@ -52,8 +52,7 @@ header.header
     .inner
       .header__main-wrapper
         a.header__logo(href='/')
-          img(src='img/icon_logo.png' alt='')
-        //- +ui-button('', '--burger-active').header__catalog-open
+          img(src='img/icon_logo.png' alt='logo')
         .header__main-item
           +ui-button('', 'header')
             .ui-button__burger
@@ -81,6 +80,51 @@ header.header
             li.header__menu-item
               a.header__menu-link(href=item.link)=item.name
         +header__basket()
+
+  .header-catalog
+    .inner.header-catalog__inner
+      .header-catalog__nav
+        -for(headerCatalogButtons = 1; headerCatalogButtons < 4; headerCatalogButtons++ )
+          .header-catalog__button(class = (headerCatalogButtons === 1) ? 'active' : '')
+            .header-catalog__button-logo
+              img(src='img/catalog_logo_nestle.png', alt='')
+            .header-catalog__button-name Nestle
+              =headerCatalogButtons
+      .header-catalog__main
+        -for(headerCatalogItems = 1; headerCatalogItems < 4; headerCatalogItems++ )
+          .header-catalog__item(class = (headerCatalogItems === 1) ? 'active' : '')
+            .header-catalog__wrapper
+              -for(headerCatalogCompanys = 1; headerCatalogCompanys < (headerCatalogItems * 7); headerCatalogCompanys++ )
+                a.header-catalog__company(href='#')
+                  .header-catalog__company-logo
+                    img(src='img/company_logo_nestle.png', alt='')
+                  .header-catalog__company-name Детская каша NESTLE
+
+  .header-burger
+    .header-burger__head
+      .header-burger__close Закрыть
+    .header-burger__main
+      ul.header-burger__menu
+        each item in headerMenu
+          li.header-burger__menu-item
+            a.header-burger__menu-link(href=item.link)=item.name
+      .header-burger__links
+        a.header-burger__links-item(href='tel:88001234567')
+          .header-burger__links-icon
+            img(src='img/icon_phone_white.svg', alt='')
+          .header-burger__links-descr 8 800 123-45-67
+        a.header-burger__links-item(href='mailto:sales@optovikpro.ru')
+          .header-burger__links-icon
+            img(src='img/icon_mail_white.svg', alt='')
+          .header-burger__links-descr sales@optovikpro.ru
+        .header-burger__links-item
+          .header-burger__links-icon
+            img(src='img/icon_time_white.svg', alt='')
+          .header-burger__links-descr 09:00 — 21:00
+        .header-burger__links-item
+          .header-burger__links-icon
+            img(src='img/icon_location_white.svg', alt='')
+          .header-burger__links-descr г. Старый Оскол, ул. Первой Конной Армии, д. 67, ПОМЕЩ. 20
 
   .header__shadow
         //- +ui-button('Заказать звонок', '--empty, header')(href='javascript:void(0)' onclick='window.getPopup("#contact-us-form")')

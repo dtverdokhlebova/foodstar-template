@@ -15,3 +15,13 @@ block content
       +section
         .inner
           +product-inner
+      +section('--bg, --ov')
+        .inner
+          +section-head
+            +ui-h2('Похожие товары', '--bold')
+          +product-grid('--4slider')
+            .swiper
+              .swiper-wrapper
+                -for(item = 0; item < 6; item++)
+                  +product-item('hit, favActive', '--column').swiper-slide
+              +ui-swiper-buttons('product-grid')
