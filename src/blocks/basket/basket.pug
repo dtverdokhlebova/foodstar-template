@@ -1,0 +1,43 @@
+mixin basket(mods)
+  -
+    const baseName = 'basket'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .basket(class=allMods)&attributes(attributes)
+    .basket-content
+      .basket-head
+        +ui-checkbox('basketAll', 'Выбрать все', 'basket-head, --size-l, --filled-blue')
+        .basket-head__text Позиций в корзине: 6
+        button.basket-head__delete Удалить выбранные
+      .basket-list
+
+        -for(basketItems = 0; basketItems < 6; basketItems++)
+          +basket-item
+
+        .basket-license
+          .basket-license__title Алкогольная продукция
+          .basket-license__main Чтобы приобрести алкогольную продукцию, загрузите лицензию в
+            =' '
+            a.ui-underline(href='#') своем профиле
+
+        -for(basketItems = 0; basketItems < 2; basketItems++)
+          +basket-item
+
+    .basket-total
+      .basket-total__title Ваша корзина
+      .basket-total__main
+        .basket-total__row
+          .basket-total__row-descr Количество товаров к оплате:
+          .basket-total__row-count 12 шт
+        .basket-total__row.basket-total__row--result
+          .basket-total__row-descr Общая стоимость
+          .basket-total__row-count 3 240 ₽
+      +ui-button('Оформить заказ', 'basket-total')(href='#')
+    block

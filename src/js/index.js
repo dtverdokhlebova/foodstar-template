@@ -37,6 +37,8 @@ function uiRange() {
     const maxInp = Number.parseInt(range.dataset.max, 10)
     const startTopInp = Number.parseInt(range.dataset.startTop, 10)
     const startBotInp = Number.parseInt(range.dataset.startBot, 10)
+    const topValue = range.querySelector('.ui-range__lower')
+    const botValue = range.querySelector('.ui-range__upper')
 
     noUiSlider.create(itemRange, {
       start: [startTopInp, startBotInp],
@@ -47,21 +49,18 @@ function uiRange() {
       }
     })
 
-    const topValue = range.querySelector('.ui-range__lower')
-    const botValue = range.querySelector('.ui-range__upper')
-
     itemRange.noUiSlider.on('update', function () {
       const [top, bot] = itemRange.noUiSlider.get()
       topValue.value = toString(top)
       botValue.value = toString(bot)
     })
 
-    // topValue.addEventListener('change', function () {
-    //   itemRange.noUiSlider.set(+(this.value).replace(/\s/g, ''))
-    // })
-    // botValue.addEventListener('change', function () {
-    //   itemRange.noUiSlider.range.max(+(this.value).replace(/\s/g, ''))
-    // })
+    topValue.addEventListener('change', function () {
+      itemRange.noUiSlider.set(+(this.value).replace(/\s/g, ''))
+    })
+    botValue.addEventListener('change', function () {
+      itemRange.noUiSlider.set([null, (this.value).replace(/\s/g, '')])
+    })
   }
 }
 
@@ -77,6 +76,12 @@ function uiSelects() {
       placeholder: select.dataset.placeholder === undefined ? '' : select.dataset.placeholder
     })
   }
+
+  $('.ui-select select').on('select2:closing', function (e) {
+    const parent = this.parentElement
+    const placeholderLength = parent.querySelectorAll('.select2-selection__placeholder').length
+    placeholderLength > 0 ? parent.classList.remove('filled') : parent.classList.add('filled')
+  })
 }
 
 function map() {
@@ -287,12 +292,13 @@ function tabs() {
 }
 
 function headerScripts() {
-  headerHeightCalc()
+  // headerHeightCalc()
 
   const header = document.querySelector('.header')
   const headerSearch = document.querySelector('.header__search')
   const headerSearchInput = headerSearch.querySelector('.search__input')
   const headerShadow = document.querySelector('.header__shadow')
+  const headerMainItem = document.querySelector('.header__main-item')
   const isNotMobile = !window.matchMedia('(max-width: 767px)').matches
 
   if (isNotMobile) {
@@ -307,11 +313,13 @@ function headerScripts() {
   })
   headerSearchInput.addEventListener('focus', function () {
     headerShadow.classList.add('active')
+    headerMainItem.classList.add('header__main-item--open-search')
     document.documentElement.classList.add('ov-hidden')
   })
   headerSearchInput.addEventListener('focusout', function () {
     if (!this.value) {
       headerShadow.classList.remove('active')
+      headerMainItem.classList.remove('header__main-item--open-search')
       document.documentElement.classList.remove('ov-hidden')
     }
   })
@@ -321,23 +329,43 @@ function headerScripts() {
     document.documentElement.classList.remove('ov-hidden')
   })
 
+  window.addEventListener('load', function () {
+    headerHeightCalc()
+  })
   window.addEventListener('resize', function () {
     headerHeightCalc()
+  })
+  window.addEventListener('scroll', function () {
+    // headerHeightCalc()
+    const headerHeight = document.querySelector('.header').offsetHeight
+    document.documentElement.style.setProperty('--header-height-scroll', `${headerHeight}px`)
   })
 
   const catalogOpenButton = document.querySelector('.header__ui-button')
   const catalogNavButtons = document.querySelectorAll('.header-catalog__button')
   const catalogMainItems = document.querySelectorAll('.header-catalog__item')
+  const headerCatalog = document.querySelector('.header-catalog')
+  const headerCatalogClose = document.querySelector('.header-catalog__nav .header-catalog__close')
+  const headerBurgerActiveClass = 'ui-button--burger-active'
+  const headerCatalogContent = document.querySelector('.header-catalog__content')
+  const headerCatalogContentClose = document.querySelector('.header-catalog__content .header-catalog__close')
   catalogOpenButton.addEventListener('click', function () {
     const headerHeight = header.offsetHeight
-    const headerCatalog = document.querySelector('.header-catalog')
 
-    this.classList.toggle('ui-button--burger-active')
+    this.classList.toggle(headerBurgerActiveClass)
     headerCatalog.classList.toggle('active')
     document.documentElement.classList.toggle('ov-hidden')
-    if (this.classList.contains('ui-button--burger-active')) {
+    if (this.classList.contains(headerBurgerActiveClass)) {
       document.documentElement.style.setProperty('--header-height-for-catalog', `${headerHeight}px`)
     }
+  })
+  headerCatalogClose.addEventListener('click', function () {
+    catalogOpenButton.classList.remove(headerBurgerActiveClass)
+    headerCatalog.classList.remove('active')
+    document.documentElement.classList.remove('ov-hidden')
+  })
+  headerCatalogContentClose.addEventListener('click', function () {
+    headerCatalogContent.classList.remove('active')
   })
   for (const [index, item] of catalogNavButtons.entries()) {
     item.addEventListener('click', function () {
@@ -349,6 +377,7 @@ function headerScripts() {
       }
       this.classList.add('active')
       catalogMainItems[index].classList.add('active')
+      headerCatalogContent.classList.add('active')
     })
   }
 

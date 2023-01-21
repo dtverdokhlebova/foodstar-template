@@ -84,21 +84,27 @@ header.header
   .header-catalog
     .inner.header-catalog__inner
       .header-catalog__nav
-        -for(headerCatalogButtons = 1; headerCatalogButtons < 4; headerCatalogButtons++ )
-          .header-catalog__button(class = (headerCatalogButtons === 1) ? 'active' : '')
-            .header-catalog__button-logo
-              img(src='img/catalog_logo_nestle.png', alt='')
-            .header-catalog__button-name Nestle
-              =headerCatalogButtons
-      .header-catalog__main
-        -for(headerCatalogItems = 1; headerCatalogItems < 4; headerCatalogItems++ )
-          .header-catalog__item(class = (headerCatalogItems === 1) ? 'active' : '')
-            .header-catalog__wrapper
-              -for(headerCatalogCompanys = 1; headerCatalogCompanys < (headerCatalogItems * 7); headerCatalogCompanys++ )
-                a.header-catalog__company(href='#')
-                  .header-catalog__company-logo
-                    img(src='img/company_logo_nestle.png', alt='')
-                  .header-catalog__company-name Детская каша NESTLE
+        .header-catalog__head
+          .header-catalog__close Назад
+        .header-catalog__nav-main
+          -for(headerCatalogButtons = 1; headerCatalogButtons < 4; headerCatalogButtons++ )
+            .header-catalog__button(class = (headerCatalogButtons === 1) ? 'active' : '')
+              .header-catalog__button-logo
+                img(src='img/catalog_logo_nestle.png', alt='')
+              .header-catalog__button-name Nestle
+                =headerCatalogButtons
+      .header-catalog__content
+        .header-catalog__head
+          .header-catalog__close Назад
+        .header-catalog__content-main
+          -for(headerCatalogItems = 1; headerCatalogItems < 4; headerCatalogItems++ )
+            .header-catalog__item(class = (headerCatalogItems === 1) ? 'active' : '')
+              .header-catalog__wrapper
+                -for(headerCatalogCompanys = 1; headerCatalogCompanys < (headerCatalogItems * 7); headerCatalogCompanys++ )
+                  a.header-catalog__company(href='#')
+                    .header-catalog__company-logo
+                      img(src='img/company_logo_nestle.png', alt='')
+                    .header-catalog__company-name=`<b><b>${headerCatalogItems} </b></b> Детская каша NESTLE`
 
   .header-burger
     .header-burger__head

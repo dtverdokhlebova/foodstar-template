@@ -37,4 +37,21 @@
   @include media-laptop {
     margin-bottom: 20px;
   }
+  &__all {
+    font-size: 18px;
+    line-height: 1.2;
+    color: $blue;
+    @include media-laptop {
+      font-size: 16px;
+    }
+  }
+  &--flex {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    flex-wrap: wrap;
+    @include media-tablet {
+      gap: 5px 15px;
+    }
+  }
 }

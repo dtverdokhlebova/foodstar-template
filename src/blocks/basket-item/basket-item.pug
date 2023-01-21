@@ -1,0 +1,31 @@
+mixin basket-item(mods)
+  -
+    const baseName = 'basket-item'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .basket-item(class=allMods)&attributes(attributes)
+    +ui-checkbox('basketAll1', '', 'basket-item, --size-l, --filled-blue')
+    a.basket-item__img(href='#')
+      img(src='img/product_img.png', alt='')
+    .basket-item__content
+      .basket-item__text
+        .basket-item__name
+          a(href='#') NESCAFÉ GOLD Aroma Intenso.
+        .basket-item__article Артикул: 12451506
+        .basket-item__price Цена ОПТ: 270 ₽/шт
+      .basket-item__buy
+        +counter('basket-item')
+        .basket-item__amount
+          .basket-item__amount-text Сумма:
+          .basket-item__amount-val 540 ₽
+      .basket-item__actions
+        a.basket-item__actions-item(href='#') В избранное
+        a.basket-item__actions-item(href='#') Удалить
+    block

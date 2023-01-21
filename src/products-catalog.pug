@@ -29,6 +29,8 @@ block content
     .page-content
       +section
         .inner
+          +section-head
+            +ui-h2('Продукция NESCAFE', '--bold')
           .product-catalog
             .product-filter
               .product-filter__head
@@ -95,8 +97,7 @@ block content
                   .product-head__item Наименование
                   .product-head__item стоимость
                   .product-head__item купить
-                //- +product-grid('--column')
-                +product-grid('--table')
+                +product-grid('--column')
                   -for(item = 0; item < 6; item++)
-                    +product-item('', '--table')
+                    +product-item('', '--column')
                 +pagination

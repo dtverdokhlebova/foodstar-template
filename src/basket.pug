@@ -1,0 +1,17 @@
+extends layouts/layout
+
+block variables
+  -
+    const pageTitle ='Корзина'
+
+block content
+  main.main
+    +breadcrumbs
+      +breadcrumbs-item('Главная', 'main.html')
+      +breadcrumbs-item(pageTitle)
+    .page-content
+      +section
+        .inner
+          +section-head
+            +ui-h2(pageTitle, '--bold')
+          +basket

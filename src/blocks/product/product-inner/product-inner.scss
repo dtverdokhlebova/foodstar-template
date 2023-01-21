@@ -27,6 +27,7 @@
       grid-column: 1/-1;
     }
     @include media-tablet {
+      width: 100%;
       margin-top: 20px;
     }
   }

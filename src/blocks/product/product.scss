@@ -31,6 +31,12 @@
   }
   &__ui-select {
     max-width: 265px;
+    @include media-laptop {
+      max-width: 195px;
+    }
+    @include media-tablet {
+      max-width: 150px;
+    }
   }
   &__actions {
     display: flex;
@@ -80,7 +86,7 @@
   }
   &__button {
     position: relative;
-    padding: 0 0 0 30px;
+    padding: 5px 0 5px 30px;
     font-weight: 600;
     font-size: 14px;
     line-height: 1.2;
@@ -105,7 +111,7 @@
 .product-filter {
   position: sticky;
   top: 0;
-  top: calc(var(--header-main-height, 120px) + 20px);
+  top: calc(var(--header-height-scroll, 120px) + 20px);
   align-self: start;
   width: 290px;
   padding: 15px 15px 30px;
@@ -115,7 +121,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 50;
     display: none;
     width: 265px;
     padding: 15px 10px;
@@ -232,6 +238,7 @@
       }
     }
     &.active {
+      font-weight: 700;
       color: $blue;
     }
   }

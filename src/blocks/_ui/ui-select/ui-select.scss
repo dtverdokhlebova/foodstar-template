@@ -13,7 +13,7 @@
           padding: 8px 50px 8px 8px;
         }
         @include media-tablet {
-          padding: 9px 35px 9px 10px;
+          padding: 9px 34px 9px 8px;
         }
         &__placeholder {
           color: #8a8a8a;
@@ -35,6 +35,9 @@
           width: 24px;
           height: 24px;
           transition: 0.3s;
+          @include media-tablet {
+            right: 10px;
+          }
           &::before {
             content: '';
             position: absolute;
@@ -107,6 +110,18 @@
       .select2 {
         &-selection {
           padding: 10px 50px 10px 10px;
+        }
+      }
+    }
+  }
+  &.filled {
+    .select2 {
+      &-selection {
+        border-color: $blue;
+        &__arrow {
+          &::before {
+            border-color: $blue;
+          }
         }
       }
     }

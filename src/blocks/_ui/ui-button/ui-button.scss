@@ -2,19 +2,19 @@
   position: relative;
   display: inline-flex;
   justify-content: center;
-  padding: 10px 35px;
+  padding: 9px 34px;
   font: 600 16px/1.25 $font;
   text-align: center;
   white-space: nowrap;
   color: #fff;
   background: $blue;
-  border: 0;
+  border: 1px solid $blue;
   border-radius: 10px;
   overflow: hidden;
   transition: 0.3s ease;
   cursor: pointer;
   @include media-laptop {
-    padding: 9px 27px;
+    padding: 8px 26px;
     font-size: 14px;
   }
   span {
@@ -35,10 +35,12 @@
   &:active {
     color: $blue;
     background: #cbedff;
+    border-color: #cbedff;
   }
   @include media-hover {
     color: $blue;
     background: #cbedff;
+    border-color: #cbedff;
     &::after {
       top: 0;
       height: 100%;
@@ -83,15 +85,19 @@
   }
   &--size-m {
     min-width: 212px;
-    padding: 14px 42px;
+    padding: 13px 41px;
     font-size: 18px;
     @include media-laptop {
-      padding: 12px 42px;
+      padding: 11px 41px;
       font-size: 16px;
     }
     @include media-tablet {
       min-width: unset;
     }
+  }
+  &--empty {
+    color: $blue;
+    background: transparent;
   }
   &--burger-active {
     .ui-button__burger {

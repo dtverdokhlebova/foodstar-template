@@ -58,13 +58,16 @@
         width: 760px;
         height: 416px;
         border-radius: 25px;
+        overflow: hidden;
         @include media-laptop {
           width: 385px;
           height: 324px;
+          border-radius: 20px;
         }
         @include media-tablet {
           width: 100%;
           height: 300px;
+          border-radius: 15px;
         }
       }
     }

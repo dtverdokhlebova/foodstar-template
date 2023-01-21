@@ -99,6 +99,7 @@ a {
   }
   &-underline {
     text-decoration: underline;
+    text-underline-position: below;
   }
   &-blue {
     color: $blue;

@@ -84,7 +84,7 @@
   }
   &__main {
     padding: 15px 0;
-    transition: 0.3s;
+    transition: 0.3s linear;
     @include media-laptop {
       padding: 20px 0 10px;
     }
@@ -100,6 +100,7 @@
       }
     }
     &-item {
+      position: relative;
       flex: 1;
       display: flex;
       @include media-tablet {
@@ -107,6 +108,19 @@
         flex: auto;
         width: 100%;
         margin-top: 10px;
+      }
+      &--open-search {
+        .header {
+          &__ui-button {
+            opacity: 0;
+          }
+          &__search {
+            @include media-tablet {
+              position: absolute;
+              width: 100%;
+            }
+          }
+        }
       }
     }
   }
@@ -203,16 +217,20 @@
     @include media-laptop {
       padding: 9px 13px;
     }
+    @include media-tablet {
+      margin-right: 15px;
+    }
   }
   &__search {
     z-index: 100;
     flex: 1;
     margin: 0 30px 0 34px;
+    transition: 0.3s;
     @include media-laptop {
       margin: 0 20px;
     }
     @include media-tablet {
-      margin: 0 0 0 15px;
+      margin: 0;
     }
   }
   &__burger-btn {
@@ -293,23 +311,6 @@
       visibility: visible;
     }
   }
-//   &--burger-active {
-//     .header {
-//       &__content,
-//       &__shadow {
-//         opacity: 1;
-//         visibility: visible;
-//       }
-//       &__burger-btn {
-//         &::before {
-//           transform: rotate(-45deg) translate(0, 0);
-//         }
-//         &::after {
-//           transform: rotate(45deg) translate(0, 0);
-//         }
-//       }
-//     }
-//   }
 }
 .header-catalog {
   position: fixed;
@@ -353,6 +354,41 @@
     }
     @include media-tablet {
       display: block;
+      padding: 0;
+    }
+  }
+  &__head {
+    position: sticky;
+    top: 0;
+    display: none;
+    padding: 10px var(--inner-pd);
+    text-align: right;
+    background: #fff;
+    box-shadow: 0 4px 35px rgb(0 0 0 / 0.07);
+    @include media-tablet {
+      display: block;
+    }
+  }
+  &__close {
+    position: relative;
+    display: inline-flex;
+    padding-left: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    color: $blue;
+    cursor: pointer;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.6042 17.5827L5.58335 10.5827C5.50002 10.4993 5.44113 10.4091 5.40669 10.3118C5.37169 10.2146 5.35419 10.1105 5.35419 9.99935C5.35419 9.88824 5.37169 9.78407 5.40669 9.68685C5.44113 9.58963 5.50002 9.49935 5.58335 9.41602L12.6042 2.39518C12.7986 2.20074 13.0417 2.10352 13.3334 2.10352C13.625 2.10352 13.875 2.20768 14.0834 2.41602C14.2917 2.62435 14.3959 2.8674 14.3959 3.14518C14.3959 3.42296 14.2917 3.66602 14.0834 3.87435L7.95835 9.99935L14.0834 16.1244C14.2778 16.3188 14.375 16.5582 14.375 16.8427C14.375 17.1277 14.2709 17.3744 14.0625 17.5827C13.8542 17.791 13.6111 17.8952 13.3334 17.8952C13.0556 17.8952 12.8125 17.791 12.6042 17.5827Z' fill='%231D57A5'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
   &__nav {
@@ -361,6 +397,9 @@
       padding: 20px 0;
     }
     @include media-tablet {
+      padding: 0;
+    }
+    &-main {
       padding: 15px 0;
     }
   }
@@ -374,7 +413,7 @@
       padding: 2px 10px;
     }
     @include media-tablet {
-      padding: 6px 15px;
+      padding: 6px var(--inner-pd);
     }
     &:not(:last-child) {
       @include media-laptop {
@@ -411,8 +450,9 @@
       }
     }
   }
-  &__main {
+  &__content {
     height: inherit;
+    background: #fff;
     @include media-tablet {
       position: absolute;
       top: 0;
@@ -421,13 +461,26 @@
       display: none;
       width: 100%;
       height: 100%;
+      overflow-y: auto;
+      animation: fade-in 0.3s;
+    }
+    &-main {
+      height: inherit;
+      @include media-tablet {
+        height: auto;
+        padding: 20px var(--inner-pd);
+      }
+    }
+    &.active {
+      @include media-tablet {
+        display: block;
+      }
     }
   }
   &__item {
     display: none;
     height: inherit;
     padding: 25px 35px 25px 60px;
-    background: #fff;
     overflow-y: auto;
     animation: fade-in 0.3s;
     @include media-laptop {
@@ -508,7 +561,7 @@
   overflow-y: auto;
   visibility: hidden;
   &__head {
-    padding: 10px 15px;
+    padding: 10px var(--inner-pd);
     font-weight: 600;
     font-size: 14px;
     line-height: 140%;
