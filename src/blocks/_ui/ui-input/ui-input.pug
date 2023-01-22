@@ -11,7 +11,6 @@ mixin ui-input(id, text, mods, type)
     }
 
   .ui-input(class=allMods)
-    .ui-input__head
-      span.ui-input__label=text
-      span.ui-input__error Заполните эту форму
-    input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)
+    label.ui-input__label=text
+    input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text') data-parsley-errors-messages-disabled)&attributes(attributes)
+    .ui-input__error Заполните эту форму

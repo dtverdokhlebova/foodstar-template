@@ -3,18 +3,21 @@ extends layouts/layout
 block variables
   -
     const pageTitle ='Сотрудничество'
+    const pagePath = 'cooperation.html'
 
 block content
   main.main
     +breadcrumbs
       +breadcrumbs-item('Главная', 'main.html')
       +breadcrumbs-item(pageTitle)
+
     .page-content
       +section
         .inner
           +section-head
             +ui-h2('Сотрудничество', '--bold')
           +cooperation
+
       +section('--bg')
         .inner
           +form-cooperation

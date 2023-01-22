@@ -13,20 +13,17 @@ mixin basket(mods)
   .basket(class=allMods)&attributes(attributes)
     .basket-content
       .basket-head
-        +ui-checkbox('basketAll', 'Выбрать все', 'basket-head, --size-l, --filled-blue')
+        +ui-checkbox('basketAll', 'Выбрать все', 'basket-head, --size-l, --filled-blue')(checked)
         .basket-head__text Позиций в корзине: 6
         a.basket-head__delete.js-open-popup(href='#popup-delete-products-all') Удалить выбранные
       .basket-list
-
         -for(basketItems = 1; basketItems < 7; basketItems++)
           +basket-item(`basket-item${basketItems}`)
-
         .basket-license
           .basket-license__title Алкогольная продукция
           .basket-license__main Чтобы приобрести алкогольную продукцию, загрузите лицензию в
             =' '
             a.ui-underline(href='#') своем профиле
-
         -for(basketItems = 7; basketItems < 9; basketItems++)
           +basket-item(`basket-item${basketItems}`)
 

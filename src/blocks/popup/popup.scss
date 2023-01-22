@@ -17,7 +17,7 @@
     @include media-tablet {
       width: 100%;
       max-width: 100%;
-      margin: auto;
+      margin: auto 0 0;
       padding: 15px;
       border-radius: 20px 20px 0 0;
     }
@@ -37,6 +37,7 @@
     }
     &--big {
       max-width: 1240px;
+      margin: auto;
       padding-top: 60px;
       border-radius: 20px;
       @include media-tablet {

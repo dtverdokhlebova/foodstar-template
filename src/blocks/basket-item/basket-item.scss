@@ -75,7 +75,7 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 137%;
-    color: #8a8a8a;
+    color: $grey80;
     @include media-laptop {
       margin-bottom: 10px;
       font-size: 13px;
@@ -91,6 +91,7 @@
   }
   &__buy {
     align-self: center;
+    grid-row: span 2;
     display: flex;
     align-items: center;
     gap: 40px;
@@ -125,26 +126,27 @@
     }
   }
   &__actions {
+    align-self: end;
     display: flex;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.2;
     color: $blue;
-    &-item {
-      position: relative;
-      display: inline-flex;
-      &:not(:last-child) {
-        margin-right: 10px;
-        padding-right: 10px;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          width: 1px;
-          background: #9b9b9b;
-        }
+  }
+  &__link {
+    position: relative;
+    display: inline-flex;
+    &:not(:last-child) {
+      margin-right: 10px;
+      padding-right: 10px;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 1px;
+        background: #9b9b9b;
       }
     }
   }

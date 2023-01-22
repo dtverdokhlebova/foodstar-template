@@ -10,12 +10,6 @@
     margin: 0 calc(var(--inner-pd) * -1);
   }
 }
-.basket-list {
-  margin-top: 20px;
-  @include media-laptop {
-    margin-top: 15px;
-  }
-}
 .basket-head {
   position: sticky;
   top: var(--header-height-scroll, 150px);
@@ -23,17 +17,19 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  margin-bottom: 20px;
   padding: 20px 15px;
   background: #cbedff;
   border-radius: 3px;
   @include media-laptop {
-    margin: 0 calc(var(--inner-pd) * -1);
+    margin: 0 calc(var(--inner-pd) * -1) 15px;
     padding: 15px 25px;
     border-radius: 0;
   }
   @include media-tablet {
     flex-wrap: wrap;
-    margin: 0;
+    column-gap: 5px;
+    margin: 0 0 15px;
     padding: 10px var(--inner-pd);
   }
   &__text {
@@ -105,7 +101,7 @@
   position: sticky;
   top: var(--header-height-scroll, 150px);
   padding: 20px;
-  background: #f7fafb;
+  background: $grey;
   box-shadow: 0 4px 22px rgb(88 86 86 / 0.15);
   border-radius: 10px;
   @include media-laptop {

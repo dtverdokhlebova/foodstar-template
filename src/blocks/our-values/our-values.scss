@@ -1,7 +1,7 @@
 .our-values {
   display: grid;
-  grid-template-columns: 31% 1fr 24%;
-  gap: 50px 125px;
+  grid-template-columns: 31% 1fr 31%;
+  gap: 50px 95px;
   text-align: center;
   @include media-laptop {
     grid-template-columns: repeat(3, 1fr);
@@ -10,6 +10,12 @@
   @include media-tablet {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  &__item {
+    @include media-tablet {
+      max-width: 240px;
+      margin: 0 auto;
+    }
   }
   &__icon {
     width: 100px;

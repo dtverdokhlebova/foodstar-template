@@ -5,6 +5,9 @@
   padding: 0 14px;
   border: 1px solid #e2e2e2;
   border-radius: 10px;
+  @include media-laptop {
+    height: 36px;
+  }
   &__input {
     flex: auto;
     width: 100%;
@@ -19,6 +22,7 @@
     box-shadow: none;
     appearance: none;
     outline: none;
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     -moz-appearance: textfield;
     &::-webkit-inner-spin-button,
     &::-webkit-outer-spin-button {

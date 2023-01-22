@@ -36,7 +36,7 @@ footer.footer
         ul.footer__pages
           each item in footerPages
             .footer__pages-item
-              a(href=item.link)=item.text
+              a.footer__pages-link(class = (pagePath === item.link ? 'active' : '') href=item.link)=item.text
 
       .footer__column
         .footer__title Популярные бренды
@@ -52,7 +52,7 @@ footer.footer
       .footer__to-top
 
     .footer__foot
-      .footer__copyright © 2022. «Food star»
+      .footer__copyright © 2023. «Food star»
       .footer__policy
         a(href='#') Политика конфиденциальности
 

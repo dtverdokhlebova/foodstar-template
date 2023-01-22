@@ -1,0 +1,23 @@
+.product-view-nav {
+  display: flex;
+  gap: 15px;
+  &__item {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: $grey80;
+    cursor: pointer;
+    @include media-laptop {
+      width: 25px;
+      height: 25px;
+    }
+    svg {
+      width: 100%;
+    }
+    &.active {
+      color: $blue;
+    }
+  }
+}

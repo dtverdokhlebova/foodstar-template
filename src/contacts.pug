@@ -3,6 +3,7 @@ extends layouts/layout
 block variables
   -
     const pageTitle = 'Контактная информация'
+    const pagePath = 'contacts.html'
 
   -
     const contactsInner =[
@@ -25,6 +26,7 @@ block content
     +breadcrumbs
       +breadcrumbs-item('Главная', 'main.html')
       +breadcrumbs-item('Контакты')
+
     .page-content
       +section
         .inner

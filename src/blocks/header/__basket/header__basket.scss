@@ -61,5 +61,8 @@
   }
   &--empty {
     color: #989898;
+    @include media-tablet {
+      color: $blue;
+    }
   }
 }

@@ -3,6 +3,7 @@ extends layouts/layout
 block variables
   -
     const pageTitle ='Новости Детальная'
+    const pagePath = 'news.html'
 
 block content
   main.main
@@ -10,6 +11,7 @@ block content
       +breadcrumbs-item('Главная', 'main.html')
       +breadcrumbs-item('Новости',  'news.html')
       +breadcrumbs-item('Статья')
+
     .page-content
       +section
         .inner

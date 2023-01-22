@@ -10,6 +10,13 @@
     gap: 10px 15px;
   }
   &__item {
+    display: flex;
     max-height: 150px;
+    @include media-laptop {
+      max-height: 100px;
+    }
+    img {
+      margin: auto;
+    }
   }
 }

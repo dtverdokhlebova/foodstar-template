@@ -2,7 +2,8 @@ extends layouts/layout
 
 block variables
   -
-    const pageTitle ='Index'
+    const pageTitle ='Главная'
+    const pagePath = 'main.html'
 
   -
     const contactsBlock =[
@@ -28,7 +29,7 @@ block variables
     ]
 
 block content
-  main.main.main-pt-l
+  main.main.main--pt-l
     .page-content
       +section('--ov')
         +banners-list

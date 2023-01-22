@@ -8,6 +8,8 @@
   background: #cbedff;
   border-radius: 20px;
   visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
   @include media-laptop {
     right: 10px;
     bottom: 10px;
@@ -34,6 +36,7 @@
     width: 100%;
   }
   &.active {
+    opacity: 1;
     visibility: visible;
   }
 }

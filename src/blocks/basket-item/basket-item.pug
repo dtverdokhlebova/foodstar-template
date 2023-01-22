@@ -11,7 +11,7 @@ mixin basket-item(idCheckbox, mods)
     }
 
   .basket-item(class=allMods)&attributes(attributes)
-    +ui-checkbox(idCheckbox, '', 'basket-item, --size-l, --filled-blue')
+    +ui-checkbox(idCheckbox, '', 'basket-item, --size-l, --filled-blue')(checked)
     a.basket-item__img(href='#')
       img(src='img/product_img.png', alt='')
     .basket-item__content
@@ -26,6 +26,6 @@ mixin basket-item(idCheckbox, mods)
           .basket-item__amount-text Сумма:
           .basket-item__amount-val 540 ₽
       .basket-item__actions
-        a.basket-item__actions-item(href='#') В избранное
-        a.basket-item__actions-item.js-open-popup(href='#popup-delete-product') Удалить
+        a.basket-item__link(href='#') В избранное
+        a.basket-item__link.js-open-popup(href='#popup-delete-product') Удалить
     block

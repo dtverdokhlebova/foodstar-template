@@ -3,12 +3,14 @@ extends layouts/layout
 block variables
   -
     const pageTitle ='Скачать Каталог'
+    const pagePath = 'catalog.html'
 
 block content
   main.main
     +breadcrumbs
       +breadcrumbs-item('Главная', 'main.html')
       +breadcrumbs-item('Каталог')
+
     .page-content
       +section
         .inner

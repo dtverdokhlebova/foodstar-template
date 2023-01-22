@@ -9,12 +9,14 @@ block content
     +breadcrumbs
       +breadcrumbs-item('Главная', 'main.html')
       +breadcrumbs-item(pageTitle)
+
     .page-content
       +section
         .inner
           +section-head
             +ui-h2('Избранные товары', '--bold')
           +product-grid('--4items')
+            +product-item('favActive, noImg', '--column')
             -for(item = 0; item < 6; item++)
               +product-item('favActive', '--column')
           +pagination

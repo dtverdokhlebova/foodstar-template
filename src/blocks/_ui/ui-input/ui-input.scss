@@ -1,4 +1,5 @@
 .ui-input {
+  position: relative;
   input {
     width: 100%;
     padding: 13px 14px 14px;
@@ -8,28 +9,39 @@
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
+    transition: 0.3s;
     outline: none !important;
     @include media-laptop {
       font-size: 13px;
     }
-  }
-  &__head {
-    margin-bottom: 10px;
+    &:focus {
+      border-color: $blue;
+    }
+    &.parsley-error {
+      border-color: $error;
+      ~ .ui-input__error {
+        display: block;
+      }
+    }
   }
   &__label {
+    display: block;
+    margin-bottom: 10px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 100%;
     &:not(:last-child) {
       margin-right: 8px;
     }
   }
   &__error {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
     display: none;
     font-style: italic;
     font-weight: 500;
     font-size: 13px;
-    line-height: 100%;
+    animation: fade-in 0.3s;
     color: $error;
   }
 }

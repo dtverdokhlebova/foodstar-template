@@ -120,6 +120,11 @@
         margin-bottom: 13px;
       }
     }
+    &-link {
+      &.active {
+        color: $blue;
+      }
+    }
   }
   &__brands {
     display: flex;
@@ -140,7 +145,7 @@
       }
       @include media-tablet {
         width: 100%;
-        max-width: unset;
+        max-width: 100%;
       }
       &:nth-child(3) {
         @include media-laptop {

@@ -78,7 +78,7 @@ header.header
         ul.header__menu
           each item in headerMenu
             li.header__menu-item
-              a.header__menu-link(href=item.link)=item.name
+              a.header__menu-link(class=(pagePath === item.link ? 'active' : '')  href=item.link)=item.name
         +header__basket()
 
   .header-catalog
@@ -104,7 +104,8 @@ header.header
                   a.header-catalog__company(href='#')
                     .header-catalog__company-logo
                       img(src='img/company_logo_nestle.png', alt='')
-                    .header-catalog__company-name=`<b><b>${headerCatalogItems} </b></b> Детская каша NESTLE`
+                    .header-catalog__company-name Детская каша NESTLE
+                      b=headerCatalogItems
 
   .header-burger
     .header-burger__head
@@ -113,7 +114,7 @@ header.header
       ul.header-burger__menu
         each item in headerMenu
           li.header-burger__menu-item
-            a.header-burger__menu-link(href=item.link)=item.name
+            a.header-burger__menu-link(class = (pagePath === item.link ? 'active' : '') href=item.link)=item.name
       .header-burger__links
         a.header-burger__links-item(href='tel:88001234567')
           .header-burger__links-icon
@@ -133,4 +134,3 @@ header.header
           .header-burger__links-descr г. Старый Оскол, ул. Первой Конной Армии, д. 67, ПОМЕЩ. 20
 
   .header__shadow
-        //- +ui-button('Заказать звонок', '--empty, header')(href='javascript:void(0)' onclick='window.getPopup("#contact-us-form")')

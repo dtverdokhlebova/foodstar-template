@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', function () {
   uiRange()
   uiSelects()
@@ -6,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   brands()
   counter()
   headerScripts()
-  // headerHeightCalc()
   footer()
+  inputMask()
   noticeAdded()
   popup()
   productCatalog()
@@ -102,7 +103,6 @@ function wishlistButton() {
     allowHTML: true,
     appendTo: 'parent',
     trigger: 'mouseenter focus',
-    // trigger: 'click',
     theme: 'wishlist-tooltip',
     maxWidth: 300
   })
@@ -119,12 +119,14 @@ function mapInit() {
   const mapIconImageOffset = window.innerWidth > 767 ? [-38, -42] : [-26, -30]
 
   const myMap = new ymaps.Map('contactsMap', {
+    // eslint-disable-next-line unicorn/numeric-separators-style
     center: [51.34314, 37.851592],
     zoom: 13,
     controls: []
   }, {
     suppressMapOpenBlock: true
   })
+  // eslint-disable-next-line unicorn/numeric-separators-style
   const placemark = new ymaps.Placemark([51.34314, 37.851592], {}, {
     iconLayout: 'default#image',
     iconImageHref: 'img/map_logo.svg',
@@ -135,7 +137,7 @@ function mapInit() {
   myMap.geoObjects.add(placemark)
   if (window.innerWidth < 1025) {
     myMap.behaviors.disable('drag')
-    // myMap.behaviors.disable('scrollZoom')
+    myMap.behaviors.disable('scrollZoom')
   }
 }
 
@@ -219,6 +221,7 @@ function productView() {
     const navMain = document.querySelector('.product-view-main')
     const productItems = navMain.querySelectorAll('.product-item')
     const productGrid = navMain.querySelector('.product-grid')
+    const productHead = document.querySelector('.product-head')
 
     for (const item of navItems) {
       item.addEventListener('click', function () {
@@ -231,6 +234,7 @@ function productView() {
         }
         this.classList.add('active')
         productGrid.className = `product-grid product-grid--${viewType}`
+        viewType === 'table' ? productHead.classList.add('active') : productHead.classList.remove('active')
       })
     }
   }
@@ -259,13 +263,15 @@ function productCatalog() {
   if (document.querySelectorAll('.product-filter').length > 0) {
     const openButton = document.querySelector('.product-open-filter__button')
     const filter = document.querySelector('.product-filter')
-    const closeButton = filter.querySelector('.product-filter__btn')
+    const closeButtons = filter.querySelectorAll('.js-product-filter-close')
     openButton.addEventListener('click', function () {
       filter.classList.add('active')
     })
-    closeButton.addEventListener('click', function () {
-      filter.classList.remove('active')
-    })
+    for (const button of closeButtons) {
+      button.addEventListener('click', function () {
+        filter.classList.remove('active')
+      })
+    }
   }
 }
 
@@ -316,7 +322,7 @@ function tabs() {
 }
 
 function headerScripts() {
-  // headerHeightCalc()
+  headerHeightCalc()
 
   const header = document.querySelector('.header')
   const headerSearch = document.querySelector('.header__search')
@@ -324,13 +330,6 @@ function headerScripts() {
   const headerShadow = document.querySelector('.header__shadow')
   const headerMainItem = document.querySelector('.header__main-item')
   const isNotMobile = !window.matchMedia('(max-width: 767px)').matches
-
-  if (isNotMobile) {
-    window.addEventListener('scroll', function () {
-      const scrollValue = $(window).scrollTop()
-      scrollValue > 60 ? header.classList.add('header--scroll') : header.classList.remove('header--scroll')
-    })
-  }
 
   headerSearchInput.addEventListener('input', function () {
     this.value ? headerSearch.classList.add('search--input') : headerSearch.classList.remove('search--input')
@@ -354,15 +353,23 @@ function headerScripts() {
   })
 
   window.addEventListener('load', function () {
-    headerHeightCalc()
+    setTimeout(() => {
+      headerHeightScrollCalc()
+    }, 300)
   })
   window.addEventListener('resize', function () {
     headerHeightCalc()
   })
   window.addEventListener('scroll', function () {
-    // headerHeightCalc()
     headerHeightScrollCalc()
   })
+
+  if (isNotMobile) {
+    window.addEventListener('scroll', function () {
+      const scrollValue = $(window).scrollTop()
+      scrollValue > 60 ? header.classList.add('header--scroll') : header.classList.remove('header--scroll')
+    })
+  }
 
   const catalogOpenButton = document.querySelector('.header__ui-button')
   const catalogNavButtons = document.querySelectorAll('.header-catalog__button')
@@ -419,9 +426,7 @@ function headerScripts() {
 
 function headerHeightCalc() {
   const headerHeight = document.querySelector('.header').offsetHeight
-  // const headerMainHeight = document.querySelector('.header__main').offsetHeight
   document.documentElement.style.setProperty('--header-height', `${headerHeight}px`)
-  // document.documentElement.style.setProperty('--header-main-height', `${headerMainHeight}px`)
 }
 
 function headerHeightScrollCalc() {
@@ -454,27 +459,28 @@ function footerBrands() {
 }
 
 function validation() {
-  $('form').parsley({
-    // errorClass: 'mmmmmmmparsley-error',
-    // classHandler: function (field) {
-    //   // $('#eeeel')
-    //   field.$element.closest('.ui-input')
-    //   // $(field).parents('.ui-input')
-    //   // console.log($(field).parents('.ui-input'))
-    //   // console.log($(field).parents('.ui-input'))
-    //   // console.log(field.closest('.ui-input'))
-    //   // closest
-    //   // Field.parents('ui-input')
-    //   // $(Field).parents('.ui-input')
-    // }
-  })
+  $('form').parsley()
   window.Parsley.addValidator('phone', {
     validateString: function (value) {
-      return (
-        /^\+\d{11}(\d{1,2})?$/.test(value)
-      )
+      return /^\+7 \(9\d{2}\) \d{3}-\d{2}-\d{2}$/.test(value)
     }
   })
+  window.Parsley.addValidator('inn', {
+    validateString: function (value) {
+      return /^\d{10}$|^\d{12}$/.test(value)
+    }
+  })
+}
+
+function inputMask() {
+  Inputmask({
+    mask: '+7 (\\999) 999-99-99',
+    showMaskOnHover: false
+  }).mask('[data-mask=phone]')
+  Inputmask({
+    mask: '9',
+    repeat: 12
+  }).mask('[data-mask=inn]')
 }
 
 function basket() {

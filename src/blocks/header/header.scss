@@ -81,6 +81,11 @@
       gap: 15px;
       font-size: 14px;
     }
+    &-link {
+      &.active {
+        color: $blue;
+      }
+    }
   }
   &__main {
     padding: 15px 0;
@@ -112,7 +117,9 @@
       &--open-search {
         .header {
           &__ui-button {
-            opacity: 0;
+            @include media-tablet {
+              opacity: 0;
+            }
           }
           &__search {
             @include media-tablet {
@@ -590,6 +597,11 @@
     &-item {
       &:not(:last-child) {
         margin-bottom: 20px;
+      }
+    }
+    &-link {
+      &.active {
+        color: $blue;
       }
     }
   }
