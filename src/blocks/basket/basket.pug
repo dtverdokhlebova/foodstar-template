@@ -15,11 +15,11 @@ mixin basket(mods)
       .basket-head
         +ui-checkbox('basketAll', 'Выбрать все', 'basket-head, --size-l, --filled-blue')
         .basket-head__text Позиций в корзине: 6
-        button.basket-head__delete Удалить выбранные
+        a.basket-head__delete.js-open-popup(href='#popup-delete-products-all') Удалить выбранные
       .basket-list
 
-        -for(basketItems = 0; basketItems < 6; basketItems++)
-          +basket-item
+        -for(basketItems = 1; basketItems < 7; basketItems++)
+          +basket-item(`basket-item${basketItems}`)
 
         .basket-license
           .basket-license__title Алкогольная продукция
@@ -27,8 +27,8 @@ mixin basket(mods)
             =' '
             a.ui-underline(href='#') своем профиле
 
-        -for(basketItems = 0; basketItems < 2; basketItems++)
-          +basket-item
+        -for(basketItems = 7; basketItems < 9; basketItems++)
+          +basket-item(`basket-item${basketItems}`)
 
     .basket-total
       .basket-total__title Ваша корзина

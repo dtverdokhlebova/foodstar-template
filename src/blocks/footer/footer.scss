@@ -48,7 +48,6 @@
   &__main {
     position: relative;
     display: grid;
-    // grid-template-columns: repeat(3, auto);
     grid-template-columns: auto 120px minmax(1px, 1fr);
     column-gap: 100px;
     padding-right: 145px;
@@ -106,6 +105,9 @@
       width: 20px;
       height: 20px;
     }
+  }
+  &__ui-button {
+    margin-top: 15px;
   }
   &__pages {
     margin: 0;

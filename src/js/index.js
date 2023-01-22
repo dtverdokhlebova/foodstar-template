@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', function () {
   uiRange()
   uiSelects()
   bannersList()
+  basket()
   brands()
   counter()
   headerScripts()
   // headerHeightCalc()
   footer()
+  noticeAdded()
+  popup()
   productCatalog()
   productItem()
   productView()
@@ -14,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
   productSlider()
   tabs()
   validation()
+  wishlistButton()
 })
 
 window.addEventListener('load', function () {
@@ -77,10 +81,30 @@ function uiSelects() {
     })
   }
 
-  $('.ui-select select').on('select2:closing', function (e) {
+  $('.ui-select select').on('select2:closing', function () {
     const parent = this.parentElement
     const placeholderLength = parent.querySelectorAll('.select2-selection__placeholder').length
     placeholderLength > 0 ? parent.classList.remove('filled') : parent.classList.add('filled')
+  })
+}
+
+function wishlistButton() {
+  $('.wishlist-button__icon').on('click', function () {
+    $(this).parents('.wishlist-button').toggleClass('active')
+  })
+
+  const tooltips = document.querySelectorAll('.wishlist-button__icon')
+  tippy(tooltips, {
+    content(reference) {
+      const content = reference.nextElementSibling
+      return content.innerHTML
+    },
+    allowHTML: true,
+    appendTo: 'parent',
+    trigger: 'mouseenter focus',
+    // trigger: 'click',
+    theme: 'wishlist-tooltip',
+    maxWidth: 300
   })
 }
 
@@ -337,8 +361,7 @@ function headerScripts() {
   })
   window.addEventListener('scroll', function () {
     // headerHeightCalc()
-    const headerHeight = document.querySelector('.header').offsetHeight
-    document.documentElement.style.setProperty('--header-height-scroll', `${headerHeight}px`)
+    headerHeightScrollCalc()
   })
 
   const catalogOpenButton = document.querySelector('.header__ui-button')
@@ -401,6 +424,11 @@ function headerHeightCalc() {
   // document.documentElement.style.setProperty('--header-main-height', `${headerMainHeight}px`)
 }
 
+function headerHeightScrollCalc() {
+  const headerHeight = document.querySelector('.header').offsetHeight
+  document.documentElement.style.setProperty('--header-height-scroll', `${headerHeight}px`)
+}
+
 function footer() {
   footerBrands()
 
@@ -449,82 +477,88 @@ function validation() {
   })
 }
 
-// function header() {
-//   const headerElement = document.querySelector('.header')
-//   const burgerButton = headerElement.querySelector('.header__burger-btn')
-//   burgerButton.addEventListener('click', function () {
-//     headerElement.classList.toggle('header--burger-active')
-//     document.documentElement.classList.toggle('ov-hidden')
-//   })
+function basket() {
+  const basketAll = document.querySelector('.basket-head__ui-checkbox input')
+  const basketItems = document.querySelectorAll('.basket-item__ui-checkbox input')
 
-// function tabs() {
-//   setTimeout(() => {
-//     for (const tabsElement of document.querySelectorAll('.tabs')) {
-//       const tabsHead = tabsElement.querySelector('.tabs-head')
-//       const tabsHeadItems = tabsHead.querySelectorAll('.tabs-head__item')
-//       const overlay = tabsHead.querySelector('.tabs-head__overlay')
-//       const activeTabsHead = tabsHead.querySelector('.tabs-head__item--active')
-//       setTabOverlay(overlay, activeTabsHead)
+  if (basketItems.length > 0) {
+    basketAll.addEventListener('change', function () {
+      if (this.checked) {
+        for (const item of basketItems) {
+          item.checked = true
+        }
+      } else {
+        for (const item of basketItems) {
+          item.checked = false
+        }
+      }
+    })
 
-//       const tabsContent = tabsElement.querySelector('.tabs-content')
-//       const tabsContentSlider = new Swiper(tabsContent, {
-//         autoHeight: true,
-//         allowTouchMove: true,
-//         spaceBetween: 50,
-//         breakpoints: {
-//           767: {
-//             allowTouchMove: false
-//           }
-//         },
-//         on: {
-//           slideChangeTransitionStart: function (swiper) {
-//             tabsHead.querySelector('.tabs-head__item--active').classList.remove('tabs-head__item--active')
-//             tabsHeadItems[swiper.activeIndex].classList.add('tabs-head__item--active')
-//             setTabOverlay(overlay, tabsHeadItems[swiper.activeIndex])
-//           }
-//         }
-//       })
+    for (const item of basketItems) {
+      item.addEventListener('change', function () {
+        basketAll.checked = false
+      })
+    }
+  }
+}
 
-//       for (const tabsHeadItem of tabsHeadItems) {
-//         tabsHeadItem.addEventListener('click', function () {
-//           tabsHead.querySelector('.tabs-head__item--active').classList.remove('tabs-head__item--active')
-//           this.classList.add('tabs-head__item--active')
-//           setTabOverlay(overlay, this)
-//           tabsContentSlider.slideTo([...this.parentNode.children].indexOf(this))
-//         })
-//       }
-//       window.addEventListener('load', function () {
-//         setTimeout(() => {
-//           setTabOverlay(overlay, tabsHead.querySelector('.tabs-head__item--active'))
-//         }, 300)
-//       })
-//     }
-//   }, 100)
-// }
+function noticeAdded() {
+  $('.js-open-notice-added').on('click', function () {
+    $('.notice-added').addClass('active')
+    setTimeout(() => {
+      $('.notice-added').removeClass('active')
+    }, 5000)
+  })
+}
 
+function popup() {
+  window.Fancybox = Fancybox
 
-// function getPopup(url) {
-//   const popupUrl = url
-//   Fancybox.show(
-//     [
-//       {
-//         src: popupUrl,
-//         preload: false
-//       }
-//     ],
-//     {
-//       mainClass: 'popup',
-//       parentEl: document.querySelector('.wrapper'),
-//       showClass: 'fancybox-fadeIn',
-//       hideClass: 'fancybox-fadeOut',
-//       closeButton: false,
-//       hideScrollbar: true,
-//       autoFocus: true,
-//       trapFocus: true,
-//       dragToClose: false,
-//       animated: false
-//     }
-//   )
-//   Fancybox.defaults.ScrollLock = false
-//   return false
-// }
+  Fancybox.defaults.ScrollLock = false
+
+  window.winGetPopup = function (element) {
+    getPopup(element)
+  }
+
+  const closePopupButton = document.querySelector('.js-close-popup')
+  if (closePopupButton) {
+    closePopupButton.addEventListener('click', function () {
+      Fancybox.close(true)
+    })
+  }
+
+  const popupOpenButton = document.querySelectorAll('.js-open-popup')
+  for (const button of popupOpenButton) {
+    if ($(button).length > 0) {
+      button.addEventListener('click', (event) => {
+        event.preventDefault()
+        const popopUrl = button.getAttribute('href')
+        getPopup(popopUrl)
+      })
+    }
+  }
+}
+
+function getPopup(url) {
+  const popupUrl = url
+  Fancybox.show(
+    [
+      {
+        src: popupUrl,
+        preload: false
+      }
+    ],
+    {
+      mainClass: 'popup',
+      parentEl: document.querySelector('.wrapper'),
+      closeButton: false,
+      showClass: 'fancybox-fadeIn',
+      hideClass: 'fancybox-fadeOut',
+      hideScrollbar: true,
+      autoFocus: true,
+      trapFocus: true,
+      dragToClose: false,
+      animated: false
+    }
+  )
+}

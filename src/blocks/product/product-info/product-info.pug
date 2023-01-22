@@ -19,7 +19,8 @@ mixin product-info(mods)
     +product-prices('product-info')
     .product-info__actions
       +counter('--size-l')
-      +ui-button('В корзину', 'product-info, --size-m')
+      +ui-button('В корзину', 'product-info, --size-m').js-open-notice-added
+      +wishlist-button('product-info')
     .product-info__license У вас нет лицензии на продажу алкогольной продукции. Вы можете загрузить ее в
       =' '
       a.ui-underline(href='#') своем профиле.

@@ -1,0 +1,30 @@
+mixin popup-callback(mods)
+  -
+    const baseName = 'popup-callback'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popup-callback(class=allMods)&attributes(attributes)
+    .popup-callback__title Заказать обратный звонок
+    form.popup-callback__form(action='#')
+      .popup-callback__row
+        +ui-input('popupCallbackName', 'Ваше имя')(required)
+      .popup-callback__row
+        +ui-input('popupCallbackPhone', 'Телефон')(required data-parsley-errors-messages-disabled data-parsley-phone='')
+      .popup-callback__submit
+        +ui-button('Отправить', 'popup-callback')
+      .popup-callback__agree Нажимая «Отправить», вы соглашаетесь
+        =' '
+        | с&nbsp;
+        a.text-blue.text-underline(href='#') политикой конфиденциальности
+    br
+    p
+      a.js-open-popup(href='#popup-thank')  popup "спасибо"
+    p чтобы вызвать popup - winGetPopup('#popup-thank')
+    block

@@ -1,4 +1,4 @@
-mixin popup-wrapper(id, mods)
+mixin popup-wrapper(mods)
   -
     const baseName = 'popup-wrapper'
     let allMods = ''
@@ -11,4 +11,38 @@ mixin popup-wrapper(id, mods)
     }
 
   .popup-wrapper(id=id class=allMods style='display: none;')&attributes(attributes)
+    block
+
+mixin popup-head(h3, descr, mods)
+  -
+    const baseName = 'popup-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popup-head(class=allMods)&attributes(attributes)
+    if h3
+      .popup-head__h3 !{h3}
+    if descr
+      .popup-head__descr !{descr}
+    block
+
+mixin popup-foot(mods)
+  -
+    const baseName = 'popup-foot'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popup-foot(class=allMods)&attributes(attributes)
     block

@@ -15,3 +15,14 @@ block content
           +section-head
             +ui-h2(pageTitle, '--bold')
           +basket
+    +popup-wrapper#popup-delete-product
+      +popup-head('Удалить товар', 'Вы точно хотите удалить товар? <br>Отменить данное действие будет невозможно.')
+      +popup-foot('--flex')
+        +ui-button('Удалить', 'popup-foot')
+        +ui-button('Отменить', 'popup-foot, --grey')
+
+    +popup-wrapper#popup-delete-products-all
+      +popup-head('Удалить выбранные', 'Вы точно хотите удалить выбранные? <br>Отменить данное действие будет невозможно.')
+      +popup-foot('--flex')
+        +ui-button('Удалить', 'popup-foot')
+        +ui-button('Отменить', 'popup-foot, --grey')

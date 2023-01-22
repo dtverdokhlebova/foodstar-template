@@ -16,7 +16,7 @@ mixin form-cooperation(mods)
       form.form-cooperation__main(action='#')
         #eeeel
         .form-cooperation__line.form-cooperation__line--grid
-          +ui-input('formCooperationName', 'ФИО', 'form-cooperation')( required )
+          +ui-input('formCooperationName', 'ФИО', 'form-cooperation')(required)
           +ui-input('formCooperationPhone', 'Телефон', 'form-cooperation')(required data-parsley-errors-messages-disabled data-parsley-phone='')
         .form-cooperation__line.form-cooperation__line--grid
           +ui-input('formCooperationMail', 'Электронная почта', 'form-cooperation', 'email')(required data-parsley-errors-messages-disabled)

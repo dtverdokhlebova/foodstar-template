@@ -1,6 +1,6 @@
-mixin product-inner(mods)
+mixin product-label(text, mods)
   -
-    const baseName = 'product-inner'
+    const baseName = 'product-label'
     let allMods = ''
     if (typeof mods !== 'undefined' && mods) {
       const modsList = mods.split(',')
@@ -10,8 +10,5 @@ mixin product-inner(mods)
       allMods = allMods.trim()
     }
 
-  .product-inner(class=allMods)&attributes(attributes)
-    +product-slider('product-inner')
-    +product-info('product-inner')
-    +ui-button('Все характеристики', 'product-inner, --size-m, --empty').js-open-popup(href='#popup-info')
+  .product-label(class=allMods)&attributes(attributes) !{text}
     block

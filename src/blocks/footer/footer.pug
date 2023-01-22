@@ -29,6 +29,7 @@ footer.footer
               .footer__contacts-icon
                 img(src=`img/${item.icon}.svg`, alt='')
               .footer__contacts-link !{item.text}
+        +ui-button('Заказать звонок', 'footer, --laptop-link').js-open-popup(href='#popup-callback')
 
       .footer__column
         .footer__title Страницы:
@@ -54,3 +55,11 @@ footer.footer
       .footer__copyright © 2022. «Food star»
       .footer__policy
         a(href='#') Политика конфиденциальности
+
++popup-wrapper('--callback')#popup-callback
+  +popup-callback
+
++popup-wrapper('--thank')#popup-thank
+  +popup-thank
+
++notice-added

@@ -1,0 +1,18 @@
+mixin wishlist-button(mods)
+  -
+    const baseName = 'wishlist-button'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .wishlist-button(class=allMods)&attributes(attributes)
+    button.wishlist-button__icon
+    .wishlist-button__tooltip(style='display: none;')
+      .wishlist-button__text-start Добавить в избранное
+      .wishlist-button__text-active Удалить из избранного
+    block

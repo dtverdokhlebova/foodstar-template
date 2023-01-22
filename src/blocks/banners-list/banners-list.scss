@@ -11,22 +11,6 @@
     @include media-tablet {
       overflow: hidden;
     }
-    // &-slide {
-    //   @include media-laptop {
-    //     opacity: 0;
-    //     transition: opacity 0.3s;
-    //   }
-    //   &.swiper-slide-visible {
-    //     @include media-laptop {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
-    // &-slide-visible ~ .swiper-slide {
-    //   @include media-laptop {
-    //     opacity: 1;
-    //   }
-    // }
   }
   &__ui-swiper-buttons {
     position: absolute;

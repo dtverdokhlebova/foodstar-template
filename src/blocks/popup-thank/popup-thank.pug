@@ -1,0 +1,18 @@
+mixin popup-thank(mods)
+  -
+    const baseName = 'popup-thank'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .popup-thank(class=allMods)&attributes(attributes)
+    .popup-thank__title Заявка успешно отправлена!
+    .popup-thank__descr Мы скоро свяжемся с вами
+    .popup-thank__close
+      +ui-button('Закрыть', 'popup-thank').js-close-popup
+    block

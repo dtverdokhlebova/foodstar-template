@@ -12,13 +12,15 @@ mixin product-item(type, mods)
 
   .product-item(class=allMods)&attributes(attributes)
     if type.includes('favActive')
-      a.product-item__fav.active(href='#')
+      +wishlist-button('product-item').active
     else
-      a.product-item__fav(href='#')
-
+      +wishlist-button('product-item')
     if type.includes('hit')
-      .product-item__label
-        img(src='img/label_hit.svg', alt='')
+      +product-label('Хит', 'product-item, --hit')
+    if type.includes('new')
+      +product-label('NEW', 'product-item, --new')
+    if type.includes('promotions')
+      +product-label('Акция', 'product-item, --promotions')
 
     a.product-item__img(href='#')
       if type.includes('noImg')
@@ -35,7 +37,7 @@ mixin product-item(type, mods)
       .product-item__foot
         .product-item__price 320 ₽/шт
         .product-item__actions
-          +ui-button('В корзину', 'product-item')
+          +ui-button('В корзину', 'product-item').js-open-notice-added
           .product-item__form
             +counter('product-item')
 

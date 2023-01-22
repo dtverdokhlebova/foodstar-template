@@ -1,0 +1,30 @@
+.popup-thank {
+  text-align: center;
+  &__title {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 132%;
+    @include media-laptop {
+      font-size: 22px;
+    }
+    @include media-tablet {
+      font-size: 18px;
+    }
+  }
+  &__descr {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 132%;
+    @include media-laptop {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+  }
+  &__ui-button {
+    @include media-tablet {
+      width: 100%;
+    }
+  }
+}

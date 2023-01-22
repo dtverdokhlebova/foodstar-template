@@ -1,6 +1,6 @@
-mixin product-inner(mods)
+mixin notice-added(mods)
   -
-    const baseName = 'product-inner'
+    const baseName = 'notice-added'
     let allMods = ''
     if (typeof mods !== 'undefined' && mods) {
       const modsList = mods.split(',')
@@ -10,8 +10,7 @@ mixin product-inner(mods)
       allMods = allMods.trim()
     }
 
-  .product-inner(class=allMods)&attributes(attributes)
-    +product-slider('product-inner')
-    +product-info('product-inner')
-    +ui-button('Все характеристики', 'product-inner, --size-m, --empty').js-open-popup(href='#popup-info')
+  .notice-added(class=allMods)&attributes(attributes)
+    .notice-added__text Товар добавлен в&nbsp;корзину
+    +ui-button('Перейти в корзину', 'notice-added')(href='#')
     block
