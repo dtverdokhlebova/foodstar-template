@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Каталог товаров</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="." rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="libs/fancybox/fancybox.css">
+    <link rel="stylesheet" href="libs/noUiSlider/nouislider.min.css">
+    <link rel="stylesheet" href="libs/select2/select2.min.css">
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7742add4-5d3c-4060-9f01-67963d12fb4e&amp;lang=ru_RU" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__top">
+          <div class="inner">
+            <div class="header__top-wrapper">
+              <div class="header__top-item header__top-item--locaton">
+                <div class="header__top-icon"><img src="img/icon_location_white.svg" alt=""></div>
+                <div class="header__top-descr">г. Старый Оскол</div>
+                <div class="header__top-descr header__top-descr--detail">,ул. Первой Конной Армии, д. 67, ПОМЕЩ. 20</div>
+              </div>
+              <div class="header__top-item header__top-item--time">
+                <div class="header__top-icon"><img src="img/icon_time_white.svg" alt=""></div>
+                <div class="header__top-descr">09:00 — 21:00</div>
+              </div><a class="header__top-item header__top-item--phone" href="tel:88001234567">
+                <div class="header__top-icon"><img src="img/icon_phone_white.svg" alt=""></div>
+                <div class="header__top-descr">8 800 123-45-67</div></a><a class="header__top-item header__top-item--email" href="mailto:sales@optovikpro.ru">
+                <div class="header__top-icon"><img src="img/icon_mail_white.svg" alt=""></div>
+                <div class="header__top-descr">sales@optovikpro.ru</div></a>
+            </div>
+          </div>
+        </div>
+        <div class="header__main">
+          <div class="inner">
+            <div class="header__main-wrapper"><a class="header__logo" href="/"><img src="img/icon_logo.png" alt="logo"></a>
+              <div class="header__main-item">
+                <button class="ui-button header__ui-button">
+                  <div class="ui-button__burger"><span></span></div><span>Каталог</span>
+                </button>
+                <div class="search header__search">
+                  <form class="search__form" action="#">
+                    <input class="search__input" type="text" placeholder="Поиск"/>
+                    <button class="search__submit"></button>
+                  </form>
+                  <div class="search__result">
+                    <ul class="search__list">
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                      <li class="search__list-li"><a class="search__list-link" href="#">Читос со вкусом сыра</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="header__icons">
+                <div class="header__icons-item"><a class="header__fav" href="#"></a></div>
+                <div class="header__icons-item">
+                  <div class="header__user"></div>
+                </div>
+                <div class="header__icons-item header__icons-item--basket"><a class="header__basket header__basket--empty header__basket--count-static header__basket--icon-l" href="basket.html">
+                    <div class="header__basket-main">
+                      <div class="header__basket-icon">
+                        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M7.5 22.5C8.32843 22.5 9 21.8284 9 21C9 20.1716 8.32843 19.5 7.5 19.5C6.67157 19.5 6 20.1716 6 21C6 21.8284 6.67157 22.5 7.5 22.5Z" fill="currentColor"></path>
+                          <path d="M18 22.5C18.8284 22.5 19.5 21.8284 19.5 21C19.5 20.1716 18.8284 19.5 18 19.5C17.1716 19.5 16.5 20.1716 16.5 21C16.5 21.8284 17.1716 22.5 18 22.5Z" fill="currentColor"></path>
+                          <path d="M21 5.25015H4.365L3.75 2.10015C3.71494 1.9282 3.62068 1.77398 3.48364 1.66435C3.3466 1.55472 3.17546 1.49661 3 1.50015H0V3.00015H2.385L5.25 17.4002C5.28506 17.5721 5.37932 17.7263 5.51636 17.836C5.65339 17.9456 5.82454 18.0037 6 18.0002H19.5V16.5002H6.615L6 13.5002H19.5C19.6734 13.5044 19.8429 13.4484 19.9796 13.3418C20.1163 13.2351 20.2119 13.0843 20.25 12.9152L21.75 6.16515C21.7751 6.05387 21.7745 5.93832 21.7483 5.8273C21.722 5.71628 21.6708 5.61271 21.5985 5.52448C21.5261 5.43625 21.4346 5.36568 21.3309 5.31814C21.2272 5.2706 21.114 5.24735 21 5.25015ZM18.9 12.0002H5.715L4.665 6.75015H20.0625L18.9 12.0002Z" fill="currentColor"></path>
+                        </svg>
+                      </div>
+                    </div></a>
+                </div>
+              </div>
+              <button class="header__burger-btn"><span></span></button>
+            </div>
+          </div>
+        </div>
+        <div class="header__foot">
+          <div class="inner">
+            <div class="header__foot-wrapper">
+              <ul class="header__menu">
+                <li class="header__menu-item"><a class="header__menu-link" href="main.html">Главная</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" href="about.html">О компании</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" href="cooperation.html">Сотрудничество</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" href="news.html">Новости</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" href="contacts.html">Контакты</a></li>
+                <li class="header__menu-item"><a class="header__menu-link" href="catalog.html">Скачать каталог</a></li>
+              </ul><a class="header__basket header__basket--empty" href="basket.html">
+                <div class="header__basket-main">
+                  <div class="header__basket-icon">
+                    <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.5 22.5C8.32843 22.5 9 21.8284 9 21C9 20.1716 8.32843 19.5 7.5 19.5C6.67157 19.5 6 20.1716 6 21C6 21.8284 6.67157 22.5 7.5 22.5Z" fill="currentColor"></path>
+                      <path d="M18 22.5C18.8284 22.5 19.5 21.8284 19.5 21C19.5 20.1716 18.8284 19.5 18 19.5C17.1716 19.5 16.5 20.1716 16.5 21C16.5 21.8284 17.1716 22.5 18 22.5Z" fill="currentColor"></path>
+                      <path d="M21 5.25015H4.365L3.75 2.10015C3.71494 1.9282 3.62068 1.77398 3.48364 1.66435C3.3466 1.55472 3.17546 1.49661 3 1.50015H0V3.00015H2.385L5.25 17.4002C5.28506 17.5721 5.37932 17.7263 5.51636 17.836C5.65339 17.9456 5.82454 18.0037 6 18.0002H19.5V16.5002H6.615L6 13.5002H19.5C19.6734 13.5044 19.8429 13.4484 19.9796 13.3418C20.1163 13.2351 20.2119 13.0843 20.25 12.9152L21.75 6.16515C21.7751 6.05387 21.7745 5.93832 21.7483 5.8273C21.722 5.71628 21.6708 5.61271 21.5985 5.52448C21.5261 5.43625 21.4346 5.36568 21.3309 5.31814C21.2272 5.2706 21.114 5.24735 21 5.25015ZM18.9 12.0002H5.715L4.665 6.75015H20.0625L18.9 12.0002Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="header__basket-text">Корзина</div></a>
+            </div>
+          </div>
+        </div>
+        <div class="header-catalog">
+          <div class="inner header-catalog__inner">
+            <div class="header-catalog__nav">
+              <div class="header-catalog__head">
+                <div class="header-catalog__close">Назад</div>
+              </div>
+              <div class="header-catalog__nav-main">
+                <div class="header-catalog__button active">
+                  <div class="header-catalog__button-logo"><img src="img/catalog_logo_nestle.png" alt=""></div>
+                  <div class="header-catalog__button-name">Nestle1
+                  </div>
+                </div>
+                <div class="header-catalog__button">
+                  <div class="header-catalog__button-logo"><img src="img/catalog_logo_nestle.png" alt=""></div>
+                  <div class="header-catalog__button-name">Nestle2
+                  </div>
+                </div>
+                <div class="header-catalog__button">
+                  <div class="header-catalog__button-logo"><img src="img/catalog_logo_nestle.png" alt=""></div>
+                  <div class="header-catalog__button-name">Nestle3
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="header-catalog__content">
+              <div class="header-catalog__head">
+                <div class="header-catalog__close">Назад</div>
+              </div>
+              <div class="header-catalog__content-main">
+                <div class="header-catalog__item active">
+                  <div class="header-catalog__wrapper"><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>1</b></div></a>
+                  </div>
+                </div>
+                <div class="header-catalog__item">
+                  <div class="header-catalog__wrapper"><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>2</b></div></a>
+                  </div>
+                </div>
+                <div class="header-catalog__item">
+                  <div class="header-catalog__wrapper"><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a><a class="header-catalog__company" href="#">
+                      <div class="header-catalog__company-logo"><img src="img/company_logo_nestle.png" alt=""></div>
+                      <div class="header-catalog__company-name">Детская каша NESTLE<b>3</b></div></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-burger">
+          <div class="header-burger__head">
+            <div class="header-burger__close">Закрыть</div>
+          </div>
+          <div class="header-burger__main">
+            <ul class="header-burger__menu">
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="main.html">Главная</a></li>
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="about.html">О компании</a></li>
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="cooperation.html">Сотрудничество</a></li>
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="news.html">Новости</a></li>
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="contacts.html">Контакты</a></li>
+              <li class="header-burger__menu-item"><a class="header-burger__menu-link" href="catalog.html">Скачать каталог</a></li>
+            </ul>
+            <div class="header-burger__links"><a class="header-burger__links-item" href="tel:88001234567">
+                <div class="header-burger__links-icon"><img src="img/icon_phone_white.svg" alt=""></div>
+                <div class="header-burger__links-descr">8 800 123-45-67</div></a><a class="header-burger__links-item" href="mailto:sales@optovikpro.ru">
+                <div class="header-burger__links-icon"><img src="img/icon_mail_white.svg" alt=""></div>
+                <div class="header-burger__links-descr">sales@optovikpro.ru</div></a>
+              <div class="header-burger__links-item">
+                <div class="header-burger__links-icon"><img src="img/icon_time_white.svg" alt=""></div>
+                <div class="header-burger__links-descr">09:00 — 21:00</div>
+              </div>
+              <div class="header-burger__links-item">
+                <div class="header-burger__links-icon"><img src="img/icon_location_white.svg" alt=""></div>
+                <div class="header-burger__links-descr">г. Старый Оскол, ул. Первой Конной Армии, д. 67, ПОМЕЩ. 20</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header__shadow"></div>
+      </header>
+      <main class="main">
+        <div class="breadcrumbs">
+          <div class="inner">
+            <ul class="breadcrumbs__list">
+              <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="main.html">Главная</a>
+              </li>
+              <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Каталог</a>
+              </li>
+              <li class="breadcrumbs__item"><span class="breadcrumbs__text">NESCAFE</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="page-content">
+          <section class="section">
+            <div class="inner">
+              <div class="section-head">
+                <h2 class="ui-h2 ui-h2--bold">Продукция NESCAFE
+                </h2>
+              </div>
+              <div class="product-catalog">
+                <div class="product-filter">
+                  <div class="product-filter__head">
+                    <div class="product-filter__btn js-product-filter-close">
+                      <div class="product-filter__btn-tablet">Закрыть</div>
+                      <div class="product-filter__btn-mobile">Назад</div>
+                    </div>
+                  </div>
+                  <div class="product-filter__main">
+                    <div class="product-filter__props">
+                      <div class="product-filter__section">
+                        <div class="product-filter__title">Категории</div>
+                        <ul class="product-filter__ul">
+                          <li class="product-filter__li active"><a href="#">Кофе</a></li>
+                          <li class="product-filter__li"><a href="#">Кондитерские изделия</a></li>
+                          <li class="product-filter__li"><a href="#">Кулинария</a></li>
+                          <li class="product-filter__li"><a href="#">Какао-напитки</a></li>
+                          <li class="product-filter__li"><a href="#">Готовые завтраки и&nbsp;злаковые ботончики</a></li>
+                          <li class="product-filter__li"><a href="#">Каши</a></li>
+                          <li class="product-filter__li"><a href="#">Детское питание</a></li>
+                          <li class="product-filter__li"><a href="#">Лечебное и лечебно-профилактическое питание</a></li>
+                          <li class="product-filter__li"><a href="#">Минеральная вода</a></li>
+                          <li class="product-filter__li"><a href="#">Корма для животных</a></li>
+                          <li class="product-filter__li"><a href="#">Молочная продукция</a></li>
+                          <li class="product-filter__li"><a href="#">Соки</a></li>
+                          <li class="product-filter__li"><a href="#">Алкогольная продукция</a></li>
+                        </ul>
+                      </div>
+                      <div class="product-filter__section">
+                        <div class="product-filter__title">Сегмент</div>
+                        <div class="ui-select ui-select--size-s">
+                          <select data-placeholder="Сегмент">
+                            <option label="label"></option>
+                            <option>Весь сегмент</option>
+                            <option>сегмент 1</option>
+                            <option>сегмент 2</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="product-filter__section">
+                        <div class="product-filter__title">Бренд</div>
+                        <div class="product-filter__checks">
+                          <div class="ui-checkbox product-filter__ui-checkbox">
+                            <input id="filterCheckbox1" name="filterCheckbox1" type="checkbox"/>
+                            <label for="filterCheckbox1">NESCAFE GOLD<span class="ui-checkbox__icon"></span>
+                            </label>
+                          </div>
+                          <div class="ui-checkbox product-filter__ui-checkbox">
+                            <input id="filterCheckbox2" name="filterCheckbox2" type="checkbox"/>
+                            <label for="filterCheckbox2">NESCAFE GOLD<span class="ui-checkbox__icon"></span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-filter__section">
+                        <div class="product-filter__title">Цена</div>
+                        <div class="ui-range main-choice__ui-range" id="filterRange" data-min="10" data-max="1000000" data-start-top="20" data-start-bot="850000">
+                          <div class="ui-range__body">
+                            <div class="ui-range__native"></div>
+                          </div>
+                          <div class="ui-range__wrap">
+                            <div class="ui-range__val">
+                              <div class="ui-range__label">от</div>
+                              <input class="ui-range__lower" type="text"/>
+                            </div>
+                            <div class="ui-range__val">
+                              <div class="ui-range__label">до</div>
+                              <input class="ui-range__upper" type="text"/>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="product-filter__actions">
+                      <div class="product-filter__close js-product-filter-close">
+                        <button class="ui-button product-filter__ui-button"><span>Закрыть</span>
+                        </button>
+                      </div>
+                      <div class="product-filter__submit js-product-filter-close">
+                        <button class="ui-button product-filter__ui-button"><span>Применить</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="product-catalog__auxiliary"></div>
+                <div class="product-catalog__main">
+                  <div class="product-catalog__actions">
+                    <div class="product-open-filter">
+                      <button class="product-open-filter__button">Фильтр</button>
+                    </div>
+                    <div class="ui-select product-catalog__ui-select">
+                      <select data-placeholder="Тип сортировки">
+                        <option label="label"></option>
+                        <option>Цена по возрастанию</option>
+                        <option>Цена по убыванию</option>
+                        <option>По умолчанию</option>
+                      </select>
+                    </div>
+                    <div class="product-view-nav">
+                      <button class="product-view-nav__item active" data-type="column">
+                        <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_112_4417)">
+                            <path d="M0 1C0 0.447715 0.447715 0 1 0H12.5C13.0523 0 13.5 0.447715 13.5 1V12.5C13.5 13.0523 13.0523 13.5 12.5 13.5H1C0.447715 13.5 0 13.0523 0 12.5V1ZM4 3C3.44772 3 3 3.44772 3 4V9.5C3 10.0523 3.44772 10.5 4 10.5H9.5C10.0523 10.5 10.5 10.0523 10.5 9.5V4C10.5 3.44772 10.0523 3 9.5 3H4ZM0 17.5C0 16.9477 0.447715 16.5 1 16.5H12.5C13.0523 16.5 13.5 16.9477 13.5 17.5V29C13.5 29.5523 13.0523 30 12.5 30H1C0.447715 30 0 29.5523 0 29V17.5ZM4 19.5C3.44772 19.5 3 19.9477 3 20.5V26C3 26.5523 3.44772 27 4 27H9.5C10.0523 27 10.5 26.5523 10.5 26V20.5C10.5 19.9477 10.0523 19.5 9.5 19.5H4ZM16.5 1C16.5 0.447715 16.9477 0 17.5 0H29C29.5523 0 30 0.447715 30 1V12.5C30 13.0523 29.5523 13.5 29 13.5H17.5C16.9477 13.5 16.5 13.0523 16.5 12.5V1ZM20.5 3C19.9477 3 19.5 3.44772 19.5 4V9.5C19.5 10.0523 19.9477 10.5 20.5 10.5H26C26.5523 10.5 27 10.0523 27 9.5V4C27 3.44772 26.5523 3 26 3H20.5ZM16.5 17.5C16.5 16.9477 16.9477 16.5 17.5 16.5H29C29.5523 16.5 30 16.9477 30 17.5V29C30 29.5523 29.5523 30 29 30H17.5C16.9477 30 16.5 29.5523 16.5 29V17.5ZM20.5 19.5C19.9477 19.5 19.5 19.9477 19.5 20.5V26C19.5 26.5523 19.9477 27 20.5 27H26C26.5523 27 27 26.5523 27 26V20.5C27 19.9477 26.5523 19.5 26 19.5H20.5Z" fill="currentcolor"></path>
+                          </g>
+                          <defs>
+                            <clippath id="clip0_112_4417">
+                              <rect width="30" height="30" fill="white"></rect>
+                            </clippath>
+                          </defs>
+                        </svg>
+                      </button>
+                      <button class="product-view-nav__item" data-type="table">
+                        <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2 4H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2 15H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2 26H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </button>
+                      <button class="product-view-nav__item" data-type="list">
+                        <svg width="30" height="30" viewbox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M10 4H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10 15H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M10 26H27" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2 4H4" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2 15H4" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path d="M2 26H4" stroke="currentcolor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="product-view-main">
+                    <div class="product-head">
+                      <div class="product-head__item">Фото</div>
+                      <div class="product-head__item">Наименование</div>
+                      <div class="product-head__item">стоимость</div>
+                      <div class="product-head__item">купить</div>
+                    </div>
+                    <div class="product-grid product-grid--column">
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product-item product-item--column">
+                        <div class="wishlist-button product-item__wishlist-button">
+                          <button class="wishlist-button__icon"></button>
+                          <div class="wishlist-button__tooltip" style="display: none;">
+                            <div class="wishlist-button__text-start">Добавить в избранное</div>
+                            <div class="wishlist-button__text-active">Удалить из избранного</div>
+                          </div>
+                        </div>
+                        <div class="product-label product-item__product-label product-label--new">NEW
+                        </div><a class="product-item__img" href="#"><img src="img/product_img.png" alt=""/></a>
+                        <div class="product-item__content">
+                          <div class="product-item__text">
+                            <div class="product-item__name"><a href="#"> NESCAFÉ GOLD</a></div>
+                            <div class="product-item__descr"><a href="#"> 100% натуральный растворимый сублимированный кофе с добавлением натурального жареного молотого кофе, пакт 320гр</a></div>
+                          </div>
+                          <div class="product-item__foot">
+                            <div class="product-item__price">320 ₽/шт</div>
+                            <div class="product-item__actions">
+                              <button class="ui-button product-item__ui-button js-open-notice-added"><span>В корзину</span>
+                              </button>
+                              <div class="product-item__form">
+                                <div class="counter product-item__counter">
+                                  <div class="counter__btn counter__btn--minus"></div>
+                                  <input class="counter__input" type="number" min="1" value="1"/>
+                                  <div class="counter__btn counter__btn--plus"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pagination"><a class="ui-button pagination__ui-button" href="#"><span>Показать еще</span></a>
+                      <ul class="pagination__list">
+                        <li class="pagination__item pagination__item--active"><a class="pagination__link" href="#">1</a></li>
+                        <li class="pagination__item"><a class="pagination__link" href="#">2</a></li>
+                        <li class="pagination__item"><a class="pagination__link" href="#">3</a></li>
+                        <li class="pagination__item"><a class="pagination__link" href="#">4</a></li>
+                        <li class="pagination__item"><a class="pagination__link" href="#">5</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="inner">
+          <div class="footer__head"><a class="footer__logo" href="/"><img src="img/icon_logo.png" alt=""></a></div>
+          <div class="footer__main">
+            <div class="footer__column footer__column--contacts">
+              <div class="footer__title">Контакты:</div>
+              <div class="footer__contacts">
+                <div class="footer__contacts-item">
+                  <div class="footer__contacts-icon"><img src="img/icon_location.svg" alt=""></div>
+                  <div class="footer__contacts-link">г. Старый Оскол</div>
+                </div>
+                <div class="footer__contacts-item">
+                  <div class="footer__contacts-icon"><img src="img/icon_phone.svg" alt=""></div>
+                  <div class="footer__contacts-link"><a href="tel:88001234567">8 800 123-45-67</a></div>
+                </div>
+                <div class="footer__contacts-item">
+                  <div class="footer__contacts-icon"><img src="img/icon_mail.svg" alt=""></div>
+                  <div class="footer__contacts-link"><a href="mailto:sales@optovikpro.ru">sales@optovikpro.ru</a></div>
+                </div>
+                <div class="footer__contacts-item">
+                  <div class="footer__contacts-icon"><img src="img/icon_time.svg" alt=""></div>
+                  <div class="footer__contacts-link">09:00 — 21:00</div>
+                </div>
+              </div><a class="ui-button footer__ui-button ui-button--laptop-link js-open-popup" href="#popup-callback"><span>Заказать звонок</span></a>
+            </div>
+            <div class="footer__column footer__column--pages">
+              <div class="footer__title">Страницы:</div>
+              <ul class="footer__pages">
+                <div class="footer__pages-item"><a class="footer__pages-link" href="main.html">Главная</a></div>
+                <div class="footer__pages-item"><a class="footer__pages-link" href="about.html">О компании</a></div>
+                <div class="footer__pages-item"><a class="footer__pages-link" href="cooperation.html">Сотрудничество</a></div>
+                <div class="footer__pages-item"><a class="footer__pages-link" href="news.html">Новости</a></div>
+                <div class="footer__pages-item"><a class="footer__pages-link" href="contacts.html">Контакты</a></div>
+              </ul>
+            </div>
+            <div class="footer__column">
+              <div class="footer__title">Популярные бренды</div>
+              <div class="footer__brands">
+                <div class="footer__brands-column">
+                  <div class="footer__brands-item"><a href="#">Название брендабренда бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                </div>
+                <div class="footer__brands-column">
+                  <div class="footer__brands-item"><a href="#">Название брендабренда бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                </div>
+                <div class="footer__brands-column">
+                  <div class="footer__brands-item"><a href="#">Название брендабренда бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                  <div class="footer__brands-item"><a href="#">Название бренда</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="footer__to-top"></div>
+          </div>
+          <div class="footer__foot">
+            <div class="footer__copyright">© 2023. «Food star»</div>
+            <div class="footer__policy"><a href="policy.html">Политика конфиденциальности</a></div>
+          </div>
+        </div>
+      </footer>
+      <div class="popup-wrapper popup-wrapper--callback" style="display: none;" id="popup-callback">
+        <div class="popup-callback">
+          <div class="popup-callback__title">Заказать обратный звонок</div>
+          <form class="popup-callback__form" action="#">
+            <div class="popup-callback__row">
+              <div class="ui-input">
+                <label class="ui-input__label">Ваше имя</label>
+                <input id="popupCallbackName" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="popup-callback__row">
+              <div class="ui-input">
+                <label class="ui-input__label">Телефон</label>
+                <input id="popupCallbackPhone" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required" data-parsley-phone=""/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="popup-callback__submit">
+              <button class="ui-button popup-callback__ui-button"><span>Отправить</span>
+              </button>
+            </div>
+            <div class="popup-callback__agree">Нажимая «Отправить», вы соглашаетесь с&nbsp;<a class="ui-blue ui-underline" href="#">политикой конфиденциальности</a>
+            </div>
+          </form><br/>
+          <p><a class="js-open-popup" href="#popup-thank"> popup "спасибо"</a></p><!-- чтобы вызвать popup - winGetPopup('#popup-thank')-->
+        </div>
+      </div>
+      <div class="popup-wrapper popup-wrapper--thank" style="display: none;" id="popup-thank">
+        <div class="popup-thank">
+          <div class="popup-thank__title">Заявка успешно отправлена!</div>
+          <div class="popup-thank__descr">Мы скоро свяжемся с вами</div>
+          <div class="popup-thank__close">
+            <button class="ui-button popup-thank__ui-button js-close-popup"><span>Закрыть</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="notice-added">
+        <div class="notice-added__text">Товар добавлен в&nbsp;корзину</div><a class="ui-button notice-added__ui-button" href="basket.html"><span>Перейти в корзину</span></a>
+      </div>
+    </div>
+    <script src="libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="libs/fancybox/fancybox.js"></script>
+    <script src="libs/parsley/parsley.min.js"></script>
+    <script src="libs/inputmask/inputmask.min.js"></script>
+    <script src="libs/nouislider/nouislider.min.js"></script>
+    <script src="libs/wnumb/wNumb.min.js"></script>
+    <script src="libs/select2/select2.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.js"></script>
+    <script src="libs/tippy/popper.min.js"></script>
+    <script src="libs/tippy/tippy-bundle.umd.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
