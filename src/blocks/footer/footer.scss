@@ -1,7 +1,7 @@
 .footer {
   padding: 60px 0 20px;
   @include media-laptop {
-    padding-left: 50px 0 10px;
+    padding: 50px 0 10px;
   }
   &__head {
     position: relative;
@@ -48,7 +48,7 @@
   &__main {
     position: relative;
     display: grid;
-    grid-template-columns: auto 120px minmax(1px, 1fr);
+    grid-template-columns: minmax(170px, auto) minmax(120px, auto) minmax(1px, 1fr);
     column-gap: 100px;
     padding-right: 145px;
     @include media-laptop {
@@ -56,18 +56,22 @@
       padding-right: 75px;
     }
     @include media-tablet {
-      // grid-template-columns: repeat(2, auto);
-      grid-template-columns: auto minmax(1px, 1fr);
+      grid-template-columns: minmax(120px, auto) minmax(1px, 1fr);
       gap: 20px;
       padding-right: 0;
     }
   }
   &__column {
     &--contacts {
+      max-width: 200px;
       @include media-tablet {
+        max-width: unset;
         grid-column: 1/-1;
         grid-row-start: 2;
       }
+    }
+    &--pages {
+      max-width: 160px;
     }
   }
   &__to-top {

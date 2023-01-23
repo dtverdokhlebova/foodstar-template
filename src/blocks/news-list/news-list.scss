@@ -10,7 +10,7 @@
   }
   &__item {
     display: block;
-    &:hover {
+    @include media-hover {
       .news-list {
         &__date {
           color: $blue;

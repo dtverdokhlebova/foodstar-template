@@ -264,13 +264,54 @@ function productCatalog() {
     const openButton = document.querySelector('.product-open-filter__button')
     const filter = document.querySelector('.product-filter')
     const closeButtons = filter.querySelectorAll('.js-product-filter-close')
+    const isDesktop = !window.matchMedia('(max-width: 1360px)').matches
     openButton.addEventListener('click', function () {
       filter.classList.add('active')
+      document.documentElement.classList.add('ov-hidden')
     })
     for (const button of closeButtons) {
       button.addEventListener('click', function () {
         filter.classList.remove('active')
+        document.documentElement.classList.remove('ov-hidden')
       })
+    }
+    if (isDesktop) {
+      window.addEventListener('scroll', function () {
+        filterScroll()
+      })
+    }
+    filterPosition()
+    window.addEventListener('scroll', function () {
+      filterPosition()
+    })
+  }
+}
+
+function filterPosition() {
+  const parent = document.querySelector('.product-catalog')
+  const topPosition = parent.getBoundingClientRect().top
+  document.documentElement.style.setProperty('--product-filter-top', `${topPosition}px`)
+}
+
+function filterScroll() {
+  const filter = $('.product-filter')
+  const filterLine = $('.product-catalog__auxiliary')
+  const filterLineTop = filterLine.offset().top
+  const filterLineHeight = filterLine.innerHeight()
+  const filterLineBot = filterLineTop + filterLineHeight
+  const filterTop = filter.offset().top
+  const filterHeight = filter.innerHeight()
+  const filterBot = filterTop + filterHeight
+
+  if ((filterLineBot - filterLineTop) < (filterBot - filterTop)) {
+    const topPos = filterLineTop - $('.product-catalog__main').offset().top
+    const botPos = topPos + filterLineHeight
+    const heirz = botPos - filterHeight
+    if (filterLineBot >= filterBot) {
+      filter.css('transform', `translate(0px, ${heirz}px)`)
+    }
+    if (filterTop >= filterLineTop) {
+      filter.css('transform', `translate(0px, ${topPos}px)`)
     }
   }
 }
@@ -526,12 +567,9 @@ function popup() {
     getPopup(element)
   }
 
-  const closePopupButton = document.querySelector('.js-close-popup')
-  if (closePopupButton) {
-    closePopupButton.addEventListener('click', function () {
-      Fancybox.close(true)
-    })
-  }
+  $('.js-close-popup').on('click', function () {
+    Fancybox.close(true)
+  })
 
   const popupOpenButton = document.querySelectorAll('.js-open-popup')
   for (const button of popupOpenButton) {

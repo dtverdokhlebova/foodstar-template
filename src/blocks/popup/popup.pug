@@ -10,7 +10,7 @@ mixin popup-wrapper(mods)
       allMods = allMods.trim()
     }
 
-  .popup-wrapper(id=id class=allMods style='display: none;')&attributes(attributes)
+  .popup-wrapper(class=allMods style='display: none;')&attributes(attributes)
     block
 
 mixin popup-head(popupHeadData, mods)

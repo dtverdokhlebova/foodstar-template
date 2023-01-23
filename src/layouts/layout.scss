@@ -50,7 +50,7 @@ a {
   text-decoration: none;
   color: inherit;
   transition: ease 0.3s;
-  &:hover {
+  @include media-hover {
     color: $blue;
   }
 }

@@ -16,28 +16,29 @@ mixin product-filter(mods)
         .product-filter__btn-tablet Закрыть
         .product-filter__btn-mobile Назад
     .product-filter__main
-      .product-filter__section
-        .product-filter__title Категории
-        ul.product-filter__ul
-          li.product-filter__li.active
-            a(href='#') Кофе
-          each item in productFilterUl
-            li.product-filter__li
-              a(href='#') !{item.text}
-      .product-filter__section
-        .product-filter__title Сегмент
-        +ui-select('--size-s', 'Весь сегмент', 'сегмент 1', 'сегмент 2')(data-placeholder='Сегмент')
-      .product-filter__section
-        .product-filter__title Бренд
-        .product-filter__checks
-          +ui-checkbox('filterCheckbox1', 'NESCAFE GOLD', 'product-filter')
-          +ui-checkbox('filterCheckbox2', 'NESCAFE GOLD', 'product-filter')
-      .product-filter__section
-        .product-filter__title Цена
-        +ui-range('main-choice')#filterRange(data-min='10' data-max='1000000' data-start-top='20' data-start-bot='850000')
-    .product-catalog__foot
-      .product-catalog__close.js-product-filter-close
-        +ui-button('Закрыть')
-      .product-catalog__submit
-        +ui-button('Применить')
+      .product-filter__props
+        .product-filter__section
+          .product-filter__title Категории
+          ul.product-filter__ul
+            li.product-filter__li.active
+              a(href='#') Кофе
+            each item in productFilterUl
+              li.product-filter__li
+                a(href='#') !{item.text}
+        .product-filter__section
+          .product-filter__title Сегмент
+          +ui-select('--size-s', 'Весь сегмент', 'сегмент 1', 'сегмент 2')(data-placeholder='Сегмент')
+        .product-filter__section
+          .product-filter__title Бренд
+          .product-filter__checks
+            +ui-checkbox('filterCheckbox1', 'NESCAFE GOLD', 'product-filter')
+            +ui-checkbox('filterCheckbox2', 'NESCAFE GOLD', 'product-filter')
+        .product-filter__section
+          .product-filter__title Цена
+          +ui-range('main-choice')#filterRange(data-min='10' data-max='1000000' data-start-top='20' data-start-bot='850000')
+      .product-filter__actions
+        .product-filter__close.js-product-filter-close
+          +ui-button('Закрыть', 'product-filter')
+        .product-filter__submit.js-product-filter-close
+          +ui-button('Применить', 'product-filter')
     block

@@ -13,7 +13,7 @@
     border-radius: 60px;
     transition: 0.3s;
     @include media-laptop {
-      padding: 11px 35px 11px 15px;
+      padding: 12px 35px 12px 15px;
       font-size: 12px;
     }
     &:focus {
@@ -85,7 +85,7 @@
       padding: 10px;
       border-radius: 10px;
       transition: 0.3s;
-      &:hover {
+      @include media-hover {
         background: #bce8ff;
       }
     }
