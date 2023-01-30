@@ -90,7 +90,7 @@ function uiSelects() {
 }
 
 function wishlistButton() {
-  $('.wishlist-button__icon').on('click', function () {
+  $(document).on('click', '.wishlist-button__icon', function () {
     $(this).parents('.wishlist-button').toggleClass('active')
   })
 
@@ -179,7 +179,7 @@ function brands() {
 }
 
 function counter() {
-  $('.counter__btn').on('click', function () {
+  $(document).on('click', '.counter__btn', function () {
     const isNegative = $(this).hasClass('counter__btn--minus')
     const input = $(this).siblings('.counter__input')
     input[0][isNegative ? 'stepDown' : 'stepUp']()
@@ -187,7 +187,7 @@ function counter() {
 }
 
 function productItem() {
-  $('.product-item__ui-button').on('click', function () {
+  $(document).on('click', '.product-item__ui-button', function () {
     $(this).parents('.product-item__actions').addClass('product-item__actions--in-basket')
   })
 }
@@ -550,7 +550,7 @@ function basket() {
 }
 
 function noticeAdded() {
-  $('.js-open-notice-added').on('click', function () {
+  $(document).on('click', '.js-open-notice-added', function () {
     $('.notice-added').addClass('active')
     setTimeout(() => {
       $('.notice-added').removeClass('active')
