@@ -39,7 +39,7 @@
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 25px;
-    line-height: 137%;
+    line-height: 1.37;
     @include media-laptop {
       margin-bottom: 25px;
       font-size: 22px;
@@ -58,7 +58,7 @@
     padding: 0;
     font-weight: 500;
     font-size: 16px;
-    line-height: 140%;
+    line-height: 1.4;
     list-style-type: none;
     counter-reset: item;
     @include media-laptop {
@@ -78,7 +78,7 @@
         counter-increment: item;
         font-weight: 900;
         font-size: 30px;
-        line-height: 140%;
+        line-height: 1.4;
         color: #f9d166;
         @include media-laptop {
           font-size: 25px;

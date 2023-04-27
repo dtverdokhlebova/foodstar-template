@@ -1,4 +1,4 @@
-mixin catalogs(mods)
+mixin catalogs(type, mods)
   -
     const baseName = 'catalogs'
     let allMods = ''
@@ -15,10 +15,17 @@ mixin catalogs(mods)
       .catalogs__item
         .catalogs__icon
           img(src='img/icon_pdf.svg', alt='')
-        .catalogs__name
+        .catalogs__name(class = (type === 'lk' ? 'catalogs__name--lk' : '' ))
           if item === 2
             | Обновленный каталог компании Nestle. Текст для заполнения
           else
             | Обновленный каталог
-        +ui-button('Скачать', 'catalogs')(href='#')
+        // -- for backend
+        // на основном сайте тоже нужно добавить catalogs__foot
+        .catalogs__foot
+          if type === 'lk'
+            +ui-button('Скачать', 'catalogs, --px-xxxs, --fz-s')(href='#')
+            +ui-button('Смотреть', 'catalogs, --px-xxxs, --fz-s, --empty').catalogs__m-none(href='#')
+          else
+            +ui-button('Скачать', 'catalogs')(href='#')
     block

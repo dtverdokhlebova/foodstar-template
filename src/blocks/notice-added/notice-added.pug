@@ -12,5 +12,5 @@ mixin notice-added(mods)
 
   .notice-added(class=allMods)&attributes(attributes)
     .notice-added__text Товар добавлен в&nbsp;корзину
-    +ui-button('Перейти в корзину', 'notice-added')(href='basket.html')
+    +ui-button('Перейти в корзину', 'notice-added')(href = (siteType === 'lk' ? 'lk-basket.html' : 'basket.html'))
     block

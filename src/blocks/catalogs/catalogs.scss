@@ -42,8 +42,36 @@
     @include media-tablet {
       margin-bottom: 10px;
     }
+    &--lk {
+      font-weight: 500;
+      font-size: 14px;
+      @include media-tablet {
+        font-weight: 700;
+      }
+    }
+  }
+  &__foot {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    @include media-laptop {
+      gap: 8px;
+    }
   }
   &__ui-button {
-    margin-top: auto;
+    flex: 1;
+  }
+  &__m-none {
+    @include media-tablet {
+      display: none;
+    }
+  }
+  &--3items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    @include media-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
   }
 }

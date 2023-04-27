@@ -1,14 +1,21 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable no-undef */
 document.addEventListener('DOMContentLoaded', function () {
+  uiDatepicker()
   uiRange()
   uiSelects()
+  events()
   bannersList()
   basket()
   brands()
   counter()
   headerScripts()
+  headerLkScripts()
+  formRegistration()
   footer()
   inputMask()
+  ordersList()
   noticeAdded()
   popup()
   productCatalog()
@@ -31,6 +38,35 @@ function toString(line) {
 
 function isOverflown(element) {
   return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth
+}
+
+function uiDatepicker() {
+  const defaultSettings = {
+    locale: 'ru',
+    dateFormat: 'd.m.Y',
+    disableMobile: 'true',
+    position: 'auto left'
+  }
+
+  const datepickersRange = document.querySelectorAll('.ui-datepicker--range')
+  const datepickersRangeMobInline = document.querySelectorAll('.ui-datepicker--range-mob-inline')
+  for (const datepicker of datepickersRange) {
+    const datepickerRange = datepicker.querySelector('input')
+    const endInput = datepickerRange.dataset.inputEnd
+    flatpickr(datepickerRange, Object.assign({}, defaultSettings, {
+      // eslint-disable-next-line new-cap
+      plugins: [new rangePlugin({ input: endInput })]
+    }))
+  }
+  for (const datepicker of datepickersRangeMobInline) {
+    const datepickerRange = datepicker.querySelector('input')
+    const endInput = datepickerRange.dataset.inputEnd
+    flatpickr(datepickerRange, Object.assign({}, defaultSettings, {
+      // eslint-disable-next-line new-cap
+      plugins: [new rangePlugin({ input: endInput })],
+      inline: !(window.innerWidth > 767)
+    }))
+  }
 }
 
 function uiRange() {
@@ -101,7 +137,6 @@ function wishlistButton() {
       return content.innerHTML
     },
     allowHTML: true,
-    appendTo: 'parent',
     trigger: 'mouseenter focus',
     theme: 'wishlist-tooltip',
     maxWidth: 300
@@ -193,8 +228,9 @@ function productItem() {
 }
 
 function productGridSlider() {
-  const items = document.querySelectorAll('.product-grid--4slider .swiper')
-  for (const item of items) {
+  const items4slides = document.querySelectorAll('.product-grid--4slider .swiper')
+  const items3slides = document.querySelectorAll('.product-grid--3slider .swiper')
+  for (const item of items4slides) {
     const slider = new Swiper(item, {
       spaceBetween: 15,
       slidesPerView: 'auto',
@@ -209,6 +245,23 @@ function productGridSlider() {
         },
         1360: {
           spaceBetween: 20
+        }
+      }
+    })
+  }
+  for (const item of items3slides) {
+    const slider = new Swiper(item, {
+      spaceBetween: 10,
+      slidesPerView: 'auto',
+      watchSlidesProgress: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      },
+      breakpoints: {
+        767: {
+          spaceBetween: 20,
+          slidesPerView: 3
         }
       }
     })
@@ -363,106 +416,107 @@ function tabs() {
 }
 
 function headerScripts() {
-  headerHeightCalc()
-
   const header = document.querySelector('.header')
-  const headerSearch = document.querySelector('.header__search')
-  const headerSearchInput = headerSearch.querySelector('.search__input')
-  const headerShadow = document.querySelector('.header__shadow')
-  const headerMainItem = document.querySelector('.header__main-item')
-  const isNotMobile = !window.matchMedia('(max-width: 767px)').matches
-
-  headerSearchInput.addEventListener('input', function () {
-    this.value ? headerSearch.classList.add('search--input') : headerSearch.classList.remove('search--input')
-  })
-  headerSearchInput.addEventListener('focus', function () {
-    headerShadow.classList.add('active')
-    headerMainItem.classList.add('header__main-item--open-search')
-    document.documentElement.classList.add('ov-hidden')
-  })
-  headerSearchInput.addEventListener('focusout', function () {
-    if (!this.value) {
-      headerShadow.classList.remove('active')
-      headerMainItem.classList.remove('header__main-item--open-search')
-      document.documentElement.classList.remove('ov-hidden')
-    }
-  })
-  headerShadow.addEventListener('click', function () {
-    headerShadow.classList.remove('active')
-    headerSearch.classList.remove('search--input')
-    document.documentElement.classList.remove('ov-hidden')
-  })
-
-  window.addEventListener('load', function () {
-    setTimeout(() => {
-      headerHeightScrollCalc()
-    }, 300)
-  })
-  window.addEventListener('resize', function () {
+  if (header) {
     headerHeightCalc()
-  })
-  window.addEventListener('scroll', function () {
-    headerHeightScrollCalc()
-  })
 
-  if (isNotMobile) {
+    const headerSearch = document.querySelector('.header__search')
+    const headerSearchInput = headerSearch.querySelector('.search__input')
+    const headerShadow = document.querySelector('.header__shadow')
+    const headerMainItem = document.querySelector('.header__main-item')
+    const isNotMobile = !window.matchMedia('(max-width: 767px)').matches
+
+    headerSearchInput.addEventListener('input', function () {
+      this.value ? headerSearch.classList.add('search--input') : headerSearch.classList.remove('search--input')
+    })
+    headerSearchInput.addEventListener('focus', function () {
+      headerShadow.classList.add('active')
+      headerMainItem.classList.add('header__main-item--open-search')
+      document.documentElement.classList.add('ov-hidden')
+    })
+    headerSearchInput.addEventListener('focusout', function () {
+      if (!this.value) {
+        headerShadow.classList.remove('active')
+        headerMainItem.classList.remove('header__main-item--open-search')
+        document.documentElement.classList.remove('ov-hidden')
+      }
+    })
+    headerShadow.addEventListener('click', function () {
+      headerShadow.classList.remove('active')
+      headerSearch.classList.remove('search--input')
+      document.documentElement.classList.remove('ov-hidden')
+    })
+
+    window.addEventListener('load', function () {
+      setTimeout(() => {
+        headerHeightScrollCalc()
+      }, 300)
+    })
+    window.addEventListener('resize', function () {
+      headerHeightCalc()
+    })
     window.addEventListener('scroll', function () {
-      const scrollValue = $(window).scrollTop()
-      scrollValue > 60 ? header.classList.add('header--scroll') : header.classList.remove('header--scroll')
+      headerHeightScrollCalc()
     })
-  }
 
-  const catalogOpenButton = document.querySelector('.header__ui-button')
-  const catalogNavButtons = document.querySelectorAll('.header-catalog__button')
-  const catalogMainItems = document.querySelectorAll('.header-catalog__item')
-  const headerCatalog = document.querySelector('.header-catalog')
-  const headerCatalogClose = document.querySelector('.header-catalog__nav .header-catalog__close')
-  const headerBurgerActiveClass = 'ui-button--burger-active'
-  const headerCatalogContent = document.querySelector('.header-catalog__content')
-  const headerCatalogContentClose = document.querySelector('.header-catalog__content .header-catalog__close')
-  catalogOpenButton.addEventListener('click', function () {
-    const headerHeight = header.offsetHeight
-
-    this.classList.toggle(headerBurgerActiveClass)
-    headerCatalog.classList.toggle('active')
-    document.documentElement.classList.toggle('ov-hidden')
-    if (this.classList.contains(headerBurgerActiveClass)) {
-      document.documentElement.style.setProperty('--header-height-for-catalog', `${headerHeight}px`)
+    if (isNotMobile) {
+      window.addEventListener('scroll', function () {
+        const scrollValue = $(window).scrollTop()
+        scrollValue > 60 ? header.classList.add('header--scroll') : header.classList.remove('header--scroll')
+      })
     }
-  })
-  headerCatalogClose.addEventListener('click', function () {
-    catalogOpenButton.classList.remove(headerBurgerActiveClass)
-    headerCatalog.classList.remove('active')
-    document.documentElement.classList.remove('ov-hidden')
-  })
-  headerCatalogContentClose.addEventListener('click', function () {
-    headerCatalogContent.classList.remove('active')
-  })
-  for (const [index, item] of catalogNavButtons.entries()) {
-    item.addEventListener('click', function () {
-      for (const itemButton of catalogNavButtons) {
-        itemButton.classList.remove('active')
+    const catalogOpenButton = document.querySelector('.header__ui-button')
+    const catalogNavButtons = document.querySelectorAll('.header-catalog__button')
+    const catalogMainItems = document.querySelectorAll('.header-catalog__item')
+    const headerCatalog = document.querySelector('.header-catalog')
+    const headerCatalogClose = document.querySelector('.header-catalog__nav .header-catalog__close')
+    const headerBurgerActiveClass = 'ui-button--burger-active'
+    const headerCatalogContent = document.querySelector('.header-catalog__content')
+    const headerCatalogContentClose = document.querySelector('.header-catalog__content .header-catalog__close')
+    catalogOpenButton.addEventListener('click', function () {
+      const headerHeight = header.offsetHeight
+
+      this.classList.toggle(headerBurgerActiveClass)
+      headerCatalog.classList.toggle('active')
+      document.documentElement.classList.toggle('ov-hidden')
+      if (this.classList.contains(headerBurgerActiveClass)) {
+        document.documentElement.style.setProperty('--header-height-for-catalog', `${headerHeight}px`)
       }
-      for (const itemMain of catalogMainItems) {
-        itemMain.classList.remove('active')
-      }
-      this.classList.add('active')
-      catalogMainItems[index].classList.add('active')
-      headerCatalogContent.classList.add('active')
+    })
+    headerCatalogClose.addEventListener('click', function () {
+      catalogOpenButton.classList.remove(headerBurgerActiveClass)
+      headerCatalog.classList.remove('active')
+      document.documentElement.classList.remove('ov-hidden')
+    })
+    headerCatalogContentClose.addEventListener('click', function () {
+      headerCatalogContent.classList.remove('active')
+    })
+    for (const [index, item] of catalogNavButtons.entries()) {
+      item.addEventListener('click', function () {
+        for (const itemButton of catalogNavButtons) {
+          itemButton.classList.remove('active')
+        }
+        for (const itemMain of catalogMainItems) {
+          itemMain.classList.remove('active')
+        }
+        this.classList.add('active')
+        catalogMainItems[index].classList.add('active')
+        headerCatalogContent.classList.add('active')
+      })
+    }
+
+    const burgerButton = document.querySelector('.header__burger-btn')
+    const burgerBlock = document.querySelector('.header-burger')
+    const burgerClose = document.querySelector('.header-burger__close')
+    burgerButton.addEventListener('click', function () {
+      burgerBlock.classList.add('active')
+      document.documentElement.classList.add('ov-hidden')
+    })
+    burgerClose.addEventListener('click', function () {
+      burgerBlock.classList.remove('active')
+      document.documentElement.classList.remove('ov-hidden')
     })
   }
-
-  const burgerButton = document.querySelector('.header__burger-btn')
-  const burgerBlock = document.querySelector('.header-burger')
-  const burgerClose = document.querySelector('.header-burger__close')
-  burgerButton.addEventListener('click', function () {
-    burgerBlock.classList.add('active')
-    document.documentElement.classList.add('ov-hidden')
-  })
-  burgerClose.addEventListener('click', function () {
-    burgerBlock.classList.remove('active')
-    document.documentElement.classList.remove('ov-hidden')
-  })
 }
 
 function headerHeightCalc() {
@@ -473,6 +527,23 @@ function headerHeightCalc() {
 function headerHeightScrollCalc() {
   const headerHeight = document.querySelector('.header').offsetHeight
   document.documentElement.style.setProperty('--header-height-scroll', `${headerHeight}px`)
+}
+
+function headerLkScripts() {
+  const header = document.querySelector('.header-lk')
+  if (header) {
+    const burgerButton = document.querySelector('.header-lk__burger-btn')
+    const navbar = document.querySelector('.navbar')
+    const navbarClose = document.querySelector('.navbar__close')
+    burgerButton.addEventListener('click', function () {
+      navbar.classList.add('navbar--open')
+      document.documentElement.classList.add('ov-hidden')
+    })
+    navbarClose.addEventListener('click', function () {
+      navbar.classList.remove('navbar--open')
+      document.documentElement.classList.remove('ov-hidden')
+    })
+  }
 }
 
 function footer() {
@@ -511,6 +582,55 @@ function validation() {
       return /^\d{10}$|^\d{12}$/.test(value)
     }
   })
+  window.Parsley.addValidator('ogrn', {
+    validateString: function (value) {
+      return /^\d{13}$|^\d{15}$/.test(value)
+    }
+  })
+}
+
+function formRegistration() {
+  const form = $('.form--registration')
+  const steps = form.find('.form-step')
+  const stepCurrentClass = 'form-step--current'
+  const buttonPrevious = form.find('.form-button-previous')
+  const buttonNext = form.find('.form-button-next')
+
+  function navigateTo(index) {
+    const progressItem = form.find('.form-progress__item')
+
+    steps
+      .removeClass(stepCurrentClass)
+      .eq(index).addClass(stepCurrentClass)
+
+    progressItem.removeClass('form-progress__item--current form-progress__item--prev')
+    progressItem.eq(index).addClass('form-progress__item--current')
+    for (let progressIndex = 0; progressIndex < index; progressIndex++) {
+      progressItem.eq(progressIndex).addClass('form-progress__item--prev')
+    }
+  }
+
+  function currentIndex() {
+    return steps.index(steps.filter('.form-step--current'))
+  }
+
+  buttonPrevious.click(function () {
+    navigateTo(currentIndex() - 1)
+  })
+
+  buttonNext.click(function () {
+    $('.form--registration').parsley().whenValidate({
+      group: `block-${currentIndex()}`
+    }).done(function () {
+      navigateTo(currentIndex() + 1)
+    })
+  })
+
+  // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
+  steps.each(function (index, section) {
+    $(section).find(':input').attr('data-parsley-group', `block-${index}`)
+  })
+  navigateTo(0)
 }
 
 function inputMask() {
@@ -605,4 +725,28 @@ function getPopup(url) {
       animated: false
     }
   )
+}
+
+function ordersList() {
+  const ordersListSlider = new Swiper('.orders-list .swiper', {
+    spaceBetween: 10,
+    slidesPerView: 'auto',
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+      767: {
+        spaceBetween: 20
+      }
+    }
+  })
+}
+
+function events() {
+  $('.events__head').on('click', function () {
+    $(this).toggleClass('events__head--active')
+    $(this).siblings('.events__main').slideToggle()
+  })
 }

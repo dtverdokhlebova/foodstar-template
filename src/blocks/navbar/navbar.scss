@@ -1,0 +1,230 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  grid-column: span 2;
+  height: 100vh;
+  overflow-y: auto;
+  background: #fff;
+  box-shadow: 0 0 30px rgb(88 86 86 / 0.05);
+  @include media-laptop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f7fafb;
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+  }
+  @include media-tablet {
+    background: #fff;
+  }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: var(--navbar-width);
+    height: inherit;
+    margin-left: auto;
+    padding: 15px 0 45px;
+    overflow-y: auto;
+    @include media-laptop {
+      padding: 15px var(--inner-pd) 20px;
+    }
+    @include media-tablet {
+      padding: 12px var(--inner-pd) 15px;
+    }
+  }
+  &__head {
+    margin-bottom: 45px;
+    @include media-laptop {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+  }
+  &__logo {
+    display: block;
+    max-width: 173px;
+    @include media-laptop {
+      max-width: 98px;
+    }
+    @include media-tablet {
+      max-width: 74px;
+    }
+  }
+  &__close {
+    display: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4;
+    color: $blue;
+    cursor: pointer;
+    @include media-laptop {
+      display: block;
+    }
+    @include media-tablet {
+      font-size: 12px;
+    }
+  }
+  &__main {
+    margin-bottom: 20px;
+  }
+  &__menu {
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 20px 20px 20px 0;
+      @include media-tablet {
+        padding: 10px 10px 10px 0;
+      }
+      &:not(:last-child) {
+        margin-bottom: 2px;
+        @include media-tablet {
+          margin-bottom: 5px;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(270deg, #d1e5ff 0%, rgb(188 217 255 / 0) 101.4%);
+        opacity: 0;
+        transition: 0.3s;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        right: 0;
+        bottom: -1px;
+        width: 4px;
+        background: #376baf;
+        border-radius: 27px;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      @include media-hover {
+        .navbar__menu {
+          &-icon {
+            filter: none;
+          }
+          &-text {
+            color: $blue;
+          }
+        }
+      }
+      &--active {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
+        .navbar__menu {
+          &-icon {
+            filter: none;
+          }
+          &-text {
+            color: $blue;
+          }
+        }
+      }
+    }
+    &-icon {
+      position: relative;
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      margin-right: 20px;
+      filter: brightness(0%);
+      transition: 0.3s;
+      @include media-tablet {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+      }
+    }
+    &-text {
+      position: relative;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.3;
+      transition: 0.3s;
+      @include media-tablet {
+        font-size: 16px;
+      }
+    }
+  }
+  &__foot {
+    margin-top: auto;
+  }
+  &__auth {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    @include media-laptop {
+      display: flex;
+    }
+    @include media-tablet {
+      margin-bottom: 20px;
+    }
+  }
+  &__user {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    @include media-tablet {
+      font-size: 16px;
+    }
+  }
+  &__logout {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 3px;
+    background: #fff;
+    border-radius: 6px;
+    @include media-tablet {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  &__support {
+    &-title {
+      margin-bottom: 10px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.25;
+      color: #6a6a6a;
+      @include media-tablet {
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+    }
+    &-text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.2;
+      color: #acacac;
+      @include media-tablet {
+        font-size: 13px;
+      }
+      p {
+        &:not(:last-child) {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
+}

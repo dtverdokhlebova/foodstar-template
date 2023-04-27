@@ -2,13 +2,22 @@
   margin: 0;
   font-weight: 600;
   font-size: 38px;
-  line-height: 137%;
+  line-height: 1.37;
   @include media-laptop {
     font-size: 28px;
   }
   @include media-tablet {
     font-size: 24px;
   }
+  &--bold {
+    font-weight: 700;
+  }
+}
+.ui-h5 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.37;
   &--bold {
     font-weight: 700;
   }

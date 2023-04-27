@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Каталог товаров</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <link href="." rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="libs/fancybox/fancybox.css">
     <link rel="stylesheet" href="libs/noUiSlider/nouislider.min.css">
     <link rel="stylesheet" href="libs/select2/select2.min.css">
+    <link rel="stylesheet" href="libs/flatpickr/flatpickr.min.css">
     <link rel="stylesheet" href="libs/swiper/swiper-bundle.css">
     <link rel="stylesheet" href="styles/style.css">
     <script src="https://api-maps.yandex.ru/2.1/?apikey=7742add4-5d3c-4060-9f01-67963d12fb4e&amp;lang=ru_RU" type="text/javascript"></script>
@@ -65,8 +66,7 @@
               </div>
               <div class="header__icons">
                 <div class="header__icons-item"><a class="header__fav" href="#"></a></div>
-                <div class="header__icons-item">
-                  <div class="header__user"></div>
+                <div class="header__icons-item"><a class="header__user js-open-popup" href="#popup-authorization"></a>
                 </div>
                 <div class="header__icons-item header__icons-item--basket"><a class="header__basket header__basket--empty header__basket--count-static header__basket--icon-l" href="basket.html">
                     <div class="header__basket-main">
@@ -693,6 +693,194 @@
           </div>
         </div>
       </footer>
+      <div class="popup-wrapper popup-wrapper--authorization" style="display: none;" id="popup-authorization">
+        <div class="popup-close js-close-popup"></div>
+        <form class="form form--authorization" action="#">
+          <div class="form-content">
+            <div class="form-head ui-center">
+              <div class="form-head__h2">Вход в личный кабинет</div>
+              <div class="form-head__p1">Войдите по паролю или
+    <a class="ui-blue js-open-popup" href="#popup-registration">зарегистрируйтесь</a></div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Email</label>
+                <input id="authorizationEmail" type="email" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="email" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Пароль</label>
+                <input id="authorizationPassword" type="password" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="password" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-line form-line--flex form-line--mt-l form-line--mob-mt-auto">
+            <div class="form-line__item"><a class="ui-button ui-button--fz-s ui-button--link" href="#"><span>Забыли пароль?</span></a>
+            </div>
+            <div class="form-line__item form-line__item--left-auto">
+              <button class="ui-button ui-button--px-xl ui-button--fz-s"><span>Войти</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="popup-wrapper popup-wrapper--registration" style="display: none;" id="popup-registration">
+        <div class="popup-close js-close-popup"></div>
+        <div class="form-head ui-center">
+          <div class="form-head__h2">Регистрация в&nbsp;личном кабинете</div>
+        </div>
+        <form class="form form--registration form--mob-flex1" action="#">
+          <div class="form-progress">
+            <div class="form-progress__item form-progress__item--current">
+              <div class="form-progress__text">Шаг 1
+              </div>
+            </div>
+            <div class="form-progress__item">
+              <div class="form-progress__text">Шаг 2
+              </div>
+            </div>
+            <div class="form-progress__item">
+              <div class="form-progress__text">Шаг 3
+              </div>
+            </div>
+            <div class="form-progress__item">
+              <div class="form-progress__text">Шаг 4
+              </div>
+            </div>
+          </div>
+          <div class="form-step form-step--mob-flex1 form-step--current">
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">ФИО</label>
+                <input id="registrationName" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="name" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Телефон</label>
+                <input id="registrationPhone" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required" data-parsley-phone="data-parsley-phone" data-mask="phone"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Электронная почта</label>
+                <input id="registrationMail" type="email" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line form-line--flex form-line--mt-l form-line--mob-mt-auto">
+              <div class="form-line__item form-line__item--left-auto">
+                <button class="ui-button ui-button--px-xl ui-button--py-m ui-button--fz-s form-button-next" type="button"><span>Далее</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-step form-step--mob-flex1">
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">ИНН</label>
+                <input id="registrationINN" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="inn" required="required" data-parsley-inn="data-parsley-inn" data-mask="inn"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">ОГРН</label>
+                <input id="registrationOGRN" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="ogrn" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Название ИП/ООО</label>
+                <input id="registrationNameCompany" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="name-company" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Юридический адрес</label>
+                <input id="registrationLegalAddress" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="legal-address" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line form-line--flex form-line--mt-l form-line--mob-mt-auto">
+              <div class="form-line__item">
+                <button class="ui-button ui-button--link ui-button--fz-s ui-button--medium form-button-previous"><span class="ui-button__icon"><img src="img/icon_arrow_backward.svg" alt=""></span><span>Назад</span>
+                </button>
+              </div>
+              <div class="form-line__item form-line__item--left-auto">
+                <button class="ui-button ui-button--px-xl ui-button--py-m ui-button--fz-s form-button-next" type="button"><span>Далее</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-step form-step--mob-flex1">
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Адрес интерент-магазина <span class="ui-grey70">(если есть*)</span></label>
+                <input id="registrationURL" type="url" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="url"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Адрес доставки</label>
+                <input id="registrationDeliveryAddress" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="delivery-address" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-checkbox ui-checkbox--check-bg-grey">
+                <input id="registrationNewsSubscribe" name="news-subscribe" type="checkbox"/>
+                <label for="registrationNewsSubscribe">Хочу быть в курсе новостей <span class="ui-checkbox__icon"></span>
+                </label>
+              </div>
+            </div>
+            <div class="form-line form-line--flex form-line--mt-l form-line--mob-mt-auto">
+              <div class="form-line__item">
+                <button class="ui-button ui-button--link ui-button--fz-s ui-button--medium form-button-previous"><span class="ui-button__icon"><img src="img/icon_arrow_backward.svg" alt=""></span><span>Назад</span>
+                </button>
+              </div>
+              <div class="form-line__item form-line__item--left-auto">
+                <button class="ui-button ui-button--px-xl ui-button--py-m ui-button--fz-s form-button-next" type="button"><span>Далее</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="form-step form-step--mob-flex1">
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Пароль</label>
+                <input id="registrationPassword" type="password" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="password" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line">
+              <div class="ui-input ui-input--error-static">
+                <label class="ui-input__label">Повторный ввод пароля</label>
+                <input id="registrationPasswordConfirm" type="password" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" name="password" required="required"/>
+                <div class="ui-input__error">Заполните эту форму</div>
+              </div>
+            </div>
+            <div class="form-line form-line--flex form-line--mt-l form-line--mob-mt-auto">
+              <div class="form-line__item">
+                <button class="ui-button ui-button--link ui-button--fz-s ui-button--medium form-button-previous"><span class="ui-button__icon"><img src="img/icon_arrow_backward.svg" alt=""></span><span>Назад</span>
+                </button>
+              </div>
+              <div class="form-line__item form-line__item--left-auto">
+                <button class="ui-button ui-button--py-m ui-button--fz-s form-button-submit"><span>Зарегистрироваться</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
       <div class="popup-wrapper popup-wrapper--callback" style="display: none;" id="popup-callback">
         <div class="popup-callback">
           <div class="popup-callback__title">Заказать обратный звонок</div>
@@ -739,6 +927,9 @@
     <script src="libs/fancybox/fancybox.js"></script>
     <script src="libs/parsley/parsley.min.js"></script>
     <script src="libs/inputmask/inputmask.min.js"></script>
+    <script src="libs/flatpickr/flatpickr.js"></script>
+    <script src="libs/flatpickr/rangePlugin.js"></script>
+    <script src="libs/flatpickr/ru.js"></script>
     <script src="libs/nouislider/nouislider.min.js"></script>
     <script src="libs/wnumb/wNumb.min.js"></script>
     <script src="libs/select2/select2.min.js"></script>

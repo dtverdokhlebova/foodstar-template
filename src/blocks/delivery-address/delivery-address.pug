@@ -1,0 +1,40 @@
+mixin delivery-address(mods)
+  -
+    const baseName = 'delivery-address'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const deliveryAddressItems =[
+      { main: '777939, Ульяновская область, город Серебряные Пруды, пер. Космонавтов, 18',
+        name: 'Петров Сергей Александрович',
+      },
+      { main: '070368, Мурманская область, город Серебряные Пруды, проезд Бухарестская, 42',
+        name: 'Шевченко Николай Андреевич',
+      },
+    ]
+
+  .delivery-address(class=allMods)&attributes(attributes)
+    each item in deliveryAddressItems
+      .delivery-address__row
+        .delivery-address__main !{item.main}
+        .delivery-address__info
+          .delivery-address__contact Контактное лицо:
+            =' '
+            span.delivery-address__name !{item.name}
+          .delivery-address__foot
+            .delivery-address__is-main основной адрес
+            .delivery-address__actions
+              a.delivery-address__action.js-open-popup(href='#popup-delivery-address-edit')
+                img(src='img/icon_edit.svg', alt='')
+              a.delivery-address__action(href='#')
+                img(src='img/icon_trash.svg', alt='')
+    .delivery-address__row.delivery-address__row--add
+      a.delivery-address__add.js-open-popup(href='#popup-delivery-address-edit') Добавить новый адрес
+    block

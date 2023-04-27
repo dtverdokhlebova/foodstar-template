@@ -1,4 +1,4 @@
-mixin breadcrumbs(mods)
+mixin breadcrumbs(inner, mods)
   -
     const baseName = 'breadcrumbs'
     let allMods = ''
@@ -11,9 +11,13 @@ mixin breadcrumbs(mods)
     }
 
   .breadcrumbs(class=allMods)&attributes(attributes)
-    .inner
+    if inner === false
       ul.breadcrumbs__list
         block
+    else
+      .inner
+        ul.breadcrumbs__list
+          block
 
 mixin breadcrumbs-item(text, href, mods)
   -

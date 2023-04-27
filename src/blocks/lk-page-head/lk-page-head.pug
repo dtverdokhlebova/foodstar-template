@@ -1,0 +1,15 @@
+mixin lk-page-head(h1, mods)
+  -
+    const baseName = 'lk-page-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .lk-page-head(class=allMods)&attributes(attributes)
+    h1.lk-page-head__h1 !{h1}
+    block

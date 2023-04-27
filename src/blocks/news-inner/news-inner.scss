@@ -1,7 +1,7 @@
 .news-inner {
   font-weight: 500;
   font-size: 18px;
-  line-height: 163%;
+  line-height: 1.63;
   @include media-laptop {
     font-size: 14px;
   }
@@ -34,7 +34,7 @@
     margin: 0 0 40px;
     font-weight: 700;
     font-size: 25px;
-    line-height: 163%;
+    line-height: 1.63;
     @include media-laptop {
       margin-bottom: 25px;
       font-size: 18px;
@@ -58,7 +58,7 @@
   &__footnotes {
     margin-top: 65px;
     font-size: 14px;
-    line-height: 140%;
+    line-height: 1.4;
     color: #585858;
     @include media-laptop {
       margin-top: 30px;

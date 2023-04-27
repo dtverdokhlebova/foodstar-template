@@ -3,7 +3,7 @@
     margin-bottom: 15px;
     font-weight: 600;
     font-size: 22px;
-    line-height: 137%;
+    line-height: 1.37;
     color: #727272;
     @include media-laptop {
       margin-bottom: 10px;
@@ -15,7 +15,7 @@
     margin-bottom: 30px;
     font-weight: 700;
     font-size: 38px;
-    line-height: 137%;
+    line-height: 1.37;
     @include media-laptop {
       margin-bottom: 15px;
       font-size: 23px;
@@ -42,7 +42,7 @@
   &__article {
     font-weight: 600;
     font-size: 22px;
-    line-height: 137%;
+    line-height: 1.37;
     color: $blue;
     @include media-laptop {
       font-size: 14px;
@@ -51,7 +51,7 @@
   &__stock {
     font-weight: 500;
     font-size: 20px;
-    line-height: 137%;
+    line-height: 1.37;
     color: #8d8d8d;
     @include media-laptop {
       font-size: 14px;
@@ -107,7 +107,7 @@
     margin-top: 40px;
     font-weight: 500;
     font-size: 18px;
-    line-height: 140%;
+    line-height: 1.4;
     color: #606060;
     @include media-laptop {
       margin-top: 25px;

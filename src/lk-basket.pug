@@ -1,0 +1,46 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Корзина'
+    const navbarLink ='lk-basket.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: pageTitle },
+    ]
+
+  -
+    const popupHeadDelete ={
+      h3: 'Удалить товар',
+      descr: 'Вы точно хотите удалить товар? <br>Отменить данное действие будет невозможно.'
+    }
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Корзина')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +basket('lk', '--lk')
+
+    +section('--mt-s, --ov')
+      .inner.inner--lk
+        +section-head('--mb-xs')
+          +ui-h5('Избранное', '--bold')
+        +product-grid('--3slider')
+          .swiper
+            .swiper-wrapper
+              -for(item = 0; item < 3; item++)
+                +product-item('', '--column').swiper-slide
+            +ui-swiper-buttons('product-grid, --size-m')
+        +section('--mt-xxs', true).ui-center
+          +ui-button('Смотреть всё', '--l-fz-m, --empty')(href='lk-featured-products.html')
+
+    +popup-wrapper#popup-delete-product
+      +popup-head(popupHeadDelete)
+      +popup-foot('--flex')
+        +ui-button('Удалить', 'popup-foot')
+        +ui-button('Отменить', 'popup-foot, --grey').js-close-popup

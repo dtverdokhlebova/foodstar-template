@@ -1,4 +1,4 @@
-mixin ui-input(id, text, mods, type)
+mixin ui-input(id, text, mods, type, icon, errorsFalse)
   -
     const baseName = 'ui-input'
     let allMods = ''
@@ -11,6 +11,16 @@ mixin ui-input(id, text, mods, type)
     }
 
   .ui-input(class=allMods)
-    label.ui-input__label=text
-    input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text') data-parsley-errors-messages-disabled)&attributes(attributes)
-    .ui-input__error Заполните эту форму
+    if text
+      label.ui-input__label !{text}
+    if icon
+      .ui-input__wrapper
+        input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text') data-parsley-errors-messages-disabled)&attributes(attributes)
+        .ui-input__icon
+          img(src=`img/${icon}`, alt='')
+    else
+      if !errorsFalse
+        input(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text') data-parsley-errors-messages-disabled)&attributes(attributes)
+        .ui-input__error Заполните эту форму
+      else
+        input.ui-input__native(id=id type=(typeof(type) !== 'undefined' && type ? type : 'text'))&attributes(attributes)

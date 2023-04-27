@@ -1,0 +1,20 @@
+mixin to-catalogs(mods)
+  -
+    const baseName = 'to-catalogs'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .to-catalogs(class=allMods)&attributes(attributes)
+    .to-catalogs__content
+      .to-catalogs__title Актуальные прайс-листы и&nbsp;каталоги
+      +ui-button('Смотреть все', 'to-catalogs, --px-s, --l-fz-m')(href='lk-prices.html')
+    .to-catalogs__img
+      .to-catalogs__img-wrap
+        img(src='img/to_catalogs_img.png', alt='')
+    block

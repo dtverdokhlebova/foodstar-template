@@ -14,7 +14,7 @@
     &--level1 {
       font-weight: 600;
       font-size: 25px;
-      line-height: 140%;
+      line-height: 1.4;
       @include media-laptop {
         font-size: 18px;
       }
@@ -55,7 +55,7 @@
     margin-top: 15px;
     font-weight: 500;
     font-size: 18px;
-    line-height: 140%;
+    line-height: 1.4;
     @include media-laptop {
       font-size: 14px;
     }

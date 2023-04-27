@@ -1,0 +1,21 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Прайсы'
+    const navbarLink ='lk-prices.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: pageTitle },
+    ]
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Прайсы')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +catalogs('lk', '--3items')

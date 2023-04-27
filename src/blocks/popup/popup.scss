@@ -9,7 +9,7 @@
     padding: 30px;
     font-weight: 500;
     font-size: 18px;
-    line-height: 163%;
+    line-height: 1.63;
     border-radius: 20px;
     @include media-laptop {
       font-size: 14px;
@@ -21,8 +21,31 @@
       padding: 15px;
       border-radius: 20px 20px 0 0;
     }
+    &--authorization {
+      max-width: 500px;
+      @include media-tablet {
+        max-width: 100%;
+        min-height: 100%;
+        border-radius: 0;
+        overflow-y: auto;
+      }
+    }
     &--callback {
       padding: 20px 15px;
+    }
+    &--registration {
+      max-width: 805px;
+      padding: 44px;
+      @include media-laptop {
+        max-width: 500px;
+      }
+      @include media-tablet {
+        max-width: 100%;
+        min-height: 100%;
+        padding: 45px 16px 25px;
+        border-radius: 0;
+        overflow-y: auto;
+      }
     }
     &--thank {
       max-width: 490px;
@@ -33,6 +56,28 @@
       @include media-tablet {
         max-width: 100%;
         padding: 20px 15px 15px;
+      }
+    }
+    &--w444 {
+      max-width: 444px;
+      padding: 44px;
+      @include media-tablet {
+        max-width: 100%;
+        min-height: 100%;
+        padding: 45px 16px 25px;
+        border-radius: 0;
+        overflow-y: auto;
+      }
+    }
+    &--w-l {
+      max-width: 805px;
+      padding: 44px;
+      @include media-tablet {
+        max-width: 100%;
+        min-height: 100%;
+        padding: 45px 16px 25px;
+        border-radius: 0;
+        overflow-y: auto;
       }
     }
     &--big {
@@ -62,11 +107,14 @@
       &:not(:last-child) {
         margin-bottom: 15px;
       }
+      &--medium {
+        font-weight: 600;
+      }
     }
     &__descr {
       font-weight: 500;
       font-size: 14px;
-      line-height: 150%;
+      line-height: 1.5;
     }
   }
   &-foot {

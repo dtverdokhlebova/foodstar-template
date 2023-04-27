@@ -11,12 +11,12 @@
     font-size: 16px;
     line-height: 1.2;
     @include media-laptop {
-      font-size: 14px;
+      font-size: min(14px, 3.73vw);
     }
   }
   &__descr {
     font-weight: 500;
-    font-size: 14px;
+    font-size: min(14px, 3.73vw);
     line-height: 17px;
   }
   &__price {
@@ -24,7 +24,7 @@
     font-size: 18px;
     line-height: 1.2;
     @include media-laptop {
-      font-size: 16px;
+      font-size: min(16px, 4.26vw);
     }
   }
   &__product-label {

@@ -1,5 +1,5 @@
 .ui-checkbox {
-  input[type='checkbox'] {
+  input {
     display: none;
     &:checked + label {
       font-weight: 700;
@@ -71,6 +71,12 @@
       height: 24px;
     }
   }
+  &--check-bg-grey {
+    .ui-checkbox__icon {
+      background: #d9d9d9;
+      border-color: #d9d9d9;
+    }
+  }
   &--filled-blue {
     input[type='checkbox'] {
       &:checked + label {
@@ -83,6 +89,17 @@
       &::before {
         background-image: url("data:image/svg+xml,%3Csvg width='25' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10.612 17c.178 0 .345-.03.501-.09.156-.06.301-.163.435-.308l7.585-8.214c.245-.265.367-.59.367-.977 0-.386-.134-.723-.401-1.013A1.217 1.217 0 0 0 18.163 6c-.378 0-.69.133-.935.398l-6.616 7.165-2.907-3.149a1.18 1.18 0 0 0-.902-.398c-.356 0-.668.145-.935.435-.245.265-.368.603-.368 1.013 0 .41.123.748.368 1.013l3.809 4.125c.133.145.278.247.434.308.156.06.323.09.501.09Z' fill='%23fff'/%3E%3C/svg%3E");
       }
+    }
+  }
+  &--checked-only-bolder {
+    input {
+      &:checked + label {
+        font-weight: 600;
+        color: inherit;
+      }
+    }
+    label {
+      font-weight: 600;
     }
   }
 }

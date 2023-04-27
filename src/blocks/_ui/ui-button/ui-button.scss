@@ -2,6 +2,8 @@
   position: relative;
   display: inline-flex;
   justify-content: center;
+  align-items: center;
+  gap: 6px;
   padding: 9px 34px;
   font: 600 16px/1.25 $font;
   text-align: center;
@@ -14,8 +16,8 @@
   transition: 0.3s ease;
   cursor: pointer;
   @include media-laptop {
-    padding: 8px 26px;
-    font-size: 14px;
+    padding: 8px min(26px, 6.93vw);
+    font-size: min(14px, 3.73vw);
   }
   span {
     position: relative;
@@ -28,19 +30,19 @@
     left: 0;
     width: 100%;
     height: 0;
-    background-color: #cbedff;
+    background-color: $blue40;
     box-shadow: -7px -7px 20px 0 #fff9, -4px -4px 5px 0 #fff9, 7px 7px 20px 0 #0002, 4px 4px 5px 0 #0001;
     transition: all 0.3s ease;
   }
   &:active {
     color: $blue;
-    background: #cbedff;
-    border-color: #cbedff;
+    background: $blue40;
+    border-color: $blue40;
   }
   @include media-hover {
     color: $blue;
-    background: #cbedff;
-    border-color: #cbedff;
+    background: $blue40;
+    border-color: $blue40;
     &::after {
       top: 0;
       height: 100%;
@@ -83,6 +85,67 @@
       }
     }
   }
+  &__icon {
+    flex-shrink: 0;
+    width: 1.4em;
+    height: 1.4em;
+    &:not(:first-child) {
+      margin-left: 5px;
+    }
+  }
+  &--w100 {
+    width: 100%;
+  }
+  &--m-w100 {
+    @include media-tablet {
+      width: 100%;
+    }
+  }
+  &--px-xxl {
+    padding-right: 65px;
+    padding-left: 65px;
+    @include media-tablet {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+  &--px-xl {
+    padding-right: 55px;
+    padding-left: 55px;
+  }
+  &--px-s {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  &--px-xxxs {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  &--py-xl {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    &.ui-button--m-py-s {
+      @include media-tablet {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+    }
+  }
+  &--py-m {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  &--fz-s {
+    font-size: min(14px, 3.73vw);
+  }
+  &--l-fz-m {
+    @include media-laptop {
+      font-size: 16px;
+    }
+    @include media-tablet {
+      font-size: min(14px, 3.73vw);
+    }
+  }
   &--size-m {
     min-width: 212px;
     padding: 13px 41px;
@@ -107,7 +170,7 @@
     @media (min-width: 1361px) {
       padding: 0;
       font-weight: 700;
-      font-size: 14px;
+      font-size: min(14px, 3.73vw);
       color: $blue;
       background: transparent;
       border: 0;
@@ -119,9 +182,51 @@
       }
     }
     @media (any-hover: hover) and (min-width: 1361px) {
-      // &:hover {
-        background: transparent;
-      // }
+      background: transparent;
+    }
+  }
+  &--link {
+    justify-content: unset;
+    padding: 0;
+    font: inherit;
+    text-align: inherit;
+    white-space: unset;
+    color: $blue;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    &::after {
+      display: none;
+    }
+    @include media-hover {
+      background: transparent;
+    }
+    &.ui-button--fz-s {
+      font-size: min(14px, 3.73vw);
+    }
+    &.ui-button--medium {
+      font-weight: 600;
+    }
+    &.ui-button--bold {
+      font-weight: 700;
+    }
+    &.ui-button--grey {
+      color: #989898;
+      @include media-hover {
+        color: $blue;
+      }
+    }
+    &.ui-button--blue-grey {
+      color: #abb0c1;
+      @include media-hover {
+        color: $blue;
+      }
+    }
+    &.ui-button--color-inherit {
+      color: inherit;
+      @include media-hover {
+        color: $blue;
+      }
     }
   }
   &--burger-active {

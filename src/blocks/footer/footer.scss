@@ -139,7 +139,7 @@
     @include media-laptop {
       gap: 10px;
       font-size: 14px;
-      line-height: 105%;
+      line-height: 1.05;
     }
     &-column {
       width: calc((100% - 90px) / 3);

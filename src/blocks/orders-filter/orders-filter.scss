@@ -1,0 +1,73 @@
+.orders-filter {
+  display: grid;
+  grid-template-areas: 'date status empty empty' 'date status reset submit';
+  grid-template-columns: max-content max-content 1fr max-content;
+  gap: 0 30px;
+  font-size: 14px;
+  line-height: 1.3;
+  @include media-laptop {
+    grid-template-areas: 'date status reset' 'date status submit';
+    grid-template-columns: max-content max-content 1fr;
+  }
+  @include media-tablet {
+    grid-template-areas: 'date date' 'status submit' 'reset reset';
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  &__label {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.3;
+    color: #80828e;
+  }
+  &__item {
+    &--date {
+      grid-area: date;
+    }
+    &--status {
+      grid-area: status;
+    }
+    &--reset {
+      grid-area: reset;
+      align-self: center;
+      margin-left: auto;
+      @include media-laptop {
+        align-self: start;
+      }
+      @include media-tablet {
+        margin-left: 0;
+      }
+    }
+    &--submit {
+      grid-area: submit;
+      @include media-laptop {
+        text-align: right;
+      }
+      @include media-tablet {
+        align-self: end;
+        text-align: unset;
+      }
+    }
+  }
+  &__date {
+    display: flex;
+    gap: 10px;
+    @include media-tablet {
+      gap: 15px;
+    }
+  }
+  &__ui-input {
+    width: 160px;
+    @include media-tablet {
+      width: auto;
+      flex: 1;
+    }
+  }
+  &__ui-select {
+    width: 220px;
+    @include media-tablet {
+      width: auto;
+    }
+  }
+}

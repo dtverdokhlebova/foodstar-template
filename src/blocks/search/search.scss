@@ -8,6 +8,7 @@
     padding: 14px 40px 14px 15px;
     font-size: 14px;
     line-height: 1.1;
+    font-family: $font;
     color: $blue;
     border: 1px solid #c6c6c6;
     border-radius: 60px;
@@ -93,6 +94,25 @@
   &--input {
     .search__result {
       display: block;
+    }
+  }
+  &--order {
+    .search {
+      &__input {
+        padding: 14px 40px 14px 15px;
+        font-size: 14px;
+        color: $blue;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &::placeholder {
+          color: #666;
+        }
+      }
+      &__submit {
+        background-image: url("data:image/svg+xml,%3Csvg width='17' height='17' viewBox='0 0 17 17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 16L12.4584 12.4521L16 16ZM14.4211 7.71053C14.4211 9.49027 13.7141 11.1971 12.4556 12.4556C11.1971 13.7141 9.49027 14.4211 7.71053 14.4211C5.93078 14.4211 4.22394 13.7141 2.96547 12.4556C1.707 11.1971 1 9.49027 1 7.71053C1 5.93078 1.707 4.22394 2.96547 2.96547C4.22394 1.707 5.93078 1 7.71053 1C9.49027 1 11.1971 1.707 12.4556 2.96547C13.7141 4.22394 14.4211 5.93078 14.4211 7.71053V7.71053Z' stroke='%23999' stroke-linecap='round'/%3E%3C/svg%3E%0A");
+      }
     }
   }
 }

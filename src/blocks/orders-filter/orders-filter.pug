@@ -1,0 +1,26 @@
+mixin orders-filter(mods)
+  -
+    const baseName = 'orders-filter'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  form.orders-filter(class=allMods action='#')&attributes(attributes)
+    .orders-filter__item.orders-filter__item--date
+      .orders-filter__label Дата создания
+      .orders-filter__date
+        +ui-datepicker('ordersFilterDateStart', 'с', 'orders-filter, --range')(data-input-end='#ordersFilterDateEnd')
+        +ui-datepicker('ordersFilterDateEnd', 'по', 'orders-filter, --range')
+    .orders-filter__item.orders-filter__item--status
+      .orders-filter__label Статус заказа
+      +ui-select('orders-filter, --light, --order-filter', 'все статусы', 'новый', 'в обработке', 'собран', 'отправлен', 'завершен')(data-placeholder='Тип сортировки')
+    .orders-filter__item.orders-filter__item--reset
+      +ui-button('Сбросить', '--link, --blue-grey').ui-underline(type='reset')
+    .orders-filter__item.orders-filter__item--submit
+      +ui-button('Показать 6', '--m-w100, --px-s, --py-m, --l-fz-m')
+    block

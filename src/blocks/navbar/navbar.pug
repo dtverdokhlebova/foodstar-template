@@ -1,0 +1,37 @@
+-
+  const navbarMenuItems =[
+    { icon: 'icon_home.svg', text: 'Главная', link: 'lk-main.html', },
+    { icon: 'icon_package_outline.svg', text: 'Мои заказы', link: 'lk-orders.html', },
+    { icon: 'icon_basket.svg', text: 'Корзина', link: 'lk-basket.html', },
+    { icon: 'icon_pricetags_outline.svg', text: 'Прайсы', link: 'lk-prices.html', },
+    { icon: 'icon_calendar_blank.svg', text: 'Календарь', link: 'lk-calendar.html', },
+    { icon: 'icon_settings.svg', text: 'Настройки', link: 'lk-setting.html', },
+  ]
+
+.navbar
+  .navbar__inner
+    .navbar__head
+      a.navbar__logo(href='/')
+        img(src='img/icon_logo.png', alt='')
+      .navbar__close Закрыть
+    .navbar__main
+      .navbar__menu
+        each item in navbarMenuItems
+          a.navbar__menu-item(class = (navbarLink === item.link) ? 'navbar__menu-item--active' : '' href=item.link)
+            .navbar__menu-icon
+              img(src=`img/${item.icon}`, alt='')
+            .navbar__menu-text=item.text
+    .navbar__foot
+      .navbar__auth
+        .navbar__user Name User
+        a.navbar__logout(href='#')
+          img(src='img/icon_logout.svg' alt='')
+      .navbar__support
+        .navbar__support-title Тех поддержка Food Star:
+        .navbar__support-text
+          p
+            a(href='#') Написать в поддержку
+          p
+            a(href='tel:+70000000000') + 7 (000) 000-00-00
+          p
+            a(href='#') Заказать звонок

@@ -15,46 +15,141 @@
     { text: 'Контакты', link: 'contacts.html' },
   ]
 
-footer.footer
-  .inner
-    .footer__head
-      a.footer__logo(href='/')
-        img(src='img/icon_logo.png', alt='')
-    .footer__main
-      .footer__column.footer__column--contacts
-        .footer__title Контакты:
-        .footer__contacts
-          each item in footerContacts
-            .footer__contacts-item
-              .footer__contacts-icon
-                img(src=`img/${item.icon}.svg`, alt='')
-              .footer__contacts-link !{item.text}
-        +ui-button('Заказать звонок', 'footer, --laptop-link').js-open-popup(href='#popup-callback')
+-
+  const formHeadAuthorization ={
+    h2: 'Вход в личный кабинет',
+    p1: `Войдите по паролю или
+      <a class="ui-blue js-open-popup" href="#popup-registration">зарегистрируйтесь</a>`
+  }
 
-      .footer__column.footer__column--pages
-        .footer__title Страницы:
-        ul.footer__pages
-          each item in footerPages
-            .footer__pages-item
-              a.footer__pages-link(class = (pagePath === item.link ? 'active' : '') href=item.link)=item.text
+-
+  const formHeadRegistration ={
+    h2: 'Регистрация в&nbsp;личном кабинете',
+  }
 
-      .footer__column
-        .footer__title Популярные бренды
-        .footer__brands
-          -for(menuColumn = 0; menuColumn < 3; menuColumn++)
-            .footer__brands-column
-              .footer__brands-item
-                  a(href='#') Название брендабренда бренда
-              -for(menuItem = 0; menuItem < 4; menuItem++)
+if siteType !== 'lk'
+  footer.footer
+    .inner
+      .footer__head
+        a.footer__logo(href='/')
+          img(src='img/icon_logo.png', alt='')
+      .footer__main
+        .footer__column.footer__column--contacts
+          .footer__title Контакты:
+          .footer__contacts
+            each item in footerContacts
+              .footer__contacts-item
+                .footer__contacts-icon
+                  img(src=`img/${item.icon}.svg`, alt='')
+                .footer__contacts-link !{item.text}
+          +ui-button('Заказать звонок', 'footer, --laptop-link').js-open-popup(href='#popup-callback')
+
+        .footer__column.footer__column--pages
+          .footer__title Страницы:
+          ul.footer__pages
+            each item in footerPages
+              .footer__pages-item
+                a.footer__pages-link(class = (pagePath === item.link ? 'active' : '') href=item.link)=item.text
+
+        .footer__column
+          .footer__title Популярные бренды
+          .footer__brands
+            -for(menuColumn = 0; menuColumn < 3; menuColumn++)
+              .footer__brands-column
                 .footer__brands-item
-                  a(href='#') Название бренда
+                    a(href='#') Название брендабренда бренда
+                -for(menuItem = 0; menuItem < 4; menuItem++)
+                  .footer__brands-item
+                    a(href='#') Название бренда
 
-      .footer__to-top
+        .footer__to-top
 
-    .footer__foot
-      .footer__copyright © 2023. «Food star»
-      .footer__policy
-        a(href='policy.html') Политика конфиденциальности
+      .footer__foot
+        .footer__copyright © 2023. «Food star»
+        .footer__policy
+          a(href='policy.html') Политика конфиденциальности
+
+  +popup-wrapper('--authorization')#popup-authorization
+    .popup-close.js-close-popup
+
+    +form('--authorization')
+      .form-content
+        +form-head(formHeadAuthorization).ui-center
+        +form-line
+          +ui-input('authorizationEmail', 'Email', '--error-static', 'email')(name='email' required)
+        +form-line
+          +ui-input('authorizationPassword', 'Пароль', '--error-static', 'password')(name='password' required)
+      +form-line('--flex, --mt-l, --mob-mt-auto')
+        .form-line__item
+          +ui-button('Забыли пароль?', '--fz-s, --link')(href='#')
+        .form-line__item.form-line__item--left-auto
+          +ui-button('Войти', '--px-xl, --fz-s')
+
+  +popup-wrapper('--registration')#popup-registration
+    .popup-close.js-close-popup
+    +form-head(formHeadRegistration).ui-center
+
+    +form('--registration, --mob-flex1')
+      +form-progress
+
+      .form-step.form-step--mob-flex1.form-step--current
+        +form-line
+          +ui-input('registrationName', 'ФИО', '--error-static')(name='name' required)
+        +form-line
+          +ui-input('registrationPhone', 'Телефон', '--error-static')(required data-parsley-phone data-mask='phone')
+        +form-line
+          +ui-input('registrationMail', 'Электронная почта', '--error-static', 'email')(required)
+        +form-line('--flex, --mt-l, --mob-mt-auto')
+          .form-line__item.form-line__item--left-auto
+            +ui-button('Далее', '--px-xl, --py-m, --fz-s').form-button-next(type='button')
+
+      .form-step.form-step--mob-flex1
+        +form-line
+          +ui-input('registrationINN', 'ИНН', '--error-static')(name='inn' required data-parsley-inn data-mask='inn')
+        +form-line
+          +ui-input('registrationOGRN', 'ОГРН', '--error-static')(name='ogrn' required)
+        +form-line
+          +ui-input('registrationNameCompany', 'Название ИП/ООО', '--error-static')(name='name-company' required)
+        +form-line
+          +ui-input('registrationLegalAddress', 'Юридический адрес', '--error-static')(name='legal-address' required)
+        +form-line('--flex, --mt-l, --mob-mt-auto')
+          .form-line__item
+            +ui-button('', '--link, --fz-s, --medium').form-button-previous
+              span.ui-button__icon
+                img(src='img/icon_arrow_backward.svg', alt='')
+              span Назад
+          .form-line__item.form-line__item--left-auto
+            +ui-button('Далее', '--px-xl, --py-m, --fz-s').form-button-next(type='button')
+
+      .form-step.form-step--mob-flex1
+        +form-line
+          +ui-input('registrationURL', 'Адрес интерент-магазина <span class="ui-grey70">(если есть*)</span>', '--error-static', 'url')(name='url')
+        +form-line
+          +ui-input('registrationDeliveryAddress', 'Адрес доставки', '--error-static')(name='delivery-address' required)
+        +form-line
+          +ui-checkbox('registrationNewsSubscribe', 'Хочу быть в курсе новостей ', '--check-bg-grey')(name='news-subscribe')
+        +form-line('--flex, --mt-l, --mob-mt-auto')
+          .form-line__item
+            +ui-button('', '--link, --fz-s, --medium').form-button-previous
+              span.ui-button__icon
+                img(src='img/icon_arrow_backward.svg', alt='')
+              span Назад
+          .form-line__item.form-line__item--left-auto
+            +ui-button('Далее', '--px-xl, --py-m, --fz-s').form-button-next(type='button')
+
+      .form-step.form-step--mob-flex1
+        +form-line
+          +ui-input('registrationPassword', 'Пароль', '--error-static', 'password')(name='password' required)
+        +form-line
+          +ui-input('registrationPasswordConfirm', 'Повторный ввод пароля', '--error-static', 'password')(name='password' required)
+        +form-line('--flex, --mt-l, --mob-mt-auto')
+          .form-line__item
+            +ui-button('', '--link, --fz-s, --medium').form-button-previous
+              span.ui-button__icon
+                img(src='img/icon_arrow_backward.svg', alt='')
+              span Назад
+          .form-line__item.form-line__item--left-auto
+            +ui-button('Зарегистрироваться', '--py-m, --fz-s').form-button-submit
 
 +popup-wrapper('--callback')#popup-callback
   +popup-callback

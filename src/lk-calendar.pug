@@ -1,0 +1,25 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Календарь'
+    const navbarLink ='lk-calendar.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: pageTitle },
+    ]
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Календарь', '--mb-l')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +section-head
+          +ui-datepicker-range
+            +ui-datepicker('eventsDateStart', 'с', '--range-mob-inline')(data-input-end='#eventsDateEnd')
+            +ui-datepicker('eventsDateEnd', 'по', '--range-mob-inline, --mob-none')
+        +events

@@ -1,0 +1,24 @@
+mixin events(mods)
+  -
+    const baseName = 'events'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .events(class=allMods)&attributes(attributes)
+    -for(item = 0; item < 3; item++)
+      .events__item
+        .events__date
+          span.events__date-num 22
+          |  февраля
+        .events__head
+          .events__head-wrapper
+            | «Нестле Россия» расширяет программу по сбору и переработке кофейных капсул
+        .events__date-after
+        .events__main Nespresso представляет 10 новых кофейных блендов для системы Vertuo, продолжая вдохновлять любителей кофе стать настоящими бариста у себя дома. В прошлом году потребление кофе в домашних условиях достигло небывалых высот. За это время искушенные ценители кофе смогли расширить границы домашнего приготовления этого бодрящего напитка. Обновленное и дополненное меню Nespresso Vertuo было вдохновлено кофейнями по всему миру. Оно позволяет ценителям напитка выбирать рецепт и объем в соответствии со своим настроением и обеспечивает эталонное качество кофе Nespresso.
+    block

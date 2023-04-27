@@ -1,0 +1,201 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Мои заказы'
+    const navbarLink ='lk-orders.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: 'Мои заказы' },
+    ]
+
+  -
+    const tableData ={
+      thead: [
+        { name: 'Статус ', nameNoWrap: 'заказа',
+          sort: true
+        },
+        { name: 'Номер заказа' },
+        { name: 'Дата ', nameNoWrap: 'создания',
+          sort: true, sortMods: 'table__sort--reverse',
+        },
+        { name: 'Кол-во товаров', },
+        { name: 'Сумма заказа', },
+        { name: 'Статус ', nameNoWrap: 'оплаты',
+          sort: true,
+        },
+      ],
+      tbody: [
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'new', statusText: 'новый', },
+            { p1: '245543', },
+            { p1: '11.09.2021', },
+            { p1: '10', },
+            { p1: '12 885 ₽', },
+            { p1: `
+                <div class="table__p2">оплатить</div>
+                <p>до 15.09.2021</p>
+              `,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'processing', statusText: 'в обработке', },
+            { p1: '798676', },
+            { p1: '11.09.2021', },
+            { p1: '16', },
+            { p1: '15 700 ₽', },
+            { p1: `
+                <div class="table__p2">оплатить</div>
+                <p>до 12.09.2021</p>
+              `,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'confirmed', statusText: 'собран',},
+            { p1: '798676', },
+            { p1: '11.09.2021', },
+            { p1: '16', },
+            { p1: '15 700 ₽', },
+            { p1: '<div class="table__paid-for">оплачен</div>', },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'confirmed', statusText: 'отправлен',},
+            { p1: '798676', },
+            { p1: '11.09.2021', },
+            { p1: '16', },
+            { p1: '9 685 ₽', },
+            { p1: '<div class="table__paid-for">оплачен</div>', },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'completed', statusText: 'завершен',},
+            { p1: '798676', },
+            { p1: '11.09.2021', },
+            { p1: '16', },
+            { p1: '23 958 ₽', },
+            { p1: '<div class="table__paid-for">оплачен</div>', },
+          ]
+        },
+      ]
+    }
+
+  -
+    const tableMobData ={
+      thead: [
+        { name: 'Статус ', nameNoWrap: 'заказа', sort: true },
+        { name: 'Заказ', },
+        { name: '', nameNoWrap: 'Оплата', sort: true, },
+      ],
+      tbody: [
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'new', statusText: 'новый', },
+            { p1: '245543',
+              p2: '11.09.2021',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `<p>12 885 ₽</p>
+              <div class="table__p2">оплатить</div>
+              <p>до 15.09.2021</p>`,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'processing', statusText: 'в обработке', },
+            { p1: '798676',
+              p2: '11.09.2021',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `<p>15 700 ₽</p>
+              <div class="table__p2">оплатить</div>
+              <p>12.09.2021</p>`,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'confirmed', statusText: 'собран',},
+            { p1: '798676',
+              p2: '11.09.2021',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `<p>15 700 ₽</p>
+             <div class="table__p2">
+              <div class="table__paid-for">оплачен</div>
+             </div>`,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'confirmed', statusText: 'завершен',},
+            { p1: '798676',
+              p2: '11.09.2021',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `<p>9 685 ₽</p>
+             <div class="table__p2">
+              <div class="table__paid-for">оплачен</div>
+             </div>`,
+            },
+          ]
+        },
+        {
+          link: `location='lk-order-inner.html'`,
+          td: [
+            { statusClass: 'completed', statusText: 'собран',},
+            { p1: '798676',
+              p2: '11.09.2021',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `<p>23 958 ₽</p>
+              <div class="table__p2">
+                <div class="table__paid-for">оплачен</div>
+              </div>`,
+            },
+          ]
+        },
+      ]
+    }
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Мои заказы', '--mb-l, --orders')
+      +search('поиск по номеру заказа', '', '--order')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +section-head()
+          +ui-h5('Фильтр заказов:', '--bold')
+        +orders-filter
+
+    +section('--mt-xs')
+      .inner.inner--lk
+        // -- for backend
+        // для мобилки отдельная таблица (тут и на детальной заказа)
+        // с таким дизайном это лучше и надежнее, чем пытаться адаптировать десктоп.
+        // так таблицы отображаются более корректнее на всех разрешениях
+        // если на интеграции это слишком не удобно, переделаю
+        +table(tableData, '--mob-hidden')
+        +table(tableMobData, '--mob-visible, --mob-outside')

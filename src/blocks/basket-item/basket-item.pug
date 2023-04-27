@@ -1,4 +1,4 @@
-mixin basket-item(idCheckbox, mods)
+mixin basket-item(idCheckbox, type, mods)
   -
     const baseName = 'basket-item'
     let allMods = ''
@@ -10,8 +10,9 @@ mixin basket-item(idCheckbox, mods)
       allMods = allMods.trim()
     }
 
-  .basket-item(class=allMods)&attributes(attributes)
-    +ui-checkbox(idCheckbox, '', 'basket-item, --size-l, --filled-blue')(checked)
+  .basket-item(class=allMods class=(type=='lk' ? 'basket-item--lk' : ''))&attributes(attributes)
+    if type !== 'lk'
+      +ui-checkbox(idCheckbox, '', 'basket-item, --size-l, --filled-blue')(checked)
     a.basket-item__img(href='#')
       img(src='img/product_img.png', alt='')
     .basket-item__content

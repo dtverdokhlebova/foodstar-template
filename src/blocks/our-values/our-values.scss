@@ -31,7 +31,7 @@
     margin-bottom: 10px;
     font-weight: 700;
     font-size: 18px;
-    line-height: 140%;
+    line-height: 1.4;
     color: $blue;
     @include media-laptop {
       margin-bottom: 5px;
@@ -40,7 +40,7 @@
   }
   &__descr {
     font-size: 16px;
-    line-height: 140%;
+    line-height: 1.4;
     @include media-laptop {
       font-size: 13px;
     }

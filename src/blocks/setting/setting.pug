@@ -1,0 +1,85 @@
+mixin setting(mods)
+  -
+    const baseName = 'setting'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const detailsItems =[
+      { name: 'Расчетный счет',
+        value: '45586405860821495866',
+        valueBreakWord: true,
+      },
+      { name: 'Наименование Банка',
+        value: 'ПАО Сбербанк',
+      },
+      { name: 'БИК',
+        value: '241267457',
+        valueBreakWord: true,
+      },
+      { name: 'Кор. счет',
+        value: '21434645767867978078',
+        valueBreakWord: true,
+      },
+    ]
+
+  form.setting(class=allMods action='#')&attributes(attributes)
+    .setting__inner
+      .setting__row
+        .setting__name Фамилия Имя Отчество
+        +ui-input('settingName', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='name' value='Петров Сергей Александрович' required)
+      .setting__row
+        .setting__item.setting__item--inn
+          .setting__name ИНН
+          +ui-input('settingINN', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='inn' value='5738950217456' required)
+      .setting__row
+        .setting__item
+          .setting__name Наименование организации
+          +ui-input('settingCompanyName', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='company-name' value='ИП Петров Сергей Александрович' required)
+      .setting__row.setting__row--l-2col
+        .setting__item
+          .setting__name Телефон
+          +ui-input('settingPhone', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='phone' value='+ 7 (000) 000-00-00' required data-parsley-phone data-mask='phone')
+        .setting__item
+          .setting__name E-mail
+          +ui-input('settingEmail', '', 'setting, --text-grey, --icon-edit', 'email', 'icon_edit.svg')(name='email' value='test@test.ru' required)
+      .setting__row
+        .setting__head.setting__head--requisites
+          .setting__name.setting__name--mb0 Реквизиты
+          +ui-button('', '--link, --grey').js-open-popup(href='#popup-requisites-edit')
+            span.ui-button__icon
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5573 1.76381C15.5387 0.745396 13.8875 0.745396 12.869 1.76381L2.52955 12.1023C2.45869 12.1732 2.40753 12.261 2.38081 12.3574L1.02115 17.2657C0.965231 17.467 1.02205 17.6824 1.16966 17.8303C1.31749 17.9779 1.533 18.0347 1.73426 17.979L6.64296 16.6192C6.7394 16.5925 6.82724 16.5413 6.89809 16.4705L17.2373 6.13174C18.2542 5.11265 18.2542 3.4629 17.2373 2.44381L16.5573 1.76381ZM3.79232 12.479L12.2544 4.0175L14.9834 6.74632L6.52116 15.2078L3.79232 12.479ZM3.24719 13.5728L5.4275 15.7531L2.4116 16.5887L3.24719 13.5728ZM16.4178 5.3123L15.8032 5.92688L13.0739 3.19783L13.6887 2.58325C14.2545 2.01757 15.1718 2.01757 15.7375 2.58325L16.4178 3.26325C16.9826 3.82961 16.9826 4.74616 16.4178 5.3123V5.3123Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/>
+              </svg>
+            span Редактировать
+        +details(detailsItems, '--requisites, --shadow')
+      .setting__row
+        .setting__name Лицензия на алкоголь
+        .setting__item.setting__item--license
+          .setting__item.setting__item--max-w-license
+            +ui-input('settingLicense', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='license' value='47.25.1' required)
+          .setting__license-status.text-status-error Номер не найден в реестре
+      .setting__row
+        .setting__name Лицензия на алкоголь
+        .setting__item.setting__item--license
+          .setting__item.setting__item--max-w-license
+            +ui-input('settingLicense', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='license' value='47.25.1' required)
+          .setting__license-status.text-status-processing В обработке
+      .setting__row
+        .setting__name Лицензия на алкоголь
+        .setting__item.setting__item--license
+          .setting__item.setting__item--max-w-license
+            +ui-input('settingLicense', '', 'setting, --text-grey, --icon-edit', '', 'icon_edit.svg')(name='license' value='47.25.1' required)
+          .setting__license-status.text-status-confirmed Лицензия подтверждена
+    .setting__row
+      .setting__name Адрес доставки
+      +delivery-address
+    .setting__row.setting__row--mt-l.setting__row--mob-center
+      +ui-button('Сохранить изменения', '--py-xl')
+    block

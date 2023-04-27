@@ -1,5 +1,9 @@
 :root {
   --inner-pd: 10px;
+  --navbar-width: 250px;
+  @include media-laptop {
+    --navbar-width: 100%;
+  }
   @include media-tablet {
     --inner-pd: 15px;
   }
@@ -65,6 +69,15 @@ a {
   padding-top: var(--header-height, 210px);
   font-family: $font;
   color: $black;
+  &--lk {
+    display: grid;
+    grid-template-columns: minmax(20px, 1fr) var(--navbar-width) minmax(auto, 1022px) minmax(20px, 1fr);
+    padding-top: 0;
+    background: #f7fafb;
+    @include media-laptop {
+      display: block;
+    }
+  }
 }
 .main {
   flex: 1 0;
@@ -82,6 +95,27 @@ a {
     }
   }
 }
+.main-lk {
+  padding-top: 50px;
+  padding-bottom: 70px;
+  @include media-laptop {
+    padding-top: 25px;
+    padding-bottom: 60px;
+  }
+  @include media-tablet {
+    padding-top: 10px;
+    padding-bottom: 40px;
+  }
+  &--d-pt0 {
+    padding-top: 0;
+    @include media-laptop {
+      padding-top: 25px;
+    }
+    @include media-tablet {
+      padding-top: 10px;
+    }
+  }
+}
 .inner {
   width: 100%;
   max-width: 1240px;
@@ -89,13 +123,30 @@ a {
   margin: 0 auto;
   padding: 0 10px;
   padding: 0 var(--inner-pd);
+  &--lk {
+    padding: 0 56px;
+    @include media-laptop {
+      padding: 0 var(--inner-pd);
+    }
+  }
 }
 .ui {
   &-center {
     text-align: center;
   }
+  &-right {
+    text-align: right;
+    &--mob-center {
+      @include media-tablet {
+        text-align: center;
+      }
+    }
+  }
   &-nowrap {
     white-space: nowrap;
+  }
+  &-break-word {
+    word-break: break-word;
   }
   &-underline {
     text-decoration: underline;
@@ -104,4 +155,59 @@ a {
   &-blue {
     color: $blue;
   }
+  &-grey70 {
+    color: $grey70;
+  }
+  &-grey80 {
+    color: $grey80;
+  }
+  &-grey85 {
+    color: $grey85;
+  }
+  &-bold {
+    font-weight: 700;
+  }
+  &-status-point {
+    flex-shrink: 0;
+    display: inline-flex;
+    width: 10px;
+    height: 10px;
+    margin-right: 12px;
+    border-radius: 50%;
+  }
 }
+.text-status {
+  &-new {
+    color: $statusNew;
+  }
+  &-processing {
+    color: $statusProcessing;
+  }
+  &-confirmed {
+    color: $statusConfirmed;
+  }
+  &-error {
+    color: $statusError;
+  }
+  &-completed {
+    color: $statusCompleted;
+  }
+}
+.bg-status {
+  &-new {
+    background: $statusNew;
+  }
+  &-processing {
+    background: $statusProcessing;
+  }
+  &-confirmed {
+    background: $statusConfirmed;
+  }
+  &-error {
+    background: $statusError;
+  }
+  &-completed {
+    background: $statusCompleted;
+  }
+}
+

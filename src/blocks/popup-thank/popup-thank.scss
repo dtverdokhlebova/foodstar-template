@@ -4,7 +4,7 @@
     margin-bottom: 15px;
     font-weight: 700;
     font-size: 28px;
-    line-height: 132%;
+    line-height: 1.32;
     @include media-laptop {
       font-size: 22px;
     }
@@ -16,7 +16,7 @@
     margin-bottom: 20px;
     font-weight: 500;
     font-size: 16px;
-    line-height: 132%;
+    line-height: 1.32;
     @include media-laptop {
       margin-bottom: 15px;
       font-size: 14px;

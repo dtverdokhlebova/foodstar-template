@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Календарь</title>
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <link href="." rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="libs/fancybox/fancybox.css">
+    <link rel="stylesheet" href="libs/noUiSlider/nouislider.min.css">
+    <link rel="stylesheet" href="libs/select2/select2.min.css">
+    <link rel="stylesheet" href="libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="libs/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=7742add4-5d3c-4060-9f01-67963d12fb4e&amp;lang=ru_RU" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="wrapper wrapper--lk">
+      <div class="navbar">
+        <div class="navbar__inner">
+          <div class="navbar__head"><a class="navbar__logo" href="/"><img src="img/icon_logo.png" alt=""></a>
+            <div class="navbar__close">Закрыть</div>
+          </div>
+          <div class="navbar__main">
+            <div class="navbar__menu"><a class="navbar__menu-item" href="lk-main.html">
+                <div class="navbar__menu-icon"><img src="img/icon_home.svg" alt=""></div>
+                <div class="navbar__menu-text">Главная</div></a><a class="navbar__menu-item" href="lk-orders.html">
+                <div class="navbar__menu-icon"><img src="img/icon_package_outline.svg" alt=""></div>
+                <div class="navbar__menu-text">Мои заказы</div></a><a class="navbar__menu-item" href="lk-basket.html">
+                <div class="navbar__menu-icon"><img src="img/icon_basket.svg" alt=""></div>
+                <div class="navbar__menu-text">Корзина</div></a><a class="navbar__menu-item" href="lk-prices.html">
+                <div class="navbar__menu-icon"><img src="img/icon_pricetags_outline.svg" alt=""></div>
+                <div class="navbar__menu-text">Прайсы</div></a><a class="navbar__menu-item navbar__menu-item--active" href="lk-calendar.html">
+                <div class="navbar__menu-icon"><img src="img/icon_calendar_blank.svg" alt=""></div>
+                <div class="navbar__menu-text">Календарь</div></a><a class="navbar__menu-item" href="lk-setting.html">
+                <div class="navbar__menu-icon"><img src="img/icon_settings.svg" alt=""></div>
+                <div class="navbar__menu-text">Настройки</div></a>
+            </div>
+          </div>
+          <div class="navbar__foot">
+            <div class="navbar__auth">
+              <div class="navbar__user">Name User</div><a class="navbar__logout" href="#"><img src="img/icon_logout.svg" alt=""></a>
+            </div>
+            <div class="navbar__support">
+              <div class="navbar__support-title">Тех поддержка Food Star:</div>
+              <div class="navbar__support-text">
+                <p><a href="#">Написать в поддержку</a></p>
+                <p><a href="tel:+70000000000">+ 7 (000) 000-00-00</a></p>
+                <p><a href="#">Заказать звонок</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page-content">
+        <header class="header-lk">
+          <div class="inner inner--lk">
+            <div class="header-lk__wrapper"><a class="header-lk__logo" href="/"><img src="img/icon_logo.png" alt="logo"></a>
+              <div class="breadcrumbs header-lk__breadcrumbs">
+                <ul class="breadcrumbs__list">
+                  <li class="breadcrumbs__item ui-blue"><span class="breadcrumbs__text">Календарь</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="header-lk__auth">
+                <div class="header-lk__user">Name User</div><a class="header-lk__logout" href="#"><img src="img/icon_logout.svg" alt=""></a>
+              </div>
+              <button class="header-lk__burger-btn"><span></span></button>
+            </div>
+          </div>
+        </header>
+        <main class="main-lk">
+          <div class="inner inner--lk">
+            <div class="lk-page-head lk-page-head--mb-l">
+              <h1 class="lk-page-head__h1">Календарь</h1>
+            </div>
+          </div>
+          <div class="page-content">
+            <section class="section section--mt-xs">
+              <div class="inner inner--lk">
+                <div class="section-head">
+                  <div class="ui-datepicker-range">
+                    <div class="ui-datepicker ui-datepicker--range-mob-inline ">
+                      <div class="ui-input ui-datepicker__ui-input ui-input--label-left ui-input--range-mob-inline">
+                        <label class="ui-input__label">с</label>
+                        <input class="ui-input__native" id="eventsDateStart" type="text" data-mask="date" autocomplete="off" data-input-end="#eventsDateEnd"/>
+                      </div>
+                    </div>
+                    <div class="ui-datepicker ui-datepicker--range-mob-inline ui-datepicker--mob-none ">
+                      <div class="ui-input ui-datepicker__ui-input ui-input--label-left ui-input--range-mob-inline ui-input--mob-none">
+                        <label class="ui-input__label">по</label>
+                        <input class="ui-input__native" id="eventsDateEnd" type="text" data-mask="date" autocomplete="off"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="events">
+                  <div class="events__item">
+                    <div class="events__date"><span class="events__date-num">22</span> февраля</div>
+                    <div class="events__head">
+                      <div class="events__head-wrapper">«Нестле Россия» расширяет программу по сбору и переработке кофейных капсул</div>
+                    </div>
+                    <div class="events__date-after"></div>
+                    <div class="events__main">Nespresso представляет 10 новых кофейных блендов для системы Vertuo, продолжая вдохновлять любителей кофе стать настоящими бариста у себя дома. В прошлом году потребление кофе в домашних условиях достигло небывалых высот. За это время искушенные ценители кофе смогли расширить границы домашнего приготовления этого бодрящего напитка. Обновленное и дополненное меню Nespresso Vertuo было вдохновлено кофейнями по всему миру. Оно позволяет ценителям напитка выбирать рецепт и объем в соответствии со своим настроением и обеспечивает эталонное качество кофе Nespresso.</div>
+                  </div>
+                  <div class="events__item">
+                    <div class="events__date"><span class="events__date-num">22</span> февраля</div>
+                    <div class="events__head">
+                      <div class="events__head-wrapper">«Нестле Россия» расширяет программу по сбору и переработке кофейных капсул</div>
+                    </div>
+                    <div class="events__date-after"></div>
+                    <div class="events__main">Nespresso представляет 10 новых кофейных блендов для системы Vertuo, продолжая вдохновлять любителей кофе стать настоящими бариста у себя дома. В прошлом году потребление кофе в домашних условиях достигло небывалых высот. За это время искушенные ценители кофе смогли расширить границы домашнего приготовления этого бодрящего напитка. Обновленное и дополненное меню Nespresso Vertuo было вдохновлено кофейнями по всему миру. Оно позволяет ценителям напитка выбирать рецепт и объем в соответствии со своим настроением и обеспечивает эталонное качество кофе Nespresso.</div>
+                  </div>
+                  <div class="events__item">
+                    <div class="events__date"><span class="events__date-num">22</span> февраля</div>
+                    <div class="events__head">
+                      <div class="events__head-wrapper">«Нестле Россия» расширяет программу по сбору и переработке кофейных капсул</div>
+                    </div>
+                    <div class="events__date-after"></div>
+                    <div class="events__main">Nespresso представляет 10 новых кофейных блендов для системы Vertuo, продолжая вдохновлять любителей кофе стать настоящими бариста у себя дома. В прошлом году потребление кофе в домашних условиях достигло небывалых высот. За это время искушенные ценители кофе смогли расширить границы домашнего приготовления этого бодрящего напитка. Обновленное и дополненное меню Nespresso Vertuo было вдохновлено кофейнями по всему миру. Оно позволяет ценителям напитка выбирать рецепт и объем в соответствии со своим настроением и обеспечивает эталонное качество кофе Nespresso.</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+        <div class="popup-wrapper popup-wrapper--callback" style="display: none;" id="popup-callback">
+          <div class="popup-callback">
+            <div class="popup-callback__title">Заказать обратный звонок</div>
+            <form class="popup-callback__form" action="#">
+              <div class="popup-callback__row">
+                <div class="ui-input">
+                  <label class="ui-input__label">Ваше имя</label>
+                  <input id="popupCallbackName" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required"/>
+                  <div class="ui-input__error">Заполните эту форму</div>
+                </div>
+              </div>
+              <div class="popup-callback__row">
+                <div class="ui-input">
+                  <label class="ui-input__label">Телефон</label>
+                  <input id="popupCallbackPhone" type="text" data-parsley-errors-messages-disabled="data-parsley-errors-messages-disabled" required="required" data-parsley-phone=""/>
+                  <div class="ui-input__error">Заполните эту форму</div>
+                </div>
+              </div>
+              <div class="popup-callback__submit">
+                <button class="ui-button popup-callback__ui-button"><span>Отправить</span>
+                </button>
+              </div>
+              <div class="popup-callback__agree">Нажимая «Отправить», вы соглашаетесь с&nbsp;<a class="ui-blue ui-underline" href="#">политикой конфиденциальности</a>
+              </div>
+            </form><br/>
+            <p><a class="js-open-popup" href="#popup-thank"> popup "спасибо"</a></p><!-- чтобы вызвать popup - winGetPopup('#popup-thank')-->
+          </div>
+        </div>
+        <div class="popup-wrapper popup-wrapper--thank" style="display: none;" id="popup-thank">
+          <div class="popup-thank">
+            <div class="popup-thank__title">Заявка успешно отправлена!</div>
+            <div class="popup-thank__descr">Мы скоро свяжемся с вами</div>
+            <div class="popup-thank__close">
+              <button class="ui-button popup-thank__ui-button js-close-popup"><span>Закрыть</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="notice-added">
+          <div class="notice-added__text">Товар добавлен в&nbsp;корзину</div><a class="ui-button notice-added__ui-button" href="lk-basket.html"><span>Перейти в корзину</span></a>
+        </div>
+      </div>
+    </div>
+    <script src="libs/jquery/jquery-3.6.0.min.js"></script>
+    <script src="libs/fancybox/fancybox.js"></script>
+    <script src="libs/parsley/parsley.min.js"></script>
+    <script src="libs/inputmask/inputmask.min.js"></script>
+    <script src="libs/flatpickr/flatpickr.js"></script>
+    <script src="libs/flatpickr/rangePlugin.js"></script>
+    <script src="libs/flatpickr/ru.js"></script>
+    <script src="libs/nouislider/nouislider.min.js"></script>
+    <script src="libs/wnumb/wNumb.min.js"></script>
+    <script src="libs/select2/select2.min.js"></script>
+    <script src="libs/swiper/swiper-bundle.js"></script>
+    <script src="libs/tippy/popper.min.js"></script>
+    <script src="libs/tippy/tippy-bundle.umd.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-mixin section(mods)
+mixin section(mods, isDiv)
   -
     const baseName = 'section'
     let allMods = ''
@@ -10,8 +10,12 @@ mixin section(mods)
       allMods = allMods.trim()
     }
 
-  section.section(class=allMods)&attributes(attributes)
-    block
+  if isDiv
+    .section(class=allMods)&attributes(attributes)
+      block
+  else
+    section.section(class=allMods)&attributes(attributes)
+      block
 
 mixin section-head(mods)
   -

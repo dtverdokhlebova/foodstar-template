@@ -1,0 +1,48 @@
+mixin table(tableData, mods)
+  -
+    const baseName = 'table'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .table(class=allMods)&attributes(attributes)
+    table.table__native
+      if tableData.thead
+        thead.table__thead
+          tr
+            each th in tableData.thead
+              th.table__th(class=th.mods ? th.mods: '')
+                .table__p1
+                  if th.sort
+                    span.table__sort(class=th.sortMods)
+                      | !{th.name}
+                      span.ui-nowrap
+                        if th.nameNoWrap
+                          =th.nameNoWrap
+                        span.table__sort-icon
+                          img(src='img/icon_arrow_down.svg', alt='')
+                  else
+                    | !{th.name}
+      tbody.table__tbody
+        each tr in tableData.tbody
+          tr.table__tr(class=tr.link ? 'table__tr--link' : '' onclick=tr.link)
+            each td in tr.td
+              td.table__td(class=td.mods colspan=td.colspan)
+                .table__p1 !{td.p1}
+                  if td.statusText
+                    span.ui-nowrap
+                      span(class=`ui-status-point bg-status-${td.statusClass}`)
+                      =td.statusText
+                if td.p2
+                  .table__p2(class=td.p2Mods) !{td.p2}
+        if tableData.total
+            tr.table__total
+              each td in tableData.total
+                td.table__total-td(class=td.mods colspan=td.colspan)=td.text
+
+    block

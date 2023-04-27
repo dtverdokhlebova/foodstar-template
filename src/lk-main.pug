@@ -1,0 +1,35 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Index LK'
+    const navbarLink ='lk-main.html'
+    const mainMods = 'main-lk--d-pt0'
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Главная страница')
+  .page-content
+    +section('--mt-xs, --ov, --pb-for-shadow')
+      .inner.inner--lk
+        +section-head('--mb-s')
+          +ui-h5('Информация о&nbsp;заказах').ui-grey85
+        +orders-list
+
+    +section('--mt-xs')
+      .inner.inner--lk
+        +section-head('--mb-s')
+          +ui-h5('Прайс-листы и&nbsp;каталоги').ui-grey85
+        +to-catalogs
+
+    +section('--mt-xs, --ov, --pb-for-shadow')
+      .inner.inner--lk
+        +section-head('--mb-s')
+          +ui-h5('Новинки').ui-grey85
+        +product-grid('--3slider, --mb0')
+          .swiper
+            .swiper-wrapper
+              -for(item = 0; item < 6; item++)
+                +product-item('', '--column').swiper-slide
+            +ui-swiper-buttons('product-grid, --size-m')

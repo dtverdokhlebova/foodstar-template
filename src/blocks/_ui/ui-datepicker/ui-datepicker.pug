@@ -1,0 +1,35 @@
+mixin ui-datepicker(id, title, mods)
+  -
+    var baseName = 'ui-datepicker';
+    var allMods = '';
+      if(typeof(mods) !== 'undefined' && mods) {
+        var modsList = mods.split(',');
+        for (var i = 0; i < modsList.length; i++) {
+          if (modsList[i].trim()[0] == '-') {
+            allMods = allMods + baseName + modsList[i].trim() + ' ';
+          } else {
+            allMods = allMods + modsList[i].trim() + '__' + baseName + ' ';
+          }
+        }
+      }
+
+  .ui-datepicker(class=allMods)
+    +ui-input(id, title, `ui-datepicker, --label-left, ${mods}`, '', '', true)(data-mask='date'  autocomplete='off')&attributes(attributes)
+
+mixin ui-datepicker-range(mods)
+  -
+    var baseName = 'ui-datepicker-range';
+    var allMods = '';
+      if(typeof(mods) !== 'undefined' && mods) {
+        var modsList = mods.split(',');
+        for (var i = 0; i < modsList.length; i++) {
+          if (modsList[i].trim()[0] == '-') {
+            allMods = allMods + baseName + modsList[i].trim() + ' ';
+          } else {
+            allMods = allMods + modsList[i].trim() + '__' + baseName + ' ';
+          }
+        }
+      }
+
+  .ui-datepicker-range(class=allMods)&attributes(attributes)
+    block

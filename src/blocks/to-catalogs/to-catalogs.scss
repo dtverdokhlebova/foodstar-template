@@ -1,0 +1,50 @@
+.to-catalogs {
+  position: relative;
+  padding: 30px 20px 20px;
+  background: $blue40;
+  box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  @include media-tablet {
+    padding: 15px 40px 15px 15px;
+  }
+  &__content {
+    position: relative;
+    z-index: 1;
+    max-width: 415px;
+  }
+  &__title {
+    margin-bottom: 22px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.37;
+    color: $blue;
+    @include media-tablet {
+      margin-bottom: 30px;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 460px;
+    overflow: hidden;
+    @include media-laptop {
+      width: 300px;
+    }
+    @include media-tablet {
+      width: 170px;
+    }
+    &-wrap {
+      position: absolute;
+      bottom: -65px;
+      left: 0;
+      width: 516px;
+      @include media-tablet {
+        bottom: -15px;
+        width: 265px;
+      }
+    }
+  }
+}

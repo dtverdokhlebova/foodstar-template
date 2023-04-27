@@ -5,7 +5,8 @@
     padding: 13px 14px 14px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 100%;
+    line-height: 1;
+    font-family: $font;
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -29,9 +30,23 @@
     margin-bottom: 10px;
     font-weight: 500;
     font-size: 14px;
+    color: #000;
     &:not(:last-child) {
       margin-right: 8px;
     }
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    transition: 0.3s;
   }
   &__error {
     position: absolute;
@@ -43,5 +58,67 @@
     font-size: 13px;
     animation: fade-in 0.3s;
     color: $error;
+  }
+  &--text-grey {
+    input {
+      color: #797979;
+      &:focus {
+        color: $black;
+      }
+    }
+  }
+  &--icon-edit {
+    input {
+      padding-right: 36px;
+      &:focus ~ .ui-input__icon {
+        opacity: 1;
+      }
+    }
+    .ui-input {
+      &__wrapper {
+        @include media-hover {
+          .ui-input__icon {
+            opacity: 1;
+          }
+        }
+      }
+      &__icon {
+        opacity: 0;
+      }
+    }
+  }
+  &--label-left {
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    background: #fff;
+    box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
+    border-radius: 6px;
+    overflow: hidden;
+    input {
+      padding: 15px 14px;
+      font-weight: 400;
+      font-size: 14px;
+      border: 0;
+      border-radius: 0;
+    }
+    .ui-input {
+      &__label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        font-weight: 400;
+        text-align: center;
+        color: #6e6e6e;
+        background: #fafafa;
+        border-right: 1px solid rgb(171 176 193 / 0.2);
+      }
+    }
+  }
+  &--error-static {
+    .ui-input__error {
+      position: static;
+      margin-top: 5px;
+    }
   }
 }

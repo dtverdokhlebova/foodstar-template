@@ -27,7 +27,7 @@ mixin popup-head(popupHeadData, mods)
 
   .popup-head(class=allMods)&attributes(attributes)
     if popupHeadData.h3
-      .popup-head__h3 !{popupHeadData.h3}
+      .popup-head__h3(class=popupHeadData.h3Mods) !{popupHeadData.h3}
     if popupHeadData.descr
       .popup-head__descr !{popupHeadData.descr}
     block

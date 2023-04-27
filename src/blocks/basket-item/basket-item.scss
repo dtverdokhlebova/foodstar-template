@@ -74,7 +74,7 @@
     margin-bottom: 15px;
     font-weight: 600;
     font-size: 14px;
-    line-height: 137%;
+    line-height: 1.37;
     color: $grey80;
     @include media-laptop {
       margin-bottom: 10px;
@@ -147,6 +147,41 @@
         bottom: 0;
         width: 1px;
         background: #9b9b9b;
+      }
+    }
+  }
+  &--lk {
+    grid-template-columns: auto 1fr;
+    box-shadow: none;
+    border-radius: 0;
+    @include media-tablet {
+      box-shadow: 0 4px 22px rgb(88 86 86 / 0.09);
+    }
+    &:not(:last-child) {
+      margin-bottom: 0;
+      border-bottom: 1px solid rgb(158 158 158 / 0.17);
+    }
+    .basket-item {
+      &__img {
+        margin-left: 0;
+      }
+      &__content {
+        grid-template-columns: 1fr 300px;
+        @include media-laptop {
+          grid-template-columns: 1fr 235px;
+        }
+      }
+      &__buy {
+        justify-content: space-between;
+        @include media-tablet {
+          justify-content: unset;
+        }
+      }
+      &__amount {
+        width: 105px;
+        @include media-tablet {
+          width: unset;
+        }
       }
     }
   }

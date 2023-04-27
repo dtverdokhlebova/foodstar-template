@@ -1,0 +1,45 @@
+mixin orders-list(mods)
+  -
+    const baseName = 'orders-list'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  -
+    const orderListItems =[
+      { price: '15 000 ₽', term: 'оплатить до 24.08.2023', statusClass: 'new', statusText: 'НОВЫЙ', },
+      { price: '150 000 ₽', term: 'оплатить до 20.08.2023', statusClass: 'processing', statusText: 'В ОБРАБОТКЕ', },
+      { price: '55 450 ₽', statusClass: 'confirmed', statusText: 'СОБРАН', },
+      { price: '150 000 ₽', term: 'оплатить до 20.08.2023', statusClass: 'new', statusText: 'НОВЫЙ', },
+    ]
+
+  .orders-list(class=allMods)&attributes(attributes)
+    .swiper
+      .swiper-wrapper
+        each item in orderListItems
+          a.orders-list__item.swiper-slide(href='lk-order-inner.html')
+            .orders-list__head
+              .orders-list__prop
+                .orders-list__name Дата заказа:
+                .orders-list__val 15.08.2023
+              .orders-list__prop
+                .orders-list__name Номер заказ:
+                .orders-list__val №236897
+            .orders-list__main
+              .orders-list__price=item.price
+              .orders-list__paid
+                if item.term
+                  .orders-list__paid-term=item.term
+                else
+                  .orders-list__paid-success оплачен
+            .orders-list__status Статус заказа:
+              =' '
+              span(class=`text-status-${item.statusClass}`)=item.statusText
+      +ui-swiper-buttons('orders-list, --size-m')
+
+    block

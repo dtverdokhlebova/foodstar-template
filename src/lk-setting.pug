@@ -1,0 +1,61 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Настройки'
+    const navbarLink ='lk-setting.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: pageTitle },
+    ]
+
+  -
+    const popupHeadRequisitesEdit ={
+      h3: 'Редактировать реквизиты',
+      h3Mods: 'popup-head__h3--medium'
+    }
+
+  -
+    const popupHeadDeliveryAddressEdit ={
+      h3: 'Изменение адреса',
+      h3Mods: 'popup-head__h3--medium'
+    }
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Настройки', '--mb-l, --setting')
+      +ui-button('Сменить пароль', '--px-s, --fz-s')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +setting
+
+  +popup-wrapper('--w444')#popup-requisites-edit
+    .popup-close.js-close-popup
+    +popup-head(popupHeadRequisitesEdit)
+    +form('--mob-flex1')
+      +form-line('--mt-m')
+        +ui-input('requisitesEditPaymentAccount', 'Расчетный счет', '--error-static')(name='payment-account' required)
+      +form-line('--mt-m')
+        +ui-input('requisitesEditBankName', 'Наименование банка', '--error-static')(name='bank-name' required)
+      +form-line('--mt-m')
+        +ui-input('requisitesEditBIC', 'БИК', '--error-static')(name='bic' required)
+      +form-line('--mt-m')
+        +ui-input('requisitesEditCorAccount', 'Кор.счет', '--error-static')(name='cor-account' required)
+      +form-line('--mt-xl, --mob-mt-auto')
+        +ui-button('Сохранить', '--w100, --py-xl, --m-py-s, --l-fz-m')
+
+  +popup-wrapper('--w-l')#popup-delivery-address-edit
+    .popup-close.js-close-popup
+    +popup-head(popupHeadDeliveryAddressEdit)
+    +form('--mob-flex1')
+      +form-line('--mt-m')
+        +ui-input('deliveryAddressName', 'Фамилия Имя Отчество контактного лица', '--error-static')(name='name' required)
+      +form-line('--mt-m')
+        +ui-input('deliveryAddressAddress', 'Адрес', '--error-static')(name='address' required)
+      +form-line('--submit-with-checkbox, --mt-xl, --mob-mt-m')
+        +ui-checkbox('deliveryAddressMainAddress', 'Сделать основным адресом', '--filled-blue, --checked-only-bolder')(name='main-address')
+        +ui-button('Сохранить', '--px-xxl, --py-xl, --m-py-s, --l-fz-m')

@@ -1,0 +1,116 @@
+.delivery-address {
+  background: #fff;
+  box-shadow: 0 4px 20px rgb(30 30 30 / 0.08);
+  border-radius: 6px;
+  &__row {
+    position: relative;
+    padding: 20px 40px;
+    @include media-tablet {
+      padding: 15px 10px;
+    }
+    &:not(:first-child) {
+      border-top: 1px solid rgb(158 158 158 / 0.2);
+    }
+    &--add {
+      padding-top: 10px;
+      padding-bottom: 12px;
+      @include media-tablet {
+        text-align: center;
+      }
+    }
+  }
+  &__main {
+    margin-bottom: 15px;
+    padding-right: 60px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.3;
+    @include media-tablet {
+      margin-bottom: 10px;
+      padding-right: 0;
+    }
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    @include media-tablet {
+      display: block;
+    }
+  }
+  &__contact {
+    font-size: 14px;
+    line-height: 1.3;
+    color: #80828e;
+    @include media-tablet {
+      margin-bottom: 10px;
+    }
+  }
+  &__name {
+    color: #80828e;
+    @include media-tablet {
+      display: block;
+      margin-top: 5px;
+    }
+  }
+  &__is-main {
+    position: relative;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 1.3;
+    color: $blue;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.6174 4.2695C11.7897 4.09873 12.0222 4.00263 12.2648 4.00196C12.5074 4.00129 12.7405 4.09611 12.9137 4.26593C13.0869 4.43574 13.1863 4.66691 13.1904 4.90944C13.1946 5.15198 13.1031 5.38639 12.9358 5.56201L8.02176 11.7045C7.9373 11.7955 7.83537 11.8685 7.72206 11.9192C7.60874 11.9698 7.48637 11.9971 7.36227 11.9994C7.23816 12.0017 7.11487 11.979 6.99976 11.9325C6.88465 11.8861 6.78008 11.8169 6.69232 11.7291L3.43642 8.47201C3.34571 8.38749 3.27296 8.28557 3.2225 8.17232C3.17204 8.05907 3.14491 7.93682 3.14272 7.81286C3.14053 7.6889 3.16334 7.56576 3.20977 7.45081C3.2562 7.33585 3.32532 7.23142 3.41298 7.14375C3.50065 7.05609 3.60508 6.98697 3.72004 6.94054C3.83499 6.89411 3.95813 6.87131 4.08209 6.87349C4.20605 6.87568 4.3283 6.90281 4.44155 6.95327C4.5548 7.00373 4.65672 7.07648 4.74124 7.16719L7.31888 9.74359L11.594 4.29659C11.6016 4.28705 11.6099 4.278 11.6186 4.2695H11.6174Z' fill='%231D57A5'/%3E%3C/svg%3E%0A");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  &__foot {
+    @include media-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+  &__actions {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 20px;
+    @include media-laptop {
+      right: 10px;
+    }
+    @include media-tablet {
+      position: static;
+      gap: 10px;
+      margin-left: auto;
+    }
+  }
+  &__action {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    filter: grayscale(1) opacity(0.55);
+    transition: 0.3s;
+    @include media-hover {
+      filter: none;
+    }
+  }
+  &__add {
+    display: inline-flex;
+    align-items: center;
+    color: $blue;
+    &::before {
+      content: '+';
+      margin-right: 10px;
+      font-size: 20px;
+    }
+  }
+}

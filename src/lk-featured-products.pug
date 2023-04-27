@@ -1,0 +1,25 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle ='Избранное'
+    const navbarLink ='lk-basket.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: 'Корзина', href: 'lk-basket.html' },
+      { text: pageTitle },
+    ]
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Избранное')
+
+  .page-content
+    +section('--mt-xs')
+      .inner.inner--lk
+        +product-grid('--3items')
+          +product-item('favActive, noImg', '--column')
+          -for(item = 0; item < 5; item++)
+            +product-item('favActive', '--column')

@@ -16,7 +16,7 @@
     grid-area: title;
     font-weight: 600;
     font-size: 25px;
-    line-height: 137%;
+    line-height: 1.37;
     @include media-laptop {
       font-size: 22px;
     }
@@ -30,7 +30,7 @@
     margin-bottom: 30px;
     font-weight: 500;
     font-size: 18px;
-    line-height: 140%;
+    line-height: 1.4;
     @include media-laptop {
       margin-bottom: 25px;
       font-size: 14px;
@@ -67,7 +67,7 @@
       margin-bottom: 10px;
       font-weight: 900;
       font-size: 54px;
-      line-height: 140%;
+      line-height: 1.4;
       @include media-laptop {
         margin-bottom: 5px;
         font-size: 44px;
@@ -76,7 +76,7 @@
     &-descr {
       font-weight: 600;
       font-size: 22px;
-      line-height: 140%;
+      line-height: 1.4;
       @include media-laptop {
         font-size: 16px;
       }

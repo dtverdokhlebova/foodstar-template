@@ -1,0 +1,68 @@
+mixin form(mods)
+  -
+    const baseName = 'form'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  form.form(class=allMods action='#')&attributes(attributes)
+    block
+
+mixin form-line(mods)
+  -
+    const baseName = 'form-line'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .form-line(class=allMods)&attributes(attributes)
+    block
+
+mixin form-progress(mods)
+  -
+    const baseName = 'form-progress'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .form-progress(class=allMods)&attributes(attributes)
+    -for(item = 1; item < 5; item++)
+      .form-progress__item(class = (item === 1 ? 'form-progress__item--current' : ''))
+        .form-progress__text Шаг
+          =' '
+          =item
+    block
+
+mixin form-head(formHeadData, mods)
+  -
+    const baseName = 'form-head'
+    let allMods = ''
+    if (typeof mods !== 'undefined' && mods) {
+      const modsList = mods.split(',')
+      for (const element of modsList) {
+        allMods += element.trim()[0] === '-' ? ' ' + baseName + element.trim() : ' ' + element.trim() + '__' + baseName
+      }
+      allMods = allMods.trim()
+    }
+
+  .form-head(class=allMods)&attributes(attributes)
+    if formHeadData.h2
+      .form-head__h2(class=formHeadData.h4Mods) !{formHeadData.h2}
+    if formHeadData.p1
+      .form-head__p1(class=formHeadData.h3Mods) !{formHeadData.p1}
+    block

@@ -22,6 +22,6 @@ const generatePugMixins = () => {
 }
 
 export default function pugMixins() {
-  return gulp.src(['src/blocks/**/*.pug', '!src/blocks/mixins.pug', '!src/blocks/header/*', '!src/blocks/footer/*'])
+  return gulp.src(['src/blocks/**/*.pug', '!src/blocks/mixins.pug', '!src/blocks/header/*', '!src/blocks/footer/*', '!src/blocks/navbar/*'])
     .pipe(generatePugMixins())
 }

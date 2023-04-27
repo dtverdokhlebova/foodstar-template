@@ -1,4 +1,4 @@
-mixin search(mods)
+mixin search(placeholder, hasResult, mods)
   -
     const baseName = 'search'
     let allMods = ''
@@ -12,11 +12,12 @@ mixin search(mods)
 
   .search(class=allMods)&attributes(attributes)
     form.search__form(action='#')
-      input.search__input(type='text' placeholder='Поиск')
+      input.search__input(type='text' placeholder=placeholder)
       button.search__submit
-    .search__result
-      ul.search__list
-        -for(searchList = 0; searchList < 10; searchList++)
-          li.search__list-li
-            a.search__list-link(href='#') Читос со вкусом сыра
+    if hasResult
+      .search__result
+        ul.search__list
+          -for(searchList = 0; searchList < 10; searchList++)
+            li.search__list-li
+              a.search__list-link(href='#') Читос со вкусом сыра
     block

@@ -1,0 +1,226 @@
+extends layouts/layout
+
+block variables
+  -
+    const siteType = 'lk'
+    const pageTitle = 'Заказ №245543'
+    const navbarLink = 'lk-orders.html'
+
+  -
+    const breadcrumbsItems =[
+      { text: 'Мои заказы', href: 'lk-orders.html' },
+      { text: pageTitle },
+    ]
+
+  -
+    const detailsItems =[
+      { name: 'Номер заказа',
+        value: '2455433',
+      },
+      { name: 'Дата добавления',
+        value: '11.09.2021',
+      },
+      { name: 'Способ оплаты',
+        value: 'Безналичная оплата',
+      },
+      { name: 'Способ доставки',
+        value: 'Доставка транспортной компанией',
+      },
+      { name: 'Платежный адрес',
+        value: '119002 г. Москва, ул. Арбат, 28/1с1',
+      },
+      { name: 'Счет на оплату',
+        value: `
+          <a class="ui-button ui-button--link" href="#">
+            <span>Счет №2455433 от 11.09.2021</span>
+            <span class="ui-button__icon">
+              <img src="img/icon_download.svg" alt="">
+            </span>
+          </a>`,
+      },
+      { name: 'Счет на оплату',
+        value: '<a class="ui-blue ui-underline" href="#">1564659898897</a>',
+      },
+    ]
+
+  -
+    const orderCompositionData ={
+      thead: [
+        { name: 'Название товара', mods: 'table__th--name' },
+        { name: 'Код товара', mods: 'ui-nowrap' },
+        { name: 'Кол-во', mods: 'ui-nowrap' },
+        { name: 'Цена' },
+        { name: 'Сумма' },
+        { name: 'Действие' },
+      ],
+      tbody: [
+        {
+          td: [
+            { p1: '<div class="table__td-name">"Россия" - щедрая душа!®. Родные просторы® Конфеты с вафельной крошкой 180г.</div> ' },
+            { p1: '56489898' },
+            { p1: '2', mods: 'ui-nowrap' },
+            { p1: '370 ₽', mods: 'ui-nowrap' },
+            { p1: '740 ₽', mods: 'ui-nowrap' },
+            { p1: `
+              <button class="ui-button ui-button--link ui-button--color-inherit ui-nowrap js-open-notice-added">
+                В корзину
+              </button>
+            `}
+          ]
+        },
+        {
+          td: [
+            { p1: '<div class="table__td-name">"Россия" - щедрая душа!®. Родные просторы® Конфеты</div>  ' },
+            { p1: '56489898' },
+            { p1: '1000', mods: 'ui-nowrap' },
+            { p1: '370 ₽', mods: 'ui-nowrap' },
+            { p1: '370 000 ₽', mods: 'ui-nowrap' },
+            { p1: '<a class="ui-nowrap js-open-notice-added" href="#">В корзину</a>' },
+          ]
+        },
+      ],
+      total: [
+        { text: 'Итог' },
+        { text: '373 330 ₽', colspan: 5, mods: 'ui-right'},
+      ]
+    }
+
+  -
+    const orderCompositionMobData ={
+      thead: [
+        { name: 'Товар', },
+        { name: 'Цена' },
+        { name: 'Сумма' },
+      ],
+      tbody: [
+        {
+          td: [
+            { p1: `<div class="table__td-name">"Россия" - щедрая душа!®. Родные просторы®
+              Конфеты с вафельной крошкой 180г.</div>`,
+              p2: 'Код: 56489898',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `370 ₽`,
+              p2: 'х2 шт',
+              p2Mods: 'ui-grey80',
+              mods: 'ui-nowrap'
+            },
+            { p1: '740  ₽', mods: 'ui-nowrap' },
+          ]
+        },
+        {
+          td: [
+            { p1: '<button class="ui-button ui-button--link ui-button--bold ui-button--blue js-open-notice-added">В корзину</button>',
+              mods: 'table__td--inseparate ui-right',
+              colspan: '100%'
+            },
+          ]
+        },
+
+        {
+          td: [
+            { p1: `<div class="table__td-name">"Россия" - щедрая душа!®. Родные просторы® Конфеты</div>`,
+              p2: 'Код: 56489898',
+              p2Mods: 'ui-grey80',
+            },
+            { p1: `370 ₽`,
+              p2: 'х1000 шт',
+              p2Mods: 'ui-grey80',
+              mods: 'ui-nowrap'
+            },
+            { p1: '370 000 ₽', mods: 'ui-nowrap' },
+          ]
+        },
+        {
+          td: [
+            { p1: '<button class="ui-button ui-button--link ui-button--bold ui-button--blue js-open-notice-added">В корзину</button>',
+              mods: 'table__td--inseparate ui-right',
+              colspan: '100%'
+            },
+          ]
+        },
+      ],
+      total: [
+        { text: 'Итог' },
+        { text: '373 330 ₽', colspan: 5, mods: 'ui-right'},
+      ]
+    }
+
+  -
+    const orderHistoryData ={
+      thead: [
+        { name: 'Дата' },
+        { name: 'Статус' },
+        { name: 'Комментарий' },
+      ],
+      tbody: [
+        {
+          td: [
+            { p1: '11.09.2021'},
+            { statusClass: 'new', statusText: 'новый', },
+            { p1: '---' },
+          ]
+        },
+        {
+          td: [
+            { p1: '11.09.2021'},
+            { statusClass: 'processing', statusText: 'в обработке', },
+            { p1: 'Передано в 1с' },
+          ]
+        },
+        {
+          td: [
+            { p1: '12.09.2021'},
+            { statusClass: 'confirmed', statusText: 'собран', },
+            { p1: 'Товар собран и&nbsp;ожидает отправки' },
+          ]
+        },
+        {
+          td: [
+            { p1: '12.09.2021'},
+            { statusClass: 'confirmed', statusText: 'Отправлен', },
+            { p1: 'Отправлен транспортной компанией' },
+          ]
+        },
+      ]
+    }
+
+block content
+  .inner.inner--lk
+    +lk-page-head('Заказ №245543', '--mb-l, --order-inner')
+      +ui-h5('(Статус заказа: ')
+        span.text-status-new новый
+        | )
+    +lk-page-head('Заказ №245543', '--mb-l, --order-inner')
+      +ui-h5('(Статус заказа: ')
+        span.text-status-processing в обработке
+        | )
+    +lk-page-head('Заказ №245543', '--mb-l, --order-inner')
+      +ui-h5('(Статус заказа: ')
+        span.text-status-confirmed отправлен
+        | )
+
+  .page-content
+    +section('--mt-xxs')
+      .inner.inner--lk
+        +section-head('--mb-xs')
+          +ui-h5('Детали заказа', '--bold')
+        +details(detailsItems, '--mob-outside, --mob-bg-none, --item-pv-l')
+
+    +section('--mt-xxs')
+      .inner.inner--lk
+        // -- for backend
+        // для мобилки отдельная таблица (тут и на разводящей заказов)
+        // с таким дизайном это лучше и надежнее, чем адаптировать десктоп.
+        // так таблицы отображаются более корректнее на всех разрешениях
+        // если на интеграции это слишком неудобно, переделаю
+        +section-head('--mb-xs')
+          +ui-h5('Состав заказа', '--bold')
+        +table(orderCompositionData, '--mob-hidden, --order-composition')
+        +table(orderCompositionMobData, '--mob-visible, --mob-outside, --mob-transparent, --order-composition-mob')
+
+    +section('--mt-xxs')
+      .inner.inner--lk
+        +section-head('--mb-xs')
+          +ui-h5('История заказа', '--bold')
+        +table(orderHistoryData, '--mob-outside')
